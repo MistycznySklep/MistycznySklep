@@ -10,11 +10,12 @@
     <header>
         <nav>
             <ul class="pasek">
-                <li><b id="HeaderTitle">Mistyczny Sklep Ogrodniczy</b></li>
+                <li><p id="HeaderTitle">Mistyczny Sklep Ogrodniczy -</p></li>
+                <li><p>Zalogowany jako: <!--Tutaj php--></p></li>
+
                 <li><button onclick="window.location.href='index.html'"><b>Strona Główna</b></button></li>
                 <li><button onclick="window.location.href=''"><b>Zakładka 1</b></button></li>
                 <li><button onclick="window.location.href=''"><b>Zakładka 2</b></button></li>
-                <li><button onclick="window.location.href=''"><b>Zakładka 3</b></button></li>
                 <li><button id="LogoutButton" onclick="window.location.href='Login.php'"><b>Wyloguj</b></button></li>
                 
             </ul>
@@ -35,7 +36,7 @@
     </menu>
 
     <main>
-        <p style="height: 15vh;"></p>
+        <p style="height: 20vh;"></p>
 
         <div class="TitleDivider">
             <p>Witamy w naszym Mistycznym Sklepie!</p>
@@ -46,21 +47,42 @@
         <p style="height: 3vh;"></p>
 
         <div class="ElementContainer">
+
+            <div class="ColumnFleksik">
+                <div><h1>O nas</h1></div>
+                <div class="DivElement" style="width: 23.5vw;"></div>
+            </div>
+            
+            <div class="ColumnFleksik">
+                <div><h1>Co u nas znajdziesz?</h1></div>
+                <div class="DivElement" style="width: 47.5vw;"></div>
+            </div>
+        </div>
+
+        <p style="height: 3vh;"></p>
+
+        <div class="TitleDividerSmall">
+            <p>Popularne w tym tygodniu:</p>
+        </div>
+
+        <p style="height: 3vh;"></p>
+
+        <div class="ElementContainer">
             <div class="ShopElement">
                 <img src="Assets/Images/ShopItemPlaceholder.png" alt="">
                 <h2>Przedmiot Placeholder</h2>
                 <div class="ShopQuickDescDiv">
-                    <img src="Assets/Images/ShopElementDivider.png">
                 <p>Jakiś krótki opis przedmiotu. Nwm co tu dać więc masz ten tekst. wwwwwwww wwwwwwwwwwwww
                     ww wwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
                     wwwwwwwwwww gkwjigj gjwhgjkh jkwhkghwk ghkwhg kwgkwkg
                 </p></div>
                 <h2>Kategoria: okok</h2>
-                <h3>Cena: 69</h3><br>
+                <h3>Liczba w magazynie: 115 </h3>
+                <h3><i>Cena: 69 zł</i></h3><br>
                 
-                <div style="display: flex;">
+                <div class="fleksik">
                     <button class="AddToCartButton"></button>
-                    <button class="SeeMoreInfoButton"></button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
 
             </div>
@@ -72,21 +94,30 @@
         <p style="height: 3vh;"></p>
 
         <div class="ElementContainer">
+
+                <div class="DivElement" style="width: 24vw;"></div>
+                <div class="DivElement" style="width: 24vw;"></div>
+                <div class="DivElement" style="width: 24vw;"></div>
+        </div>
+
+        <p style="height: 3vh;"></p>
+
+        <div class="ElementContainer">
             <div class="ShopElement">
                 <img src="Assets/Images/ShopItemPlaceholder.png" alt="">
                 <h2>Przedmiot Placeholder</h2>
                 <div class="ShopQuickDescDiv">
-                    <img src="Assets/Images/ShopElementDivider.png">
                 <p>Jakiś krótki opis przedmiotu. Nwm co tu dać więc masz ten tekst. wwwwwwww wwwwwwwwwwwww
                     ww wwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
                     wwwwwwwwwww gkwjigj gjwhgjkh jkwhkghwk ghkwhg kwgkwkg
                 </p></div>
                 <h2>Kategoria: okok</h2>
-                <h3>Cena: 69</h3><br>
+                <h3>Liczba w magazynie: 115 </h3>
+                <h3><i>Cena: 69 zł</i></h3><br>
                 
-                <div style="display: flex;">
+                <div class="fleksik">
                     <button class="AddToCartButton"></button>
-                    <button class="SeeMoreInfoButton"></button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
 
             </div>
