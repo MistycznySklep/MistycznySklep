@@ -13,36 +13,44 @@ class HttpUtils
         die();
     }
 
-    public static function Assert(bool $condition, string | null $message = null)
+    public static function Assert(bool $condition, string|null $message = null)
     {
-        if ($condition) return;
+        if ($condition)
+            return;
         $message ??= "Assertion failed";
         HttpUtils::Status(500, $message);
     }
 }
 
-class Database {
-    private static mysqli | null $instance = null;
-    public function __construct(string $host, string $username, string $password, string $name) {
+class Database
+{
+    private static mysqli|null $instance = null;
+    public function __construct(string $host, string $username, string $password, string $name)
+    {
         if (self::$instance === null)
             self::$instance = new mysqli($host, $username, $password, $name);
     }
-    public static function getInstance() {
+    public static function getInstance()
+    {
         HttpUtils::Assert(self::$instance !== null);
         return self::$instance;
     }
-    public function query(string $query) {
+    public function query(string $query)
+    {
         HttpUtils::Assert(self::$instance !== null);
         return self::$instance->query($query);
     }
 
-    public function __destruct() {
+    public function __destruct()
+    {
         self::$instance->close();
     }
 }
 
-function PascalToSnake(string $pascal) {
-    if (empty($pascal)) return $pascal;
+function PascalToSnake(string $pascal)
+{
+    if (empty($pascal))
+        return $pascal;
 
     $name = strtolower($pascal[0]);
     for ($i = 1; $i < strlen($pascal); $i++) {
@@ -50,28 +58,35 @@ function PascalToSnake(string $pascal) {
         if (ctype_upper($char)) {
             $name .= "_";
             $name .= strtolower($char);
-        } else $name .= $char;
+        } else
+            $name .= $char;
     }
     return $name;
 }
 
 #[Attribute]
-class Id {
-    public function __construct() {}
+class Id
+{
+    public function __construct()
+    {
+    }
 }
 
-abstract class Model {
+abstract class Model
+{
     private string $cacheSql = "";
     private array $columns = [];
     private string $idColumn = "";
+    private string $tableName;
 
-    public function __construct(mixed $id, string | null $table = null) {
+    public function __construct(mixed $id, string|null $table = null)
+    {
         $reflection = new ReflectionClass($this);
         if ($table === null) {
             $pascalName = $reflection->getShortName();
             $table = PascalToSnake($pascalName);
         }
-        
+
         $fields = $reflection->getProperties();
         $columns = [];
         $columnsString = "";
@@ -84,17 +99,22 @@ abstract class Model {
             $columnsString .= $field->getName() . ", ";
         }
         foreach ($columns as $column) {
-            if (!empty($this->idColumn)) break;
+            if (!empty($this->idColumn))
+                break;
             $capitalisedTable = $table;
             $capitalisedTable[0] = strtoupper($capitalisedTable[0]);
-            if ($column === "id" || $column === "id$capitalisedTable") $this->idColumn = $column;
+            if ($column === "id" || $column === "id$capitalisedTable")
+                $this->idColumn = $column;
         }
-        if (!empty($columns)) $columnsString = substr($columnsString,0,-2);
+        if (!empty($columns))
+            $columnsString = substr($columnsString, 0, -2);
         $this->cacheSql = "select $columnsString from $table where $this->idColumn = $id";
         $this->columns = $columns;
+        $this->tableName = $table;
         $this->Refresh();
     }
-    public function Refresh() {
+    public function Refresh()
+    {
         $db = Database::getInstance();
         $result = $db->query($this->cacheSql);
         HttpUtils::Assert($result !== false, "Database not loaded");
@@ -103,43 +123,63 @@ abstract class Model {
         foreach ($this->columns as $column) {
             $this->$column = $row[$column];
         }
-    } 
-    public function Save() {
-        
+    }
+    public function Save()
+    {
+        $db = Database::getInstance();
+        $table = $this->tableName;
+        $updateSql = "update $table set ";
+        foreach ($this->columns as $column) {
+            $value = $db->real_escape_string($this->$column);
+            $updateSql .= "$column = \"$value\", ";
+        }
+        $updateSql = substr($updateSql, 0, -2);
+        $updateSql .= " ";
+        $idColumn = $this->idColumn;
+        $idValue = $this->$idColumn;
+
+        $updateSql .= "where $idColumn = $idValue";
+        $result = $db->query($updateSql);
+        HttpUtils::Assert($result !== false, "SQL Error: $updateSql");
     }
 }
 
 #[Attribute]
 class PostParam
 {
-    public function __construct(string $name, string | null $default = null)
+    public function __construct(string $name, string|null $default = null)
     {
     }
 }
 #[Attribute]
 class GetParam
 {
-    public function __construct(string $name, string | null $default = null)
+    public function __construct(string $name, string|null $default = null)
     {
     }
 }
 
-function ReloadEnvFile() {
+function ReloadEnvFile()
+{
     $file = "../.env";
-    if (!file_exists($file)) return;
+    if (!file_exists($file))
+        return;
     $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
         $line = trim($line);
 
-        if ($line === "" || $line[0] === "#") continue;
+        if ($line === "" || $line[0] === "#")
+            continue;
 
         // key=value
         if (preg_match('/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/i', $line, $matches)) {
             $key = $matches[1];
             $value = $matches[2];
 
-            if ((str_starts_with($value, '"') && str_ends_with($value, '"')) ||
-                (str_starts_with($value, "'") && str_ends_with($value, "'"))) {
+            if (
+                (str_starts_with($value, '"') && str_ends_with($value, '"')) ||
+                (str_starts_with($value, "'") && str_ends_with($value, "'"))
+            ) {
                 $value = substr($value, 1, -1);
             }
 
@@ -164,13 +204,15 @@ class Route
             $this->EnumeratePost();
         else if ($httpMethod === "GET")
             $this->EnumerateGet();
-        else HttpUtils::Status(404, "Unsupported method: $httpMethod");
+        else
+            HttpUtils::Status(404, "Unsupported method: $httpMethod");
     }
 
-    protected function GetDB(): Database {
+    protected function GetDB(): Database
+    {
         return $this->db;
     }
-    protected function Redirect(string $url) 
+    protected function Redirect(string $url)
     {
         header("Location: $url");
         die();
@@ -261,7 +303,23 @@ class Route
             if (!$meetsCritera)
                 continue;
             $methodName = $method->getName();
-            $this->$methodName(...$methodArguments);
+            $returnType = $method->getReturnType();
+
+            ob_start();
+
+            if ($returnType === null || $returnType === "void")
+                $this->$methodName(...$methodArguments);
+            else if ($returnType->getName() === "int") {
+                $code = $this->$methodName(...$methodArguments);
+                $length = ob_get_length();
+                http_response_code($code);
+                if ($length === 0) echo json_encode([
+                    "code" => 200,
+                ]);
+            } else
+                echo json_encode($this->$methodName(...$methodArguments));
+
+            ob_end_flush();
             return;
         }
 
