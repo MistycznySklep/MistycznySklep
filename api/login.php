@@ -5,7 +5,10 @@ require_once "Models/description.php";
 class Login extends Route
 {
     public function Index() {
-        $meow = new Returns();
+        $meow = new Returns(1);
+        echo "$meow->idReturns\n";
+        echo "$meow->idOrders\n";
+        echo "$meow->idProducts\n";
         $meow->Save();
     }
 }
