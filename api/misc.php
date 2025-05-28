@@ -13,7 +13,7 @@ class HttpUtils
         die();
     }
 
-    public static function Assert(bool $condition, string $message = null)
+    public static function Assert(bool $condition, string | null $message = null)
     {
         if ($condition) return;
         $message ??= "Assertion failed";
@@ -23,9 +23,9 @@ class HttpUtils
 
 class Database {
     private static mysqli | null $instance = null;
-    public function __construct(string $host, string $username, string $password) {
+    public function __construct(string $host, string $username, string $password, string $name) {
         if (self::$instance === null)
-            self::$instance = new mysqli($host, $username, $password);
+            self::$instance = new mysqli($host, $username, $password, $name);
     }
     public static function getInstance() {
         HttpUtils::Assert(self::$instance !== null);
@@ -55,15 +55,55 @@ function PascalToSnake(string $pascal) {
     return $name;
 }
 
+#[Attribute]
+class Id {
+    public function __construct() {}
+}
+
 abstract class Model {
-    public function __construct(string $table = null) {
+    private string $cacheSql = "";
+    private array $columns = [];
+    private string $idColumn = "";
+
+    public function __construct(mixed $id, string | null $table = null) {
         $reflection = new ReflectionClass($this);
         if ($table === null) {
             $pascalName = $reflection->getShortName();
             $table = PascalToSnake($pascalName);
         }
         
+        $fields = $reflection->getProperties();
+        $columns = [];
+        $columnsString = "";
+        foreach ($fields as $field) {
+            $idAttribute = $field->getAttributes(Id::class);
+            if (!empty($idAttribute)) {
+                $this->idColumn = $field->getName();
+            }
+            $columns[] = $field->getName();
+            $columnsString .= $field->getName() . ", ";
+        }
+        foreach ($columns as $column) {
+            if (!empty($this->idColumn)) break;
+            $capitalisedTable = $table;
+            $capitalisedTable[0] = strtoupper($capitalisedTable[0]);
+            if ($column === "id" || $column === "id$capitalisedTable") $this->idColumn = $column;
+        }
+        if (!empty($columns)) $columnsString = substr($columnsString,0,-2);
+        $this->cacheSql = "select $columnsString from $table where $this->idColumn = $id";
+        $this->columns = $columns;
+        $this->Refresh();
     }
+    public function Refresh() {
+        $db = Database::getInstance();
+        $result = $db->query($this->cacheSql);
+        HttpUtils::Assert($result !== false, "Database not loaded");
+        HttpUtils::Assert($result->num_rows > 0, "Invalid row");
+        $row = $result->fetch_assoc();
+        foreach ($this->columns as $column) {
+            $this->$column = $row[$column];
+        }
+    } 
     public function Save() {
         
     }
@@ -72,15 +112,40 @@ abstract class Model {
 #[Attribute]
 class PostParam
 {
-    public function __construct(string $name, string $default = null)
+    public function __construct(string $name, string | null $default = null)
     {
     }
 }
 #[Attribute]
 class GetParam
 {
-    public function __construct(string $name, string $default = null)
+    public function __construct(string $name, string | null $default = null)
     {
+    }
+}
+
+function ReloadEnvFile() {
+    $file = "../.env";
+    if (!file_exists($file)) return;
+    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        $line = trim($line);
+
+        if ($line === "" || $line[0] === "#") continue;
+
+        // key=value
+        if (preg_match('/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/i', $line, $matches)) {
+            $key = $matches[1];
+            $value = $matches[2];
+
+            if ((str_starts_with($value, '"') && str_ends_with($value, '"')) ||
+                (str_starts_with($value, "'") && str_ends_with($value, "'"))) {
+                $value = substr($value, 1, -1);
+            }
+
+            putenv("$key=$value");
+            $_ENV[$key] = $value;
+        }
     }
 }
 
@@ -89,7 +154,9 @@ class Route
     private Database $db;
     public function __construct()
     {
-        $this->db = new Database("localhost", "root", "");
+        ReloadEnvFile();
+
+        $this->db = new Database($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_NAME"]);
         $httpMethod = $_SERVER["REQUEST_METHOD"];
 
         header("Content-Type: application/json");
