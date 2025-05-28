@@ -1,10 +1,10 @@
 <?php
 // idReturns int
 // idOrders
-// idProducers
+// idProducts
 
 class Returns extends Model {
     public int $idReturns;
     public int $idOrders;
-    public int $idProducers;
+    public int $idProducts;
 }
