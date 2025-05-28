@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mistyczny Sklep</title>
 </head>
-<body style="background-image: url(Assets/Images/BgMistycznySklepOgrodniczy4.png); background-repeat: no-repeat;">
+<body>
     <header>
         <nav>
             <ul class="pasek">
@@ -16,7 +16,9 @@
                 <li><button onclick="window.location.href='index.html'"><b>Strona Główna</b></button></li>
                 <li><button onclick="window.location.href=''"><b>Zakładka 1</b></button></li>
                 <li><button onclick="window.location.href=''"><b>Zakładka 2</b></button></li>
-                <li><button id="LogoutButton" onclick="window.location.href='Login.php'"><b>Wyloguj</b></button></li>
+                <li><img onclick="" class="HeaderIconButton" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></li>
+                <li><img onclick="" class="HeaderIconButton" src="Assets/Images/LogIcon.png" alt="Magazyn"></li>
+                <li><button id="LogoutButton" onclick="window.location.href='Login.php'"><b>Wyloguj</b></button></li> <!--Dodać img jako LogOut-->
                 
             </ul>
         </nav>
@@ -25,10 +27,10 @@
     <menu>
         <nav class="glass">
             <ul>
-                <li><a href="#Biomes"><b>Podzakładka 1</b></a></li>
-                <li><a href="#"><b>Podzakładka 2</b></a></li>
-                <li><a href="#"><b>Podzakładka 3</b></a></li>
-                <li><a href="#"><b>Podzakładka 4</b></a></li>
+                <li><a href="#Info"><b>Informacje</b></a></li>
+                <li><a href="#RosDnia"><b>Rośliny dnia</b></a></li>
+                <li><a href="#"><b>Lista Roślin</b></a></li>
+                <li><a href="#"><b>Lista Narzędzi</b></a></li>
                 <li><a href="#"><b>Podzakładka 5</b></a></li>
                 <li><a href="#"><b>Podzakładka 6</b></a></li>
             </ul>
@@ -36,7 +38,7 @@
     </menu>
 
     <main>
-        <p style="height: 20vh;"></p>
+        <p style="height: 20vh;" id="Info"></p>
 
         <div class="TitleDivider">
             <p>Witamy w naszym Mistycznym Sklepie!</p>
@@ -59,7 +61,7 @@
             </div>
         </div>
 
-        <p style="height: 3vh;"></p>
+        <p style="height: 3vh;" id="RosDnia"></p>
 
         <div class="TitleDividerSmall">
             <p>Popularne w tym tygodniu:</p>
@@ -69,7 +71,7 @@
 
         <div class="ElementContainer">
             <div class="ShopElement">
-                <img src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
                 <h2>Przedmiot Placeholder</h2>
                 <div class="ShopQuickDescDiv">
                 <p>Jakiś krótki opis przedmiotu. Nwm co tu dać więc masz ten tekst. wwwwwwww wwwwwwwwwwwww
@@ -81,7 +83,9 @@
                 <h3><i>Cena: 69 zł</i></h3><br>
                 
                 <div class="fleksik">
-                    <button class="AddToCartButton"></button>
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
 
@@ -104,7 +108,7 @@
 
         <div class="ElementContainer">
             <div class="ShopElement">
-                <img src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
                 <h2>Przedmiot Placeholder</h2>
                 <div class="ShopQuickDescDiv">
                 <p>Jakiś krótki opis przedmiotu. Nwm co tu dać więc masz ten tekst. wwwwwwww wwwwwwwwwwwww
@@ -116,7 +120,9 @@
                 <h3><i>Cena: 69 zł</i></h3><br>
                 
                 <div class="fleksik">
-                    <button class="AddToCartButton"></button>
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
 

@@ -1,7 +1,7 @@
 :root {
   --brazowyBasic: #61422d;
-  --brazowyCiemniejszy: #533925;
-  --brazowyBorder: #4b3322;
+  --brazowyCiemniejszy: #503623; /*#533925; #4d3422*/
+  --brazowyDark: #4b3322;
   --ciemnyBrazowyBorder: #462f1f;
 
   --textBrazowy: #2c1f16; 
@@ -11,6 +11,10 @@
 
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -18,8 +22,9 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth;
     background-attachment: fixed;
+    background-image: url(../Images/BgMistycznySklepOgrodniczy4.png);
+    background-repeat: no-repeat;
 }
 
 .glass {
@@ -51,16 +56,18 @@ body {
 
 header {
     background-image: url(../Images/HeaderDetailsV2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: var(--brazowyBasic);
 
     position: fixed;
     
     width: 100%;
-    height: 5.5vh;
+    height: 5.7vh;
     min-height: 35px;
     z-index: 9999;
 
-    border-bottom: 4px solid var(--brazowyBorder);
+    border-bottom: 4px solid var(--brazowyDark);
 
 }
 
@@ -71,7 +78,7 @@ header {
     align-items: center;
 
     width: 100%;
-    height: 5.5vh;
+    height: 5.7vh;
     min-height: 35px;
     list-style: none;
 }
@@ -142,6 +149,16 @@ nav li {
     box-shadow: 0 0 3px 3px rgb(206, 132, 132);
 }
 
+.HeaderIconButton {
+    width: 2vw;
+    transition-duration: 400ms;
+}
+
+.HeaderIconButton:hover {
+    scale: 1.1;
+    filter: drop-shadow(0px 0px 3px var(--textSzary));
+}
+
 /* ===================== Menu ===================== */
 
 menu {
@@ -150,7 +167,7 @@ menu {
     width: 100%;
     height: 4vh;
     min-height: 35px;
-    top: 5.5vh;
+    top: 5.7vh;
 
     z-index: 9998;
 }
@@ -248,7 +265,7 @@ menu a:hover {
     color: var(--textBrazowy);
 
     background-color: var(--brazowyBasic);
-    border: 0.3vw solid var(--ciemnyBrazowyBorder);
+    border: 0.32vw solid var(--ciemnyBrazowyBorder);
     border-radius: 10px;
 
     font-size: 0.85vw;
@@ -267,7 +284,7 @@ menu a:hover {
     padding: 1vh 0.5vw 1vh 0.5vw;
 }
 
-.ShopElement img {
+.ShopElementIMG {
 
     margin-bottom: 0.5vh;
     align-self: center;
@@ -301,6 +318,8 @@ menu a:hover {
     margin: 0 0.3vw 0.5vh 0.3vw;
     padding: 0 1.5vw;
 
+    background-color: var(--brazowyCiemniejszy);
+
     border: 0;
     border-radius: 6px;
     transition-duration: 400ms;
@@ -311,23 +330,30 @@ menu a:hover {
 }
 
 .AddToCartButton {
-    background-color: rgb(46, 136, 46);
-
+    /* background-color: rgb(46, 136, 46); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4vw;
-
-    background-image: url(../Images/StoreIconFar.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 50%;
 }
 
 .AddToCartButton:hover {
-        box-shadow: 0 0 7px rgb(46, 136, 46); /*rgb(42, 138, 42);*/
+        box-shadow: 0 0 3px 3px rgb(46, 136, 46); /*rgb(42, 138, 42);*/
+        
+}
+
+.AddToCartIcon {
+    margin-bottom: 0vh;
+    transition-duration: 400ms;
+}
+
+.AddToCartButton:hover .AddToCartIcon {
+    filter: drop-shadow(0px 0px 3px rgb(46, 136, 46));
+    /* inset: 0px 0px 3px rgb(46, 136, 46); */
 }
 
 .SeeMoreInfoButton {
-    background-color: rgb(63, 108, 150);
-    background-color: var(--brazowyCiemniejszy);
+    /* background-color: rgb(63, 108, 150); */
 
     
     color: white;
