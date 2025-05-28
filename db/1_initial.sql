@@ -5,6 +5,7 @@ CREATE TABLE `accounts` (
   `login` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` text NOT NULL,
+  `email` varchar(50),
   `type` enum('user','admin','employee') NOT NULL,
   `balance` double(10,2) NOT NULL
 );
@@ -16,7 +17,7 @@ CREATE TABLE `inventory` (
   `quantity` int(11) NOT NULL
 );
 
-CREATE TABLE `emloyees` (
+CREATE TABLE `employees` (
   `idEmployees` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
   `name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
