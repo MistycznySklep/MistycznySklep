@@ -27,7 +27,7 @@ CREATE TABLE `employees` (
 CREATE TABLE `products` (
   `idProdukty` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
   `name` varchar(100) NOT NULL,
-  `type` enum('Sprzęt','Kwiaty','Grzyby','Narośl','Pielęgnacja') NOT NULL,
+  `type` enum('Sprzęt','Kwiaty','Grzyby','Narośl','Pielęgnacja','Nasiona','Owoce','Warzywa') NOT NULL,
   `price` double(10,2) NOT NULL,
   `description` text(100) NOT NULL,
   `description2` text(255) NOT NULL,
