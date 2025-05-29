@@ -26,9 +26,9 @@ body{
 }
 
 
-h1,h2,label{
-    text-shadow: 0 0 16px #000000, 0 0 16px #000000;
-}
+/* h1,h2,label{
+    text-shadow: 0 0 4px var(--akcentRozowy), 0 0 4px var(--akcentRozowy);
+} */
 
 label {
     transition-duration: 400ms;
@@ -64,7 +64,7 @@ a:hover {
     border: 0.32vw solid var(--ciemnyBrazowyBorder);
     border-radius: 10px;
 
-    font-size: 0.85vw;
+    
     
     
 }
@@ -110,13 +110,13 @@ form input:focus{
 }
 
 h2{
+    margin-top: 15px;
     text-align: center;
     
 
 }
 .wyslij{
     position: relative;
-    padding: 5px;
     width: 60%;
     left: 20%;
     padding: 15px;
@@ -135,13 +135,20 @@ h2{
 }
 
 .wyslij:hover{
-    scale: 1.06;
+    scale: 1.03;
     text-shadow: 0 0 5px var(--akcentRozowy);
     box-shadow: 0 0 3px 3px var(--akcentRozowy);
     color: var(--akcentRozowy);
 }
 
+.rejestracja{
+    position: relative;
+    margin-block: 5px;
+}
 
+p.rejestracja,  a{
+    color: rgb(227, 56, 56);
+}
 .hr{
     width: 100%;
     margin-block: 20px;
@@ -199,4 +206,52 @@ hr span{
 .MetodaLogowania img{
     height: 30px;
     margin-right: auto;
+}
+@media screen and (max-height: 900px) {
+    .formLogowanie{
+        height:375px;
+    }
+    .MetodaLogowania{
+        height: 10px;
+    }
+    
+    form input{
+        margin-block: 5px;
+    }
+    .hr{
+        margin-block: 5px;
+    }
+    .wyslij{
+        width: 40%;
+        left: 30%;
+        padding: 8px;
+        margin-block: 7.5px;
+    }
+    .rejestracja{
+        position: relative;
+        top: 0;
+    }
+    label{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 24px;
+        padding: 0;
+        margin: 0;
+    }
+    p, span{
+        font-size: 10px;
+    }
+    .Logowanie{
+        top: 1%;
+    }
+    .MetodaLogowania img{
+    height: 20px;
+    margin-right: auto;
+}
+}
+@media screen and (max-width: 600px){
+    .formLogowanie{
+        width: 300px;
+    }
 }
