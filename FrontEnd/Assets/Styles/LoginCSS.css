@@ -29,7 +29,7 @@ body {
 /* ---- cienie dla tekstu (jak chccesz piotrek to dodaj, jak nie to nie, możesz kolorek cienia zmienić bo bardziej by chb pasował brązowy ale idk, więc sb wybierz ---- */
 
 /* h1,h2,label{
-    text-shadow: 0 0 4px var(--akcentRozowy), 0 0 4px var(--akcentRozowy); 
+    text-shadow: 0 0 4px var(--akcentRozowy), 0 0 4px var(--akcentRozowy);
 } */
 
 label {
