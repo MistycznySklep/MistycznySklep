@@ -1,47 +1,27 @@
-:root {
-    --InputBgColor: #81604a;
-
-    --brazowyCiemniejszy: #503623;
-    --brazowyDark: #4b3322;
-    --ciemnyBrazowyBorder: #462f1f;
-
-    --textBrazowy: #2c1f16;
-    --textSzary: #e0e0e0;
-    --InputRozowy: #b169a7;
-}
-
 * {
     padding: 0;
     margin: 0;
     color: var(--textSzary);
 }
-
 body {
     width: 100vw;
     height: 100vh;
-
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-attachment: fixed;
     background-image: url(../Images/BgMistycznySklepOgrodniczy4.png);
     background-repeat: no-repeat;
 }
-
-/* ---- cienie dla tekstu (jak chccesz piotrek to dodaj, jak nie to nie, możesz kolorek cienia zmienić bo bardziej by chb pasował brązowy ale idk, więc sb wybierz ---- */
-
-/* h1,h2,label{
-    text-shadow: 0 0 4px var(--akcentRozowy), 0 0 4px var(--akcentRozowy);
-} */
-
 label {
     transition-duration: 400ms;
 }
-
 h1 {
     margin-block: 20px;
 }
-
+h2 {
+    margin-top: 15px;
+    text-align: center;
+}
 a {
-    color: var(--textBrazowy);
     transition-duration: 400ms;
 }
 
@@ -50,8 +30,7 @@ a:hover {
     text-shadow: 0 0 5px var(--textSzary);
 
 }
-
-.formLogowanie {
+.formRejestracja {
     width: 500px;
     height: 620px;
     left: 50%;
@@ -67,8 +46,7 @@ a:hover {
 
 
 }
-
-.Logowanie {
+.Rejestracja {
 
     position: relative;
     height: 90%;
@@ -78,17 +56,21 @@ a:hover {
     /* background-color: #fff; */
 }
 
-.Logowanie p {
+p.logowanie {
     justify-self: center;
-    color: var(--textBrazowy);
+    margin-block: 15px;
+    
 }
 
+a {
+    color: rgb(227, 56, 56);
+}
 form input {
     position: relative;
     width: 96.5%;
     height: 2vh;
-    margin-top: 10px;
-    margin-bottom: 40px;
+    margin-block: 10px;
+    margin-bottom: 30px;
     padding: 7px;
     font-size: 15px;
     border-radius: 5px;
@@ -98,30 +80,17 @@ form input {
     outline: none;
     transition-duration: 400ms;
 }
-
 form input:focus {
     background-color: var(--ciemnyBrazowyBorder);
     box-shadow: 0 0 3px 3px var(--akcentRozowy);
     color: var(--akcentRozowy);
 }
-
-h2 {
-    margin-top: 15px;
-    text-align: center;
-
-
-}
-
 .wyslij {
     position: relative;
     width: 60%;
     left: 20%;
+    padding-block: 30px;
     padding: 15px;
-
-}
-
-.wyslij {
-
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     background-color: var(--brazowyCiemniejszy);
@@ -130,25 +99,12 @@ h2 {
     transition-duration: 400ms;
 
 }
-
 .wyslij:hover {
     scale: 1.03;
     text-shadow: 0 0 5px var(--akcentRozowy);
     box-shadow: 0 0 3px 3px var(--akcentRozowy);
     color: var(--akcentRozowy);
 }
-
-p.rejestracja {
-    justify-self: center;
-    color: #fff;
-    margin-block: 15px;
-    
-}
-
-a {
-    color: rgb(227, 56, 56);
-}
-
 .hr {
     width: 100%;
     margin-block: 20px;
@@ -156,66 +112,22 @@ a {
     justify-content: center;
     align-items: center;
 }
-
 hr span {
 
     background-color: #999;
 
 }
-
 .Line {
     background-color: #9b9b9bd5;
     height: 1px;
     width: 50%;
     margin-inline: 5px;
 }
-
-.MetodyLogowania {
-    width: 100%;
-    height: 200px;
-}
-
-.MetodaLogowania {
-    position: relative;
-    width: 90%;
-    left: 2.5%;
-    margin-block: 10px;
-    border: 1px solid #fff;
-    backdrop-filter: blur(50px);
-    text-align: center;
-    text-transform: uppercase;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition-duration: 200ms;
-
-}
-
-.MetodaLogowania:hover {
-
-    background-color: rgb(255, 255, 255, 0.1);
-}
-
-.MetodaLogowania p {
-    margin-right: auto;
-    color: var(--textSzary) !important;
-}
-
-.MetodaLogowania img {
-    height: 30px;
-    margin-right: auto;
-}
-
 @media screen and (max-height: 900px) {
-    .formLogowanie {
-        height: 425px;
+    .formRejestracja {
+        height: 375px;
     }
 
-    .MetodaLogowania {
-        height: 10px;
-    }
 
     form input {
         margin-block: 5px;
@@ -232,9 +144,9 @@ hr span {
         margin-block: 7.5px;
     }
 
-.rejestracja {
-    position: relative;
-    margin-block: 5px;
+    .logowanie {
+        position: relative;
+        top: 0;
     }
 
     label {
@@ -252,7 +164,7 @@ hr span {
         font-size: 10px;
     }
 
-    .Logowanie {
+    .Rejestracja {
         top: 1%;
     }
 
@@ -263,10 +175,7 @@ hr span {
 }
 
 @media screen and (max-width: 600px) {
-    .formLogowanie {
+    .formRejestracja {
         width: 300px;
     }
-    .rejestracja {
-    margin-block: 5px;
-}
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejestracja</title>
+    <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css">
+    <link rel="stylesheet" href="Assets/Styles/RegisterCSS.css">
+    <script defer src="loginJS.js"></script>
+    <script defer src="registerJS.js"></script>
+</head>
+<body>
+    <header>        
+    <nav>
+        <ul class="pasek">
+            <li><h1 >Mistyczny Sklep Ogrodniczy</h1></li>
+            <li></li>
+            
+        </ul>
+    </nav>
+</header>
+<div class="formRejestracja">
+        <h2>Zarejestruj Się:</h2>
+        <div class="Rejestracja">
+            <form>
+                <label for="login">Login:</label><input type="text" name="login">
+                <label for="username">Nazwa użytkownika:</label><input type="text" name="username" required>
+                <label for="email">Email:</label><input type="email" name="email" required >
+                <!-- <label for="account_details">Szczegóły konta:</label><input type="text" name="account_details" >
+                <label for="password">Zdjęcie profilowe</label><input type="text" name="password" > -->
+                <label for="password">Hasło:</label><input type="password" name="password" required>
+                <button class="wyslij" onclick="Okienko();">Zarejestruj się</button>
+                
+                <p class="logowanie">Masz już konto? <a href="login.html">Zaloguj się!</a></p>
+
+               
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>
