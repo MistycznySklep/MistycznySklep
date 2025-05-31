@@ -75,7 +75,7 @@ form input {
     font-size: 15px;
     border-radius: 5px;
     background-color: var(--brazowyDark);
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 3px 5px #00000026;
     border: none;
     outline: none;
     transition-duration: 400ms;
@@ -122,6 +122,14 @@ hr span {
     height: 1px;
     width: 50%;
     margin-inline: 5px;
+}
+.error{
+    position: relative;
+    margin-top: 10px;
+    
+}
+.error p{
+    color: #f04444;
 }
 @media screen and (max-height: 900px) {
     .formRejestracja {

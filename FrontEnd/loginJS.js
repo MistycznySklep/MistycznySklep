@@ -1,6 +1,6 @@
 let labelForm = document.querySelectorAll("label")
 let inputsForm = document.querySelectorAll("input")
-let x = true;
+
 inputsForm.forEach(input => {
     input.addEventListener('focus', () => InputFocused(input));
 });
@@ -50,6 +50,7 @@ function InputFocused(input){
             label.style.color = "#b169a7";
             input.addEventListener('blur', function zmianaKolorka() {
                 label.style.color = "";
+                // label.style.color = label.dataset.originalColor || "";
                 input.removeEventListener('blur', zmianaKolorka);
             });
                

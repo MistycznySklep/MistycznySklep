@@ -207,7 +207,10 @@ hr span {
     height: 30px;
     margin-right: auto;
 }
-
+.error{
+    position: relative;
+    margin-block: 15px;
+}
 @media screen and (max-height: 900px) {
     .formLogowanie {
         height: 425px;
