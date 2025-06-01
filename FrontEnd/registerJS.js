@@ -119,7 +119,7 @@ function Checker(event) {
         
         inputsForm.forEach(input => {
             let inputElement = document.querySelector(`[name="${input.name}"]`);
-            if (inputElement && inputElement.value === "") {
+            if (inputElement && inputElement.value === "" || !inputElement.checkValidity()) {
                 emptyInputs.push(input);
                 
             }else if(inputElement && inputElement.value !== "" && inputElement.checkValidity()){
@@ -127,9 +127,9 @@ function Checker(event) {
             }
         });
         if (emptyInputs.length > 0) {
-            if (event && typeof event.preventDefault === "function") {
-                event.preventDefault();
-            }
+            form.onsubmit = (e) =>{
+                e.preventDefault();
+            } 
             EmptyInputAproved(approvedInputs);
             EmptyInputError(emptyInputs);
         }else
