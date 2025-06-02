@@ -21,5 +21,5 @@ jobs:
 
     - name: Deploy code to GCP
       run: |
-        scp -r -o StrictHostKeyChecking=no ./FrontEnd ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:/var/www/html/
-        scp -r -o StrictHostKeyChecking=no ./api ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:/var/www/html/api
+        scp -r -o StrictHostKeyChecking=no ./FrontEnd/* ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:/var/www/html/
+        scp -r -o StrictHostKeyChecking=no ./api/* ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:/var/www/html/api
