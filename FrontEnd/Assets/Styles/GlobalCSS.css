@@ -11,8 +11,10 @@
 
 }
 
+
 html {
     scroll-behavior: smooth;
+    scrollbar-width: none; 
 }
 
 * {
@@ -100,6 +102,7 @@ header {
     width: 10vw;
     padding: 0 30px;
 
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
     background-color: var(--brazowyCiemniejszy);
     color: var(--textSzary);
 
@@ -150,13 +153,55 @@ nav li {
 }
 
 .HeaderIconButton {
-    width: 2vw;
-    transition-duration: 400ms;
+    width: 3vw !important;
 }
 
 .HeaderIconButton:hover {
+    box-shadow: 0 0 3px 3px #cccccc !important;
+}
+
+.HeaderIconButton img {
+    width: 1.85vw;
+
+    display: flex;
+    justify-self: center;
+
+    transition-duration: 400ms;
+}
+
+.HeaderIconButton:hover img {
     scale: 1.1;
     filter: drop-shadow(0px 0px 3px var(--textSzary));
+}
+
+.HeaderSeperator {
+    width: 0.1vw;
+    background-color: var(--ciemnyBrazowyBorder);
+    height: 90%;
+
+    margin: 0 0.3vw 0 0.3vw;
+}
+
+#LogIcon {
+    margin-top: 0.1vh;
+    margin-right: 0.4vw;
+
+    border-radius: 3px;
+    width: 32px;
+    height: 32px;
+}
+
+.HeaderMoneyCount {
+    font-weight: 600;
+    width: 6vw !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.HeaderMoneyCount:hover {
+    color: var(--textSzary) !important;
+    text-shadow: 0 0 5px var(--textSzary) !important;
+    box-shadow: 0 0 3px 3px #cccccc !important;
 }
 
 /* ===================== Menu ===================== */
@@ -198,7 +243,7 @@ menu a {
 
 menu a:hover {
     color: var(--textSzary);
-    text-shadow: 0 0 5px #e0e0e0;
+    text-shadow: 0 0 5px var(--textSzary);
 }
 
 /* ===================== Main ===================== */
@@ -214,8 +259,8 @@ menu a:hover {
     justify-content: center;
 
     font-size: 1vw;
-    color: #e0e0e0;
-    text-shadow: 0 0 5px #e0e0e0;
+    color: var(--textSzary);
+    text-shadow: 0 0 5px var(--textSzary);
     text-align: center;
 
 }
@@ -242,8 +287,8 @@ menu a:hover {
 
     font-weight: 600;
     font-size: 2.5vw;
-    color: #e0e0e0;
-    text-shadow: 0 0 5px #e0e0e0;
+    color: var(--textSzary);
+    text-shadow: 0 0 5px var(--textSzary);
     text-align: center;
 }
 
@@ -264,6 +309,7 @@ menu a:hover {
 
     color: var(--textBrazowy);
 
+    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
     background-color: var(--brazowyBasic);
     border: 0.32vw solid var(--ciemnyBrazowyBorder);
     border-radius: 10px;
@@ -274,6 +320,25 @@ menu a:hover {
 
 .DivElement {
     height: 27vh;
+}
+.DivElement p, .DivElement b {
+    margin-left: 1vw;
+    margin-top: 1.7vh;
+}
+
+.DivElement b {
+    font-size: 1.5vw;
+}
+
+.pKategorie {
+    width: 60%;
+}
+
+.KategoriaDiv {
+    background-image: url(../Images/ShopItemPlaceholder.png);
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-size: contain;
 }
 
 .ShopElement {
@@ -318,6 +383,7 @@ menu a:hover {
     margin: 0 0.3vw 0.5vh 0.3vw;
     padding: 0 1.5vw;
 
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
     background-color: var(--brazowyCiemniejszy);
 
     border: 0;
@@ -356,7 +422,7 @@ menu a:hover {
     /* background-color: rgb(63, 108, 150); */
 
     
-    color: white;
+    color: var(--textSzary);
     font-weight: 600;
     width: 10.5vw;
 /* 
