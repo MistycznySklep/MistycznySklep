@@ -25,4 +25,4 @@ jobs:
 
     - name: Deploy code to GCP
       run: |
-        rsync -avz --exclude '.git' ./ ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:/var/www/html/
+        scp -r -o StrictHostKeyChecking=no ./ ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:/var/www/html/
