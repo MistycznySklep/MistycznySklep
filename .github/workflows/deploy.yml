@@ -19,6 +19,10 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.VM_IP }} >> ~/.ssh/known_hosts
 
+    - name: Test SSH connection
+      run: |
+        ssh -v -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} "echo Meow!"
+
     - name: Deploy code to GCP
       run: |
         rsync -avz --exclude '.git' ./ ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:/var/www/html/
