@@ -3,7 +3,7 @@ CREATE DATABASE magiczny_sklep_ogrodniczy;
 CREATE TABLE `accounts` (
   `idAccounts` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
   `login` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `password` text NOT NULL,
   `email` varchar(50),
   `type` enum('user','admin','employee') NOT NULL,
