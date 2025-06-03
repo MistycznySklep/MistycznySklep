@@ -64,10 +64,13 @@ function ErrorInputColor(emptyInput){
 
     
 }
-function ErrorLabelColor(emptyLabel){
-    emptyLabel.style.color = "#ff0000"; 
-}
 
+function ErrorLabelColor(emptyLabel){
+    if(emptyLabel){
+        emptyLabel.style.color = "#ff0000"; 
+
+    }
+}
 function EmptyInputError(inputsNames) {
    if(inputsNames.length === 1){
 
@@ -107,11 +110,11 @@ function EmptyInputError(inputsNames) {
     ErrorInputColor(emptyInput4)
     
     textError.textContent = `uzupełnij pole ${inputsNames[0].name}, ${inputsNames[1].name}, ${inputsNames[2].name}, i ${inputsNames[3].name}`;
-
-   }
-
-
     
+}
+
+
+
 }
 function Checker(e) {
     
@@ -125,28 +128,28 @@ function Checker(e) {
     
     let emptyInputs = [];
     let approvedInputs = [];
-        
+    
     inputsForm.forEach(input => {
         let inputElement = document.querySelector(`[name="${input.name}"]`);
-    
-            if (inputElement && (inputElement.value === "" || !inputElement.checkValidity())) {
-                emptyInputs.push(input);
-                
-            }else if(inputElement && (inputElement.value !== "" && inputElement.checkValidity())){
-                approvedInputs.push(input)
-            }
-        });
         
+        if (inputElement && (inputElement.value === "" || !inputElement.checkValidity())) {
+            emptyInputs.push(input);
+            
+        }else if(inputElement && (inputElement.value !== "" && inputElement.checkValidity())){
+            approvedInputs.push(input)
+        }
+    });
+    
         if (emptyInputs.length > 0) {
             
             EmptyInputAproved(approvedInputs);
             EmptyInputError(emptyInputs);
             
         }else if(emptyInputs.length === 0) {
-        textError.textContent = ""; 
-        form.submit(); 
-}
+            textError.textContent = ""; 
+            form.submit(); 
+        }
         
     }
-
-form.addEventListener("submit", Checker)
+    
+    form.addEventListener("submit", Checker)
