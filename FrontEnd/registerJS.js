@@ -1,10 +1,10 @@
 let errorDiv = document.querySelector(".error")
 let textError = document.querySelector("p")
 let form = document.querySelector("form")
+console.log(form)
 
 let emptyInputNum = 0;
 
-form.addEventListener("submit", Checker)
 
 inputsForm = [ 
     {name: "login", type: "text", content: "Login"},
@@ -72,6 +72,7 @@ function EmptyInputError(inputsNames) {
    if(inputsNames.length === 1){
 
         let emptyInput = document.querySelector(`[name="${inputsNames[0].name}"]`)
+        console.log(emptyInput)
 
         ErrorInputColor(emptyInput)
        textError.textContent = `uzupełnij pole ${inputsNames[0].name}`;
@@ -79,6 +80,7 @@ function EmptyInputError(inputsNames) {
    }else if(inputsNames.length === 2){
     let emptyInput1 = document.querySelector(`[name="${inputsNames[0].name}"]`)
     let emptyInput2 = document.querySelector(`[name="${inputsNames[1].name}"]`)
+   
     ErrorInputColor(emptyInput1)
     ErrorInputColor(emptyInput2)
 
@@ -106,21 +108,26 @@ function EmptyInputError(inputsNames) {
     
     textError.textContent = `uzupełnij pole ${inputsNames[0].name}, ${inputsNames[1].name}, ${inputsNames[2].name}, i ${inputsNames[3].name}`;
 
-   }else{
-    console.log("a")
    }
 
 
     
 }
-function Checker() {
+function Checker(e) {
+    
+    e.preventDefault();
+    
+    
+    
+    
+    
+    
+    
+    let emptyInputs = [];
+    let approvedInputs = [];
         
-        // console.log("a")
-        let emptyInputs = [];
-        let approvedInputs = [];
-        
-        inputsForm.forEach(input => {
-            let inputElement = document.querySelector(`[name="${input.name}"]`);
+    inputsForm.forEach(input => {
+        let inputElement = document.querySelector(`[name="${input.name}"]`);
     
             if (inputElement && (inputElement.value === "" || !inputElement.checkValidity())) {
                 emptyInputs.push(input);
@@ -129,21 +136,17 @@ function Checker() {
                 approvedInputs.push(input)
             }
         });
-        console.log("Kod się wykonuje");
+        
         if (emptyInputs.length > 0) {
-            form.onsubmit = (e) =>{
-                e.preventDefault();
-            } 
+            
             EmptyInputAproved(approvedInputs);
             EmptyInputError(emptyInputs);
-        }else
-        {
-            console.log("aaa")
             
-        }
-    
+        }else if(emptyInputs.length === 0) {
+        textError.textContent = ""; 
+        form.submit(); 
 }
+        
+    }
 
-    
-    
-
+form.addEventListener("submit", Checker)

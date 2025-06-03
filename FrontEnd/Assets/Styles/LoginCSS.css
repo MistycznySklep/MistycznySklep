@@ -53,7 +53,7 @@ a:hover {
 
 .formLogowanie {
     width: 500px;
-    height: 620px;
+    height: 660px;
     left: 50%;
     top: 53.5%;
     transform: translate(-50%, -50%);
@@ -209,7 +209,11 @@ hr span {
 }
 .error{
     position: relative;
-    margin-block: 15px;
+    margin-top: 10px;
+    
+}
+.error p{
+    color: #f04444;
 }
 @media screen and (max-height: 900px) {
     .formLogowanie {
