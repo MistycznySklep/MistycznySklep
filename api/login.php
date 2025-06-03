@@ -1,1 +1,9 @@
-<!-- tu będzie login.php -->
+<?php
+require_once 'config.php';
+
+
+
+
+
+
+?>
