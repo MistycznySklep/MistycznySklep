@@ -23,6 +23,9 @@ html {
 }
 
 body {
+    background-color: var(--textBrazowy);
+    color: var(--textSzary);
+
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-attachment: fixed;
     background-image: url(../Images/BgMistycznySklepOgrodniczy4.png);
@@ -39,20 +42,6 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
 }
 
-.fleksik {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
-
-.ColumnFleksik {
-    display: flex;
-    flex-direction: column;
-    
-    text-align: center;
-    color: var(--textSzary);
-    text-shadow: 0 0 5px var(--textSzary);
-}
 
 /* ===================== Pasek / Header ===================== */
 
@@ -96,7 +85,7 @@ header {
 .pasek button {
 
     text-align: center;
-    font-size: 0.78vw;
+    font-size: clamp(10px, 0.78vw, 0.78vw);
     height: 4vh;
     min-height: 25px;
     width: 10vw;
@@ -126,7 +115,7 @@ header {
 #HeaderTitle {
     font-weight: 600;
     margin: 0 0 0 1vw;
-    font-size: 1.15vw;
+    font-size: clamp(18px, 1.3vw, 1.3vw);
 }
 
 nav li {
@@ -144,6 +133,8 @@ nav li {
 
 #LogoutButton {
     width: 6vw;
+    padding: 0;
+    text-align: center;
     color: rgb(206, 132, 132);
 }
 
@@ -160,8 +151,8 @@ nav li {
     box-shadow: 0 0 3px 3px #cccccc !important;
 }
 
-.HeaderIconButton img {
-    width: 1.85vw;
+.pasek button img {
+    width: clamp(25px, 1.85vw, 1.85vw); 
 
     display: flex;
     justify-self: center;
@@ -169,7 +160,7 @@ nav li {
     transition-duration: 400ms;
 }
 
-.HeaderIconButton:hover img {
+.pasek button:hover img {
     scale: 1.1;
     filter: drop-shadow(0px 0px 3px var(--textSzary));
 }
@@ -193,7 +184,7 @@ nav li {
 
 .HeaderMoneyCount {
     font-weight: 600;
-    width: 6vw !important;
+    width: 7vw !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
@@ -202,6 +193,46 @@ nav li {
     color: var(--textSzary) !important;
     text-shadow: 0 0 5px var(--textSzary) !important;
     box-shadow: 0 0 3px 3px #cccccc !important;
+}
+
+.PasekZastepczeIMG img {
+    position: absolute;
+    opacity: 0;
+}
+
+@media (max-width: 1150px) {
+  
+  .PasekZastepczeIMG {
+    padding: 0 !important;
+    width: 5vw !important;
+  }
+  
+  .PasekZastepczeIMG b {
+    opacity: 0;
+    position: absolute;
+  }
+
+    .PasekZastepczeIMG img {
+    opacity: 1;
+    position: inherit;
+  }
+
+    #HeaderTitle {
+        display: none;
+        position: absolute;
+    }
+
+}
+
+#NapisZalogowano {
+    margin-right: 0.3vw;
+}
+
+@media (max-width: 1400px){
+    #NapisZalogowano {
+        display: none;
+        position: absolute;
+    }
 }
 
 /* ===================== Menu ===================== */
@@ -231,7 +262,7 @@ menu a {
 
     height: 100%;
     padding: 0 30px;
-    font-size: 0.75vw;
+    font-size: clamp(10px, 0.75vw, 0.75vw);
 
     display: flex;
     align-items: center;
@@ -292,6 +323,26 @@ menu a:hover {
     text-align: center;
 }
 
+/* ===--- Fleksik ---=== */
+
+.fleksik {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.ColumnFleksik {
+    display: flex;
+    flex-direction: column;
+    
+    text-align: center;
+    color: var(--textSzary);
+}
+
+.ColumnFleksik h1 {
+    text-shadow: 0 0 5px var(--textSzary);
+}
+
 /* ===--- ShopElements ---=== */
 
 .ElementContainer {
@@ -299,10 +350,9 @@ menu a:hover {
     justify-self: center;
     justify-content: space-between;
     width: 75%;
-    gap: 2vw;
 }
 
-.ShopElement, .DivElement {
+.ShopElement, .DivElement, .FundsDiv {
 
     display: flex;
     flex-direction: column;
@@ -328,6 +378,17 @@ menu a:hover {
 
 .DivElement b {
     font-size: 1.5vw;
+}
+
+.DivInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.DivInfo p {
+    font-size: 1vw;
+    margin: -3.5vh 0 0 0 !important;
 }
 
 .pKategorie {
@@ -409,6 +470,7 @@ menu a:hover {
 }
 
 .AddToCartIcon {
+    width: clamp(25px, 1.8vw, 1.8vw) !important; 
     margin-bottom: 0vh;
     transition-duration: 400ms;
 }
@@ -421,7 +483,7 @@ menu a:hover {
 .SeeMoreInfoButton {
     /* background-color: rgb(63, 108, 150); */
 
-    
+    font-size: clamp(8px, 0.78vw, 0.78vw) !important; 
     color: var(--textSzary);
     font-weight: 600;
     width: 10.5vw;
@@ -436,4 +498,13 @@ menu a:hover {
     text-shadow: 0 0 5px var(--akcentRozowy); /*rgb(63, 108, 150)*/
     box-shadow: 0 0 3px 3px var(--akcentRozowy);
     color: var(--akcentRozowy);
+}
+
+
+/* FUNDS */
+
+.FundsDiv {
+    display: flex;
+    padding: 25px;
+    justify-self: center;
 }
