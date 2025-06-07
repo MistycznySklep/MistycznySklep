@@ -1,5 +1,5 @@
-let loginForm = document.getElementById("loginForm")
-let labelForm = document.querySelectorAll("label")
+const loginForm = document.getElementById("loginForm")
+const labelForm = document.querySelectorAll("label")
 let inputsForm = document.querySelectorAll("input")
 
 inputsForm.forEach(input => {
@@ -58,3 +58,4 @@ function InputFocused(input){
 //      const json = await loginResponse.json();
 //      localStorage.setItem("token", json.token);
 // };
+console.log(localStorage)

@@ -9,7 +9,7 @@ $db = new mysqli ( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if(!$db || $db->connect_error){
     echo "wystąpił problem z połączeniem z bazą danych, spróbuj ponownie"  . mysqli_connect_error();
 }else{
-    
+    echo "sadas";
 }
 
 
