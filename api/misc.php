@@ -142,6 +142,60 @@ abstract class Model
         $result = $db->query($updateSql);
         HttpUtils::Assert($result !== false, "SQL Error: $updateSql");
     }
+
+    protected function Insert(string|null $table = null)
+    {
+        $reflection = new ReflectionClass($this);
+        if ($table === null) {
+            $pascalName = $reflection->getShortName();
+            $table = PascalToSnake($pascalName);
+        }
+
+        $fields = $reflection->getProperties();
+        $columns = [];
+        $columnsString = "";
+        foreach ($fields as $field) {
+            $idAttribute = $field->getAttributes(Id::class);
+            if (!empty($idAttribute)) {
+                $this->idColumn = $field->getName();
+            }
+            $columns[] = $field->getName();
+            $columnsString .= $field->getName() . ", ";
+        }
+        foreach ($columns as $column) {
+            if (!empty($this->idColumn))
+                break;
+            $capitalisedTable = $table;
+            $capitalisedTable[0] = strtoupper($capitalisedTable[0]);
+            if ($column === "id" || $column === "id$capitalisedTable")
+                $this->idColumn = $column;
+        }
+        $this->tableName = $table;
+        $this->columns = $columns;
+
+        $db = Database::getInstance();
+        $table = $this->tableName;
+        $updateSql = "insert into $table (";
+        foreach ($this->columns as $column) {
+            if ($column == $this->idColumn) continue;
+            $updateSql .= "$column, ";
+        }
+        $updateSql = substr($updateSql, 0, -2);
+        $updateSql .= ") values (";
+        foreach ($this->columns as $column) {
+            if ($column == $this->idColumn) continue;
+
+            $value = $db->real_escape_string($this->$column);
+            $updateSql .= "\"$value\", ";
+        }
+        $updateSql = substr($updateSql, 0, -2);
+        $updateSql .= ");";
+        $result = $db->query($updateSql);
+        HttpUtils::Assert($result !== false, "SQL Error: $updateSql");
+        $idColumn = $this->idColumn;
+
+        $this->$idColumn = $db->insert_id;
+    }
 }
 
 #[Attribute]
