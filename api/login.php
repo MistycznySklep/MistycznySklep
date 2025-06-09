@@ -20,7 +20,7 @@ $stmt->bind_param("s", $login);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$fakeHash = $_ENV["FakeBCRYPT"] ?? "$2y$12$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG";
+$fakeHash = $_ENV["FakeBCRYPT"] ?? "$2y$12\$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG";
 
 if ($result->num_rows === 0) {
     password_verify($password, $fakeHash);
