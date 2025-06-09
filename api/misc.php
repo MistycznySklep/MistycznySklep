@@ -435,31 +435,40 @@ function GetAccountOrDie(string $token): Accounts
     PurgeStaleTokens();
     $db = Database::getInstance();
 
-    $sql = "select idAccounts, INET6_NTOA(last_ip) as last_ip, expires_at, user_agent from login_token where login_token.value = '$token';";
+    $stmt = $db->prepare(
+        "SELECT idAccounts, INET6_NTOA(last_ip) AS last_ip, expires_at, user_agent
+         FROM login_token
+         WHERE value = ?"
+    );
+    $stmt->bind_param("s", $token);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    $result = $db->query($sql);
     if ($result->num_rows === 0) {
         HttpUtils::Status(401, "Unauthorised");
     }
     $row = $result->fetch_assoc();
+
     $userAgent = getallheaders()["User-Agent"] ?? "";
     if ($userAgent !== $row["user_agent"]) {
-        $sql = "delete from login_token where value='$token';";
-        $db->query($sql);
+        $delStmt = $db->prepare("DELETE FROM login_token WHERE value = ?");
+        $delStmt->bind_param("s", $token);
+        $delStmt->execute();
         HttpUtils::Status(401, details: "Unauthorised");
     }
 
     $today = date("Y-m-d", (new DateTime())->add(DateInterval::createFromDateString("7 days"))->getTimestamp());
-    $ip = Database::getInstance()->real_escape_string($_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER["REMOTE_ADDR"] ?? "");
+    $ip = $_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER["REMOTE_ADDR"] ?? "";
 
     if ($ip !== $row["last_ip"] || $row["expires_at"] !== $today) {
-        $updateSQL = "
-        update login_token
-        set
-            last_ip = IF(INET6_NTOA(last_ip) != '$ip', INET6_ATON('$ip'), last_ip),
-            expires_at = IF(expires_at != '$today', '$today', expires_at)
-        where value = '$token'";
-        $db->query($updateSQL);
+        $updateStmt = $db->prepare(
+            "UPDATE login_token SET
+                last_ip = IF(INET6_NTOA(last_ip) != ?, INET6_ATON(?), last_ip),
+                expires_at = IF(expires_at != ?, ?, expires_at)
+             WHERE value = ?"
+        );
+        $updateStmt->bind_param("sssss", $ip, $ip, $today, $today, $token);
+        $updateStmt->execute();
     }
 
     return Accounts::fromId($row["idAccounts"]);
