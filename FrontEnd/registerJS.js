@@ -17,7 +17,6 @@ function ResetColorInAprovedInput(approvedInput) {
 }
 function EmptyInputAproved(approvedInputs) {
     // console.log(approvedInputs)
-
     // approvedInputs.forEach(approvedInput => {
     // approvedInput.style.boxShadow = "box-shadow: 0px 3px 5p #00000026" 
     // })
@@ -73,59 +72,22 @@ function EmptyInputError(inputsNames) {
         let emptyInput = document.querySelector(`[name="${inputsNames[0].name}"]`)
 
         ErrorInputColor(emptyInput)
-        textError.textContent = `uzupełnij pole ${inputsNames[0].name}`;
-
-    } else if (inputsNames.length === 2) {
-        let emptyInput1 = document.querySelector(`[name="${inputsNames[0].name}"]`)
-        let emptyInput2 = document.querySelector(`[name="${inputsNames[1].name}"]`)
-        ErrorInputColor(emptyInput1)
-        ErrorInputColor(emptyInput2)
-
-        textError.textContent = `uzupełnij pole ${inputsNames[0].name} i ${inputsNames[1].name}`;
-
-    } else if (inputsNames.length === 3) {
-        let emptyInput1 = document.querySelector(`[name="${inputsNames[0].name}"]`)
-        let emptyInput2 = document.querySelector(`[name="${inputsNames[1].name}"]`)
-        let emptyInput3 = document.querySelector(`[name="${inputsNames[2].name}"]`)
-        ErrorInputColor(emptyInput1)
-        ErrorInputColor(emptyInput2)
-        ErrorInputColor(emptyInput3)
-
-        textError.textContent = `uzupełnij pole ${inputsNames[0].name}, ${inputsNames[1].name} i ${inputsNames[2].name}`;
-
-    } else if (inputsNames.length === 4) {
-        let emptyInput1 = document.querySelector(`[name="${inputsNames[0].name}"]`)
-        let emptyInput2 = document.querySelector(`[name="${inputsNames[1].name}"]`)
-        let emptyInput3 = document.querySelector(`[name="${inputsNames[2].name}"]`)
-        let emptyInput4 = document.querySelector(`[name="${inputsNames[3].name}"]`)
-        ErrorInputColor(emptyInput1)
-        ErrorInputColor(emptyInput2)
-        ErrorInputColor(emptyInput3)
-        ErrorInputColor(emptyInput4)
-
-        textError.textContent = `uzupełnij pole ${inputsNames[0].name}, ${inputsNames[1].name}, ${inputsNames[2].name}, i ${inputsNames[3].name}`;
-
-    } else {
-        console.log("a")
-    }
-}
-async function Checker(e) {
     e.preventDefault();
 
     // console.log("a")
     let emptyInputs = [];
-    let approvedInputs = [];
-
-    inputsForm.forEach(input => {
-        let inputElement = document.querySelector(`[name="${input.name}"]`);
-
-        if (inputElement && (inputElement.value === "" || !inputElement.checkValidity())) {
-            emptyInputs.push(input);
-
-        } else if (inputElement && (inputElement.value !== "" && inputElement.checkValidity())) {
-            approvedInputs.push(input)
-        }
-    });
+        let approvedInputs = [];
+        
+        inputsForm.forEach(input => {
+            let inputElement = document.querySelector(`[name="${input.name}"]`);
+    
+            if (inputElement && (inputElement.value === "" || !inputElement.checkValidity())) {
+                emptyInputs.push(input);
+                
+            }else if(inputElement && (inputElement.value !== "" && inputElement.checkValidity())){
+                approvedInputs.push(input)
+            }
+        });
     console.log("Kod się wykonuje");
     if (emptyInputs.length > 0) {
         form.onsubmit = (e) => {
@@ -155,6 +117,5 @@ async function Checker(e) {
         location.href = "index.html";
     }
 }
-
 
 form.onsubmit = Checker;

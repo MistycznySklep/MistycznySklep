@@ -7,14 +7,7 @@ inputsForm.forEach(input => {
     input.addEventListener('focus', () => InputFocused(input));
 });
 
-
-
-
-
 function InputFocused(input) {
-
-
-
     let InputName = input.name;
     let label;
     if (InputName) {
@@ -27,11 +20,8 @@ function InputFocused(input) {
                 // label.style.color = label.dataset.originalColor || "";
                 input.removeEventListener('blur', zmianaKolorka);
             });
-
         }
     }
-
-
 }
 
 
@@ -58,4 +48,3 @@ loginForm.onsubmit = async e => {
     localStorage.setItem("token", json.token);
     location.href = "index.html";
 };
-
