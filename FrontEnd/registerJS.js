@@ -17,7 +17,7 @@ function ResetColorInAprovedInput(approvedInput){
     approvedInput.style.boxShadow = "0 0 3px #00000026"; 
 }
 function EmptyInputAproved(approvedInputs){
-    console.log(approvedInputs)
+    // console.log(approvedInputs)
     
     // approvedInputs.forEach(approvedInput => {
         // approvedInput.style.boxShadow = "box-shadow: 0px 3px 5p #00000026" 
@@ -106,26 +106,30 @@ function EmptyInputError(inputsNames) {
     
     textError.textContent = `uzupełnij pole ${inputsNames[0].name}, ${inputsNames[1].name}, ${inputsNames[2].name}, i ${inputsNames[3].name}`;
 
+   }else{
+    console.log("a")
    }
+
 
     
 }
-function Checker(event) {
-
-       
-
+function Checker() {
+        
+        // console.log("a")
         let emptyInputs = [];
         let approvedInputs = [];
         
         inputsForm.forEach(input => {
             let inputElement = document.querySelector(`[name="${input.name}"]`);
-            if (inputElement && inputElement.value === "" || !inputElement.checkValidity()) {
+    
+            if (inputElement && (inputElement.value === "" || !inputElement.checkValidity())) {
                 emptyInputs.push(input);
                 
-            }else if(inputElement && inputElement.value !== "" && inputElement.checkValidity()){
+            }else if(inputElement && (inputElement.value !== "" && inputElement.checkValidity())){
                 approvedInputs.push(input)
             }
         });
+        console.log("Kod się wykonuje");
         if (emptyInputs.length > 0) {
             form.onsubmit = (e) =>{
                 e.preventDefault();
@@ -134,11 +138,12 @@ function Checker(event) {
             EmptyInputError(emptyInputs);
         }else
         {
+            console.log("aaa")
             
-            return true;
         }
     
 }
+
     
     
 
