@@ -39,11 +39,11 @@ function InputFocused(input) {
 loginForm.onsubmit = async e => {
     e.preventDefault();
     errorText.textContent = "";
-    const username = document.getElementById("inputLogin").value;
+    const login = document.getElementById("inputLogin").value;
     const password = document.getElementById("inputPassword").value;
     const loginResponse = await fetch("/api/login.php", {
         method: "POST",
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ login, password }),
         headers: {
             "Content-Type": "application/json"
         }

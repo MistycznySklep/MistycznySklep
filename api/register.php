@@ -16,7 +16,7 @@ $db = new Database($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_E
 $login = Database::getInstance()->real_escape_string(trim($_POST["login"]));
 $username = Database::getInstance()->real_escape_string(trim($_POST["username"]));
 $email = Database::getInstance()->real_escape_string(trim($_POST["email"]));
-$password = sha1(Database::getInstance()->real_escape_string(trim($_POST["password"])));
+$password = password_hash(Database::getInstance()->real_escape_string(trim($_POST["password"])), PASSWORD_BCRYPT, ['cost' => 12]);
 
 $sql = "select idAccounts from accounts where login = '$login'";
 $result = $db->query($sql);

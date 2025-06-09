@@ -3,25 +3,30 @@ require_once "misc.php";
 require_once "Models/Accounts.php";
 require_once "Models/LoginToken.php";
 
-if (
-    !isset($_POST["password"]) || !isset($_POST["login"])
-    || empty($_POST["password"]) || empty($_POST["login"])
-) {
-    HttpUtils::Status(400, "Missing login/password");
+$login = trim($_POST["login"] ?? "");
+$password = trim($_POST["password"] ?? "");
+
+if (empty($login) || empty($password)) {
+    HttpUtils::Status(400, "Missing credentials");
 }
 
 ReloadEnvFile();
 $db = new Database($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_NAME"]);
 
-$login = Database::getInstance()->real_escape_string(trim($_POST["login"]));
-$password = Database::getInstance()->real_escape_string(trim($_POST["password"]));
+$login = Database::getInstance()->real_escape_string($login);
 
-$sql = "select idAccounts from accounts where login = '$login' and password = sha1('$password');";
+$sql = "select idAccounts, password from accounts where login = '$login';";
 $result = $db->query($sql);
 if ($result->num_rows === 0) {
     HttpUtils::Status(401, "Invalid login or password");
 }
+
 $row = $result->fetch_assoc();
+
+if (!password_verify($password, $row["password"])) {
+    HttpUtils::Status(401, "Invalid login or password");
+}
+
 $id = $row["idAccounts"];
 $account = Accounts::fromId($id);
 
