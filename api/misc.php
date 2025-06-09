@@ -1,5 +1,9 @@
 <?php
 
+if (isset(getallheaders()["Content-Type"]) && getallheaders()["Content-Type"] === "application/json") {
+    $_POST = json_decode(file_get_contents("php://input"), true);
+}
+
 class HttpUtils
 {
     public static function Status(int $code, mixed $details)
@@ -72,6 +76,15 @@ class Id
     }
 }
 
+class IP
+{
+    public string $value;
+    public function __construct(string $value)
+    {
+        $this->value = $value;
+    }
+}
+
 abstract class Model
 {
     private string $cacheSql = "";
@@ -108,6 +121,9 @@ abstract class Model
         }
         if (!empty($columns))
             $columnsString = substr($columnsString, 0, -2);
+        if ($id === null)
+            return;
+
         $this->cacheSql = "select $columnsString from $table where $this->idColumn = $id";
         $this->columns = $columns;
         $this->tableName = $table;
@@ -115,6 +131,9 @@ abstract class Model
     }
     public function Refresh()
     {
+        if (empty($this->cacheSql))
+            return;
+
         $db = Database::getInstance();
         $result = $db->query($this->cacheSql);
         HttpUtils::Assert($result !== false, "Database not loaded");
@@ -129,16 +148,26 @@ abstract class Model
         $db = Database::getInstance();
         $table = $this->tableName;
         $updateSql = "update $table set ";
+
         foreach ($this->columns as $column) {
-            $value = $db->real_escape_string($this->$column);
-            $updateSql .= "$column = \"$value\", ";
+            $value = $this->$column;
+
+            if ($value instanceof \DateTimeInterface) {
+                $value = $value->format('Y-m-d H:i:s');
+            } else if ($value instanceof \IP) {
+                $ip = $value->value;
+                $updateSql .= "$column = INET6_ATON('$ip'), ";
+                continue;
+            }
+
+            $escaped = $db->real_escape_string((string) $value);
+            $updateSql .= "$column = \"$escaped\", ";
         }
         $updateSql = substr($updateSql, 0, -2);
-        $updateSql .= " ";
         $idColumn = $this->idColumn;
         $idValue = $this->$idColumn;
 
-        $updateSql .= "where $idColumn = $idValue";
+        $updateSql .= " where $idColumn = $idValue";
         $result = $db->query($updateSql);
         HttpUtils::Assert($result !== false, "SQL Error: $updateSql");
     }
@@ -177,16 +206,28 @@ abstract class Model
         $table = $this->tableName;
         $updateSql = "insert into $table (";
         foreach ($this->columns as $column) {
-            if ($column == $this->idColumn) continue;
+            if ($column == $this->idColumn)
+                continue;
             $updateSql .= "$column, ";
         }
         $updateSql = substr($updateSql, 0, -2);
         $updateSql .= ") values (";
         foreach ($this->columns as $column) {
-            if ($column == $this->idColumn) continue;
+            if ($column == $this->idColumn)
+                continue;
 
-            $value = $db->real_escape_string($this->$column);
-            $updateSql .= "\"$value\", ";
+            $value = $this->$column;
+
+            if ($value instanceof \DateTimeInterface) {
+                $value = $value->format('Y-m-d H:i:s');
+            } else if ($value instanceof \IP) {
+                $ip = $value->value;
+                $updateSql .= "INET6_ATON('$ip'), ";
+                continue;
+            }
+
+            $escaped = $db->real_escape_string((string) $value);
+            $updateSql .= "\"$escaped\", ";
         }
         $updateSql = substr($updateSql, 0, -2);
         $updateSql .= ");";
@@ -367,9 +408,10 @@ class Route
                 $code = $this->$methodName(...$methodArguments);
                 $length = ob_get_length();
                 http_response_code($code);
-                if ($length === 0) echo json_encode([
-                    "code" => 200,
-                ]);
+                if ($length === 0)
+                    echo json_encode([
+                        "code" => 200,
+                    ]);
             } else
                 echo json_encode($this->$methodName(...$methodArguments));
 
@@ -379,4 +421,41 @@ class Route
 
         HttpUtils::Status(400, $foundCandidates ? "Invalid parameters" : "Invalid method");
     }
+}
+
+function PurgeStaleTokens(): void
+{
+    $db = Database::getInstance();
+    $sql = "delete from login_token where expires_at < now();";
+    $db->query($sql);
+}
+
+function GetAccountOrDie(string $token): Accounts
+{
+    PurgeStaleTokens();
+    $db = Database::getInstance();
+
+    $sql = "select idAccounts, INET6_NTOA(last_ip) as last_ip, expires_at from login_token where login_token.value = '$token';";
+    // TODO: Additional authentication via user-agent; remove the token on mismatch
+
+    $result = $db->query($sql);
+    if ($result->num_rows === 0) {
+        HttpUtils::Status(401, "Unauthorised");
+    }
+    $row = $result->fetch_assoc();
+
+    $today = date("Y-m-d", (new DateTime())->add(DateInterval::createFromDateString("7 days"))->getTimestamp());
+    $ip = Database::getInstance()->real_escape_string($_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER["REMOTE_ADDR"] ?? "");
+
+    if ($ip !== $row["last_ip"] || $row["expires_at"] !== $today) {
+        $updateSQL = "
+        update login_token
+        set
+            last_ip = IF(INET6_NTOA(last_ip) != '$ip', INET6_ATON('$ip'), last_ip),
+            expires_at = IF(expires_at != '$today', '$today', expires_at)
+        where value = '$token'";
+        $db->query($updateSQL);
+    }
+
+    return Accounts::fromId($row["idAccounts"]);
 }

@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="auth.js"></script> <!-- Musi byc zaladowane jako pierwsze -->
     <title>Mistyczny Sklep</title>
 </head>
+
 <body>
     <header>
         <nav>
             <ul class="pasek">
-                <li><p id="HeaderTitle">Lumoflor -</p></li>
-                <li><img id="LogIcon" src="Assets/Images/500x500.png"><p id="NapisZalogowano">Zalogowany jako:</p><p>fwjgjwgwggwgwggwgwgwgukjshjkhg</p></li>
+                <li>
+                    <p id="HeaderTitle">Lumoflor -</p>
+                </li>
+                <li><img id="LogIcon" src="Assets/Images/500x500.png">
+                    <p id="NapisZalogowano">Zalogowany jako:</p>
+                    <p><span class="autoload" data-autoload="localUser.username"></span></p>
+                </li>
 
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona Główna</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 1</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona
+                            Główna</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 1</b><img
+                            src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img
+                            src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
 
-                    <li><div class="HeaderSeperator"></div></li>
-                <li><button class="HeaderIconButton" onclick="window.location.href=''"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
-                <li><button class="HeaderIconButton" onclick="window.location.href=''"><img onclick="" src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
+                <li>
+                    <div class="HeaderSeperator"></div>
+                </li>
+                <li><button class="HeaderIconButton" onclick="window.location.href=''"><img onclick=""
+                            src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="HeaderIconButton" onclick="window.location.href=''"><img onclick=""
+                            src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
                 <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'">500 zł</button></li>
-                    <li><div class="HeaderSeperator"></div></li>
-                <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li> <!--Dodać img jako LogOut-->
-                
+                <li>
+                    <div class="HeaderSeperator"></div>
+                </li>
+                <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li>
+                <!--Dodać img jako LogOut-->
+
             </ul>
         </nav>
     </header>
@@ -50,27 +68,34 @@
             Jedyny sklep w okolicy sprzedający magiczne rośliny!
         </div>
 
-        
+
         <p style="height: 5vh;"></p>
 
         <div class="ElementContainer">
 
             <div class="ColumnFleksik">
-                <div><h1>O nas</h1></div>
+                <div>
+                    <h1>O nas</h1>
+                </div>
                 <div class="DivElement DivInfo" style="width: 26.5vw;">
-                    <p>Jesteśmy grupą magicznych handlarzy, którzy sprzedają rośliny nie z tej ziemi! Przybyliśmy tu za pomocą wyrwy w czasoprzestrzeni i postanowiliśmy rozpocząć biznes, bo kasa I guess.</p>
+                    <p>Jesteśmy grupą magicznych handlarzy, którzy sprzedają rośliny nie z tej ziemi! Przybyliśmy tu za
+                        pomocą wyrwy w czasoprzestrzeni i postanowiliśmy rozpocząć biznes, bo kasa I guess.</p>
                 </div>
             </div>
-            
+
             <div class="ColumnFleksik">
-                <div><h1>Co u nas znajdziesz?</h1></div>
+                <div>
+                    <h1>Co u nas znajdziesz?</h1>
+                </div>
                 <div class="DivElement DivInfo" style="width: 44.5vw;">
-                    <p>Znajdziesz u nas najróżniejszego rodzaju wymysły! Rośliny z niewyobrażalnymi właściwościami! Najróżniejsze kategorie np. Owoce, Grzyby, Kwiaty i wiele więcej! Jest Ci mało? Wypróbuj najróżniejszego rodzaju przyrządu ogrodnicze!</p>
+                    <p>Znajdziesz u nas najróżniejszego rodzaju wymysły! Rośliny z niewyobrażalnymi właściwościami!
+                        Najróżniejsze kategorie np. Owoce, Grzyby, Kwiaty i wiele więcej! Jest Ci mało? Wypróbuj
+                        najróżniejszego rodzaju przyrządu ogrodnicze!</p>
                 </div>
             </div>
         </div>
 
-                <p style="height: 2vh;"></p>
+        <p style="height: 2vh;"></p>
 
         <div class="TitleDividerSmall">
             <p>Kategorie:</p>
@@ -78,24 +103,26 @@
 
         <div class="ElementContainer">
 
-                <div class="DivElement KategoriaDiv" style="width: 24vw;">
-                    <b>Rośliny</b>
-                    <div class="pKategorie">
-                        <p>Magiczne efekty, specjalne właściwości czy składniki do własnej roboty mikstur. Znajdziesz tu wszystko czego twoja dusza zapragnie!</p>
-                    </div>
+            <div class="DivElement KategoriaDiv" style="width: 24vw;">
+                <b>Rośliny</b>
+                <div class="pKategorie">
+                    <p>Magiczne efekty, specjalne właściwości czy składniki do własnej roboty mikstur. Znajdziesz tu
+                        wszystko czego twoja dusza zapragnie!</p>
                 </div>
-                <div class="DivElement KategoriaDiv" style="width: 24vw;">
-                    <b>Eliksiry</b>
-                    <div class="pKategorie">
-                        <p>Chcesz wspomóc rośnięcie roślin? Nadać im efekty? Znajdziesz to tutaj.</p>
-                    </div>
+            </div>
+            <div class="DivElement KategoriaDiv" style="width: 24vw;">
+                <b>Eliksiry</b>
+                <div class="pKategorie">
+                    <p>Chcesz wspomóc rośnięcie roślin? Nadać im efekty? Znajdziesz to tutaj.</p>
                 </div>
-                <div class="DivElement KategoriaDiv" style="width: 24vw;">
-                    <b>Wyposarzenie</b>
-                    <div class="pKategorie">
-                        <p>Narzędzia do ogrodnictwa. Magiczne rękawice, Nożyce będące w stanie wytrzymać wysokie temperatury. Tego typu rzeczy możesz tu znaleźć.</p>
-                    </div>
+            </div>
+            <div class="DivElement KategoriaDiv" style="width: 24vw;">
+                <b>Wyposarzenie</b>
+                <div class="pKategorie">
+                    <p>Narzędzia do ogrodnictwa. Magiczne rękawice, Nożyce będące w stanie wytrzymać wysokie
+                        temperatury. Tego typu rzeczy możesz tu znaleźć.</p>
                 </div>
+            </div>
         </div>
 
         <p style="height: 3vh;" id="RosDnia"></p>
@@ -111,15 +138,18 @@
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/GrzybGlow.png" alt="">
                 <h2>Świecący Grzyb</h2>
                 <div class="ShopQuickDescDiv">
-                <p>Świecący Grzyb. Zaczyna świecić dopiero po pełnym wyrosnięciu. Emituje światło niebieskie więc chyba złe dla twoich oczu.
-                </p></div>
+                    <p>Świecący Grzyb. Zaczyna świecić dopiero po pełnym wyrosnięciu. Emituje światło niebieskie więc
+                        chyba złe dla twoich oczu.
+                    </p>
+                </div>
                 <h2>Kategoria: Grzyby</h2>
                 <h3>Liczba w magazynie: 115 </h3>
                 <h3><i>Cena: 45 zł</i></h3><br>
-                
+
                 <div class="fleksik">
                     <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png"
+                            alt="Dodaj">
                     </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
@@ -129,16 +159,17 @@
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/GrzybGlowSeeds600x600.png" alt="">
                 <h2>Świecący Grzyb - Nasiona</h2>
                 <div class="ShopQuickDescDiv">
-                <p>Zarodniki świecących grzybów. Przechowywać na słońcu - pobiera promienie UV.
-                </p>
-            </div>
+                    <p>Zarodniki świecących grzybów. Przechowywać na słońcu - pobiera promienie UV.
+                    </p>
+                </div>
                 <h2>Kategoria: Nasiona</h2>
                 <h3>Liczba w magazynie: Brak </h3>
                 <h3><i>Cena: 69 zł</i></h3><br>
-                
+
                 <div class="fleksik">
                     <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png"
+                            alt="Dodaj">
                     </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
@@ -149,15 +180,17 @@
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/Odbijogudki.png" alt="">
                 <h2>Odbijogudki</h2>
                 <div class="ShopQuickDescDiv">
-                <p>Odbijające się jagody idk. Mają skorupe zrobioną z kauczuku czy coś.
-                </p></div>
+                    <p>Odbijające się jagody idk. Mają skorupe zrobioną z kauczuku czy coś.
+                    </p>
+                </div>
                 <h2>Kategoria: Owoce</h2>
                 <h3>Liczba w magazynie: 43 </h3>
                 <h3><i>Cena: 12 zł</i></h3><br>
-                
+
                 <div class="fleksik">
                     <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png"
+                            alt="Dodaj">
                     </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
@@ -168,15 +201,17 @@
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/OdbijogudkiSeeds600x600.png" alt="">
                 <h2>Odbijogudki - Nasiona</h2>
                 <div class="ShopQuickDescDiv">
-                <p>Nasiona Odbijojagudek. Pokryte odbijającą kauczukową skorupą.
-                </p></div>
+                    <p>Nasiona Odbijojagudek. Pokryte odbijającą kauczukową skorupą.
+                    </p>
+                </div>
                 <h2>Kategoria: Nasiona</h2>
                 <h3>Liczba w magazynie: 167 </h3>
                 <h3><i>Cena: 60 zł</i></h3><br>
-                
+
                 <div class="fleksik">
                     <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png"
+                            alt="Dodaj">
                     </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
@@ -191,15 +226,17 @@
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/FireFlower.png" alt="">
                 <h2>Płomienny Tulipan</h2>
                 <div class="ShopQuickDescDiv">
-                <p>Wiecznie palący się kwiat, sprowadzony prosto z odchłani wulkanicznych jaskiń.
-                </p></div>
+                    <p>Wiecznie palący się kwiat, sprowadzony prosto z odchłani wulkanicznych jaskiń.
+                    </p>
+                </div>
                 <h2>Kategoria: Kwiat</h2>
                 <h3>Liczba w magazynie: 23 </h3>
                 <h3><i>Cena: 89 zł</i></h3><br>
-                
+
                 <div class="fleksik">
                     <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png"
+                            alt="Dodaj">
                     </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
@@ -210,15 +247,17 @@
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/FireFlowerSeeds.png" alt="">
                 <h2>Płomienny Tulipan</h2>
                 <div class="ShopQuickDescDiv">
-                <p>Obsydianowe nasiona płomiennego Tulipana. Zasadzić w spalonej lub wulkanicznej ziemii.
-                </p></div>
+                    <p>Obsydianowe nasiona płomiennego Tulipana. Zasadzić w spalonej lub wulkanicznej ziemii.
+                    </p>
+                </div>
                 <h2>Kategoria: Nasiona</h2>
                 <h3>Liczba w magazynie: 47 </h3>
                 <h3><i>Cena: 131 zł</i></h3><br>
-                
+
                 <div class="fleksik">
                     <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png"
+                            alt="Dodaj">
                     </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
@@ -233,4 +272,5 @@
     </main>
 
 </body>
+
 </html>
