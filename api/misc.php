@@ -435,14 +435,19 @@ function GetAccountOrDie(string $token): Accounts
     PurgeStaleTokens();
     $db = Database::getInstance();
 
-    $sql = "select idAccounts, INET6_NTOA(last_ip) as last_ip, expires_at from login_token where login_token.value = '$token';";
-    // TODO: Additional authentication via user-agent; remove the token on mismatch
+    $sql = "select idAccounts, INET6_NTOA(last_ip) as last_ip, expires_at, user_agent from login_token where login_token.value = '$token';";
 
     $result = $db->query($sql);
     if ($result->num_rows === 0) {
         HttpUtils::Status(401, "Unauthorised");
     }
     $row = $result->fetch_assoc();
+    $userAgent = getallheaders()["User-Agent"] ?? "";
+    if ($userAgent !== $row["user_agent"]) {
+        $sql = "delete from login_token where value='$token';";
+        $db->query($sql);
+        HttpUtils::Status(401, details: "Unauthorised");
+    }
 
     $today = date("Y-m-d", (new DateTime())->add(DateInterval::createFromDateString("7 days"))->getTimestamp());
     $ip = Database::getInstance()->real_escape_string($_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER["REMOTE_ADDR"] ?? "");
