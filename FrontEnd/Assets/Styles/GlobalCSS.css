@@ -28,7 +28,7 @@ html {
 }
 
 body {
-    background-color: var(--textSzary);
+    background-color: var(--textBrazowy);
     color: var(--textSzary);
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -209,6 +209,7 @@ nav li {
     box-shadow: 0 0 3px 3px #cccccc !important;
 }
 
+
 .PasekZastepczeIMG:hover img {
     filter: drop-shadow(0px 0px 3px var(--akcentRozowy)) !important;
 }
@@ -258,6 +259,7 @@ nav li {
     margin-right: 0.3vw;
 }
 
+
 @media (max-width: 1450px){
     #NapisZalogowano {
         display: none;
@@ -268,6 +270,7 @@ nav li {
         display: none;
         position: absolute;
     }
+
 }
 
 /* ===================== Menu ===================== */
@@ -367,6 +370,7 @@ menu a:hover {
     display: flex;
     align-self: center;
 } */
+
 
 /* ===--- Fleksik ---=== */
 
@@ -520,6 +524,7 @@ menu a:hover {
 .DivInfo p {
     font-size: clamp(15px, 1vw, 1vw);
     margin: -1.5vh 0 0 0 !important;
+
 }
 
 .pKategorie {
