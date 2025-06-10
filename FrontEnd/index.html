@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="auth.js"></script> <!-- Musi byc zaladowane jako pierwsze -->
     <title>Mistyczny Sklep</title>
 </head>
+
 <body>
     <header>
         <nav>
             <ul class="pasek">
+
                 <li><p id="HeaderTitle">Lumoflor -</p></li>
-                <li><img onclick="window.location.href='profile.html'" id="LogIcon" src="Assets/Images/500x500.png"><p id="NapisZalogowano">Zalogowany jako:</p><p id="Username">fwjgjwgwggwgwggwgwgwgukjshjkhg</p></li>
+                <li><img onclick="window.location.href='profile.html'" id="LogIcon" src="Assets/Images/500x500.png">
+                  <p id="NapisZalogowano">Zalogowany jako:</p>
+                  <p id="Username"><span class="autoload" data-autoload="localUser.username"></span></p></li>
 
                 <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
                 <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 1</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
@@ -56,6 +62,7 @@
         <div class="ElementContainer">
 
             <div class="ColumnFleksik">
+
                 <div><h1>O nas</h1></div>
                 <div class="DivElement DivInfo DivInfo26">
                     <p>Jesteśmy grupą magicznych handlarzy, którzy sprzedają rośliny nie z tej ziemi! Przybyliśmy tu za pomocą wyrwy w czasoprzestrzeni i postanowiliśmy rozpocząć biznes, bo kasa I guess.</p>
@@ -64,9 +71,14 @@
             
             
             <div class="ColumnFleksik">
-                <div><h1>Co u nas znajdziesz?</h1></div>
+
+                <div>
+                  <h1>Co u nas znajdziesz?</h1>
+                </div>
+              
                 <div class="DivElement DivInfo DivInfo44">
                     <p>Znajdziesz u nas najróżniejszego rodzaju wymysły! Rośliny z niewyobrażalnymi właściwościami! Najróżniejsze kategorie np. Owoce, Grzyby, Kwiaty i wiele więcej! Jest Ci mało? Wypróbuj najróżniejszego rodzaju przyrządu ogrodnicze!</p>
+
                 </div>
             </div>
         </div>
@@ -96,7 +108,9 @@
                     <div class="pKategorie">
                         <p>Narzędzia do ogrodnictwa. Magiczne rękawice, Nożyce będące w stanie wytrzymać wysokie temperatury. Tego typu rzeczy możesz tu znaleźć.</p>
                     </div>
+                  
                 </div>
+            </div>
         </div>
 
         <p class="pHeight3vh" id="RosDnia"></p>
@@ -191,6 +205,8 @@
                 </div>
             </div>
 
+
+
         </div> <!--Koniec Kontenera-->
 
         <p class="pHeight3vh" id="Rosliny"></p>
@@ -199,6 +215,7 @@
             <img src="Assets/Images/DividerLine.png">
             <p class="pHeight5vh"></p>
             <p>Wszystkie Rośliny:</p>
+
         </div>
 
         <p class="pHeight3vh"></p>
@@ -206,6 +223,7 @@
         <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się wszystkie rośliny (BEZ Type = Nasiona i bez eliksirów i wyposarzenia ig) -->
 
             <div class="ShopElement">
+
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/GrzybGlow.png" alt="">
                 <h2 style="color: #4db8b4;">Świecący Grzyb</h2>
 
@@ -230,9 +248,11 @@
             <div class="ShopElement">
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/Odbijogudki.png" alt="">
                 <h2 style="color: #FF0037;">Odbijogódki</h2>
+              
                 <div class="ShopQuickDescDiv">
-                <p>Odbijające się jagody idk. Mają skorupę zrobioną z kauczuku czy coś.
+                    <p>Odbijające się jagody idk. Mają skorupę zrobioną z kauczuku czy coś.
                 </p></div>
+              
                 <h2>Kategoria: Owoce</h2>
                 <h3>Liczba w magazynie: 43 </h3>
                 <h3><i>Cena: 12 zł</i></h3><br>
@@ -442,3 +462,4 @@
 </html>
 
 <script>console.log("Browser width: " + window.innerWidth + " pixels"); //Tymczasowe, pomaga w dobieraniu @media</script>
+
