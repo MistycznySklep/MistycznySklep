@@ -11,6 +11,11 @@
 
 }
 
+/* ===================== Global ===================== */
+
+button {
+    cursor: pointer;
+}
 
 html {
     scroll-behavior: smooth;
@@ -23,11 +28,12 @@ html {
 }
 
 body {
-    background-color: var(--textBrazowy);
+    background-color: var(--textSzary);
     color: var(--textSzary);
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-attachment: fixed;
+    background-size: cover;
     background-image: url(../Images/BgMistycznySklepOgrodniczy4.png);
     background-repeat: no-repeat;
 }
@@ -133,6 +139,7 @@ nav li {
 
 #LogoutButton {
     width: 6vw;
+    min-width: 50px;
     padding: 0;
     text-align: center;
     color: rgb(206, 132, 132);
@@ -180,11 +187,18 @@ nav li {
     border-radius: 3px;
     width: 32px;
     height: 32px;
+
+    transition-duration: 400ms;
+}
+
+#LogIcon:hover {
+    box-shadow: 0 0 3px 3px #cccccc !important;
 }
 
 .HeaderMoneyCount {
     font-weight: 600;
     width: 7vw !important;
+    min-width: 60px;
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
@@ -193,6 +207,14 @@ nav li {
     color: var(--textSzary) !important;
     text-shadow: 0 0 5px var(--textSzary) !important;
     box-shadow: 0 0 3px 3px #cccccc !important;
+}
+
+.PasekZastepczeIMG:hover img {
+    filter: drop-shadow(0px 0px 3px var(--akcentRozowy)) !important;
+}
+
+.PasekZastepczeIMG {
+    min-width: 40px !important;
 }
 
 .PasekZastepczeIMG img {
@@ -217,10 +239,18 @@ nav li {
     position: inherit;
   }
 
-    #HeaderTitle {
-        display: none;
-        position: absolute;
-    }
+  .ShopContainer {
+    grid-template-columns: auto auto auto !important;
+  }
+
+  .ShopQuickDescDiv p {
+    height: 4.7vh !important;
+  }
+
+  .ShopElement::after {
+    top: -2.5vw !important;
+}
+
 
 }
 
@@ -228,8 +258,13 @@ nav li {
     margin-right: 0.3vw;
 }
 
-@media (max-width: 1400px){
+@media (max-width: 1450px){
     #NapisZalogowano {
+        display: none;
+        position: absolute;
+    }
+
+    #HeaderTitle {
         display: none;
         position: absolute;
     }
@@ -289,7 +324,7 @@ menu a:hover {
     flex-direction: column;
     justify-content: center;
 
-    font-size: 1vw;
+    font-size: clamp(15px, 1vw, 1vw);
     color: var(--textSzary);
     text-shadow: 0 0 5px var(--textSzary);
     text-align: center;
@@ -298,12 +333,13 @@ menu a:hover {
 
 .TitleDivider p {
     font-weight: 600;
-    font-size: 3.5vw;
+    font-size: clamp(40px, 3.5vw, 3.5vw);
 
 }
 
-.TitleDivider img {
+.TitleDivider img, .TitleDividerSmall img {
     width: 50%;
+    min-width: 400px;
     display: flex;
     align-self: center;
 }
@@ -317,11 +353,20 @@ menu a:hover {
     justify-content: center;
 
     font-weight: 600;
-    font-size: 2.5vw;
+    font-size: clamp(32px, 2.5vw, 2.5vw);
     color: var(--textSzary);
     text-shadow: 0 0 5px var(--textSzary);
     text-align: center;
 }
+
+/* Może użyję tego później.
+
+.TitleDividerSmall img {
+    width: 40%;
+    min-width: 320px;
+    display: flex;
+    align-self: center;
+} */
 
 /* ===--- Fleksik ---=== */
 
@@ -350,6 +395,82 @@ menu a:hover {
     justify-self: center;
     justify-content: space-between;
     width: 75%;
+    flex-wrap: wrap;
+    row-gap: 3vh;
+}
+
+.ShopContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-self: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 2vw;
+    row-gap: 3vh;
+}
+
+/* .ElementContainer2 {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    width: 100%;
+    gap: 2vw;
+    flex-wrap: wrap;
+} */
+
+@media (max-width: 850px) {
+    #Username {
+        font-size: 12px;
+        justify-self: left !important;
+    }
+}
+
+@media (max-width: 750px){
+    .ShopContainer {
+        grid-template-columns: auto auto !important;
+    }
+
+    .ShopElement::after {
+        top: -3.7vw !important;
+}
+
+}
+
+@media (max-width: 700px) {
+    
+    .ElementContainer {
+        width: 80%;
+    }
+
+    .ColumnFleksik {
+        align-items: center;
+    }
+
+    h1 {
+        scale: 0.7;
+    }
+
+
+
+}
+
+@media (max-width: 600px) {
+
+    .ElementContainer {
+        width: 90%;
+        gap: 0;
+    }
+
+    #Username {
+        display: none;
+    }
+
+}
+
+@media (max-width: 1432px){
+    #Kategorie {
+        justify-content: center !important;
+    }
 }
 
 .ShopElement, .DivElement, .FundsDiv {
@@ -357,14 +478,15 @@ menu a:hover {
     display: flex;
     flex-direction: column;
 
-    color: var(--textBrazowy);
+    color: var(--textSzary);
 
+    text-overflow: ellipsis !important;
     box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
     background-color: var(--brazowyBasic);
-    border: 0.32vw solid var(--ciemnyBrazowyBorder);
+    border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
     border-radius: 10px;
 
-    font-size: 0.85vw;
+    font-size: clamp(10px, 0.85vw, 0.85vw);
     
 }
 
@@ -384,30 +506,109 @@ menu a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+}
+
+.DivInfo26 {
+    width: 26.5vw;
+}
+
+.DivInfo44 {
+    width: 44.5vw;
 }
 
 .DivInfo p {
-    font-size: 1vw;
-    margin: -3.5vh 0 0 0 !important;
+    font-size: clamp(15px, 1vw, 1vw);
+    margin: -1.5vh 0 0 0 !important;
 }
 
 .pKategorie {
     width: 60%;
+    /* text-shadow: 0 0 5px var(--textSzary); */
+    font-size: clamp(15px, 0.9vw, 1vw);
+}
+
+.pKategorie p {
+    background-color: rgb(0, 0, 0, 0.15);
+    background: #ffffff;
+    font-weight: 400;
+    background: linear-gradient(90deg,rgba(255, 255, 255, 0) 0%, rgb(0, 0, 0, 0.15) 100%);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.KategoriaDiv b {
+    font-size: clamp(20px, 1.5vw, 1.5vw);
 }
 
 .KategoriaDiv {
-    background-image: url(../Images/ShopItemPlaceholder.png);
     background-repeat: no-repeat;
     background-position: 100%;
     background-size: contain;
+    cursor: pointer;
+    margin-bottom: 2vh;
+
+    width: 23vw;
+    min-width: 350px;
+
+    transition-duration: 400ms;
 }
+
+.KategoriaDiv:hover {
+    filter: brightness(1.1);
+    animation: obroc 1s normal;
+    animation-play-state: running;
+
+}
+
+@keyframes obroc {
+    0% {
+        transform: rotate(0deg);
+    } 25% {
+        transform: rotate(3deg);
+    } 75% {
+        transform: rotate(-2deg);  
+    } 100% {
+        transform: rotate(0deg);
+    }
+}
+
+.KatRosliny {
+    background-image: url(../Images/RoslinyKat.png);
+}
+
+.KatEliksiry {
+    background-image: url(../Images/EliksiryKatWIP.png);
+}
+
+.KatWyposazenie {
+    background-image: url(../Images/WyposazenieKatWIP.png);
+}
+
 
 .ShopElement {
 
     width: 16vw;
     aspect-ratio: 1 / 1.5;
+    min-width: 200px;
 
+    position: relative;
+    overflow: visible;
     padding: 1vh 0.5vw 1vh 0.5vw;
+}
+
+.ShopElement::after {
+    content: '';
+    background-image: url(../Images/AfterShopElementBg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    transform: scale(1.18);
+    transform-origin: top;
+    width: 100%;
+    height: 40%;
+    top: -2vw;
+    left: 0;
 }
 
 .ShopElementIMG {
@@ -416,6 +617,7 @@ menu a:hover {
     align-self: center;
     width: 80%;
 }
+
 
 .ShopQuickDescDiv p {
     overflow-wrap: break-word;
@@ -461,7 +663,7 @@ menu a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 4vw;
+    width: 23%;
 }
 
 .AddToCartButton:hover {
@@ -483,10 +685,10 @@ menu a:hover {
 .SeeMoreInfoButton {
     /* background-color: rgb(63, 108, 150); */
 
-    font-size: clamp(8px, 0.78vw, 0.78vw) !important; 
+    font-size: clamp(10px, 0.78vw, 0.78vw) !important; 
     color: var(--textSzary);
     font-weight: 600;
-    width: 10.5vw;
+    width: 65%;
 /* 
     background-image: url(../Images/StoreIconFar.png);
     background-size: contain;
@@ -505,6 +707,51 @@ menu a:hover {
 
 .FundsDiv {
     display: flex;
+    width: 100%;
+    height: 30vh;
     padding: 25px;
     justify-self: center;
+}
+
+#PokazBalans {
+    font-size: 4vw;
+    text-decoration: underline 3px;
+
+    display: flex !important;
+    justify-self: center !important;
+    align-self: center !important;
+}
+
+.DivHistoria {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+}
+
+.DivHistoria ol {
+    font-size: clamp(15px, 1vw, 1vw);
+    margin-left: 40px;
+    margin-top: 2vh;
+    justify-self: flex-start;
+}
+
+/* Paragrafy Spacing */
+
+.pHeight20vh {
+    height: 20vh;
+}
+
+.pHeight10vh {
+    height: 10vh;
+}
+
+.pHeight5vh {
+    height: 5vh;
+}
+
+.pHeight3vh {
+    height: 3vh;
+}
+
+.pHeight2vh {
+    height: 2vh;
 }

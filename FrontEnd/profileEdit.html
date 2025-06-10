@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mistyczny Sklep</title>
 </head>
 <body>
     <header>
@@ -31,65 +31,50 @@
     <menu>
         <nav class="glass">
             <ul>
-                <li></li>
+                <li><a href="#Info"><b>Informacje</b></a></li>
+                <li><a href="#RosDnia"><b>Popularne</b></a></li>
+                <li><a href="#Rosliny"><b>Lista Roślin</b></a></li>
+                <li><a href="#Nasiona"><b>Nasiona</b></a></li>
+                <li><a href="#Eliksiry"><b>Eliksiry</b></a></li>
+                <li><a href="#Wyposazenie"><b>Wyposażenie</b></a></li>
             </ul>
         </nav>
     </menu>
 
     <main>
-
-        <p style="height: 20vh;"></p>
+        <p class="pHeight20vh" id="Info"></p>
 
         <div class="TitleDivider">
-            <p>Fundusze</p>
+            <p>Edytuj Profil</p>
             <img src="Assets/Images/DividerLine.png">
-            Dodaj Fundusze i przeglądaj swoją historię zakupów!
         </div>
 
-        
-        <p style="height: 5vh;"></p>
+        <p class="pHeight5vh"></p>
 
-        <div class="ElementContainer">
-
-            <div class="ColumnFleksik">
-                <div><h1>Balans</h1></div>
-                <div class="DivElement DivInfo" style="width: 26.5vw;">
-                    <p id="PokazBalans">500 zł</p>
-                </div>
-            </div>
-            
-            <div class="ColumnFleksik">
-                <div><h1>Historia Zakupów</h1></div>
-                <div class="DivElement DivInfo DivHistoria" style="width: 44.5vw;">
-                    <ol>
-                        <li>Jakiś zakup zrobiłeś idk</li>
-                        <li>okok</li>
-                        <li>g</li>
-
-                    </ol>
-                    
-                </div>
-            </div>
-        </div>
-
-                <p style="height: 5vh;"></p>
-        
         <div class="ElementContainer">
 
             <div class="FundsDiv">
 
-                <form action="">
-                    <h3>Dodaj swoje magiczne fundusze!</h3>
-                    <p>Używamy tylko wyspecjalizowanej waluty.</p>
-                    <input type="text">
-
-                </form>
+                <input id="InputNewUsername" type="text" placeholder="Nowa nazwa użytkownika">
+                <button onclick="EdytujProfil()">Zatwierdź</button>
 
             </div>
-
+            
         </div>
+
+        <p class="pHeight5vh"></p>
 
     </main>
 
 </body>
 </html>
+
+<script>
+
+function EdytujProfil() {
+
+    console.log(document.getElementById('InputNewUsername').value);
+}
+
+
+</script>

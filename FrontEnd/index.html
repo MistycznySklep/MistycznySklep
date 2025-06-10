@@ -11,11 +11,11 @@
         <nav>
             <ul class="pasek">
                 <li><p id="HeaderTitle">Lumoflor -</p></li>
-                <li><img id="LogIcon" src="Assets/Images/500x500.png"><p id="NapisZalogowano">Zalogowany jako:</p><p>fwjgjwgwggwgwggwgwgwgukjshjkhg</p></li>
+                <li><img onclick="window.location.href='profile.html'" id="LogIcon" src="Assets/Images/500x500.png"><p id="NapisZalogowano">Zalogowany jako:</p><p id="Username">fwjgjwgwggwgwggwgwgwgukjshjkhg</p></li>
 
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona Główna</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
                 <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 1</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
 
                     <li><div class="HeaderSeperator"></div></li>
                 <li><button class="HeaderIconButton" onclick="window.location.href=''"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
@@ -32,17 +32,17 @@
         <nav class="glass">
             <ul>
                 <li><a href="#Info"><b>Informacje</b></a></li>
-                <li><a href="#RosDnia"><b>Rośliny dnia</b></a></li>
-                <li><a href="#"><b>Lista Roślin</b></a></li>
-                <li><a href="#"><b>Lista Narzędzi</b></a></li>
-                <li><a href="#"><b>Podzakładka 5</b></a></li>
-                <li><a href="#"><b>Podzakładka 6</b></a></li>
+                <li><a href="#RosDnia"><b>Popularne</b></a></li>
+                <li><a href="#Rosliny"><b>Lista Roślin</b></a></li>
+                <li><a href="#Nasiona"><b>Nasiona</b></a></li>
+                <li><a href="#Eliksiry"><b>Eliksiry</b></a></li>
+                <li><a href="#Wyposazenie"><b>Wyposażenie</b></a></li>
             </ul>
         </nav>
     </menu>
 
     <main>
-        <p style="height: 20vh;" id="Info"></p>
+        <p class="pHeight20vh" id="Info"></p>
 
         <div class="TitleDivider">
             <p>Witamy w naszym Mistycznym Sklepie!</p>
@@ -51,105 +51,187 @@
         </div>
 
         
-        <p style="height: 5vh;"></p>
+        <p class="pHeight5vh"></p>
 
         <div class="ElementContainer">
 
             <div class="ColumnFleksik">
                 <div><h1>O nas</h1></div>
-                <div class="DivElement DivInfo" style="width: 26.5vw;">
+                <div class="DivElement DivInfo DivInfo26">
                     <p>Jesteśmy grupą magicznych handlarzy, którzy sprzedają rośliny nie z tej ziemi! Przybyliśmy tu za pomocą wyrwy w czasoprzestrzeni i postanowiliśmy rozpocząć biznes, bo kasa I guess.</p>
                 </div>
             </div>
             
+            
             <div class="ColumnFleksik">
                 <div><h1>Co u nas znajdziesz?</h1></div>
-                <div class="DivElement DivInfo" style="width: 44.5vw;">
+                <div class="DivElement DivInfo DivInfo44">
                     <p>Znajdziesz u nas najróżniejszego rodzaju wymysły! Rośliny z niewyobrażalnymi właściwościami! Najróżniejsze kategorie np. Owoce, Grzyby, Kwiaty i wiele więcej! Jest Ci mało? Wypróbuj najróżniejszego rodzaju przyrządu ogrodnicze!</p>
                 </div>
             </div>
         </div>
 
-                <p style="height: 2vh;"></p>
+                <p class="pHeight2vh"></p>
 
         <div class="TitleDividerSmall">
             <p>Kategorie:</p>
         </div>
 
-        <div class="ElementContainer">
+        <div class="ElementContainer" id="Kategorie">
 
-                <div class="DivElement KategoriaDiv" style="width: 24vw;">
+                <div onclick="window.location.href='index.html#Rosliny'" class="DivElement KategoriaDiv KatRosliny">
                     <b>Rośliny</b>
                     <div class="pKategorie">
                         <p>Magiczne efekty, specjalne właściwości czy składniki do własnej roboty mikstur. Znajdziesz tu wszystko czego twoja dusza zapragnie!</p>
                     </div>
                 </div>
-                <div class="DivElement KategoriaDiv" style="width: 24vw;">
+                <div class="DivElement KategoriaDiv KatEliksiry">
                     <b>Eliksiry</b>
                     <div class="pKategorie">
-                        <p>Chcesz wspomóc rośnięcie roślin? Nadać im efekty? Znajdziesz to tutaj.</p>
+                        <p>Chcesz wspomóc wzrost roślin? Nadać im efekty? Znajdziesz to tutaj! Najróżniejszego rodzaju mikstury o najróżniejszych efektach.</p>
                     </div>
                 </div>
-                <div class="DivElement KategoriaDiv" style="width: 24vw;">
-                    <b>Wyposarzenie</b>
+                <div class="DivElement KategoriaDiv KatWyposazenie">
+                    <b>Wyposażenie</b>
                     <div class="pKategorie">
                         <p>Narzędzia do ogrodnictwa. Magiczne rękawice, Nożyce będące w stanie wytrzymać wysokie temperatury. Tego typu rzeczy możesz tu znaleźć.</p>
                     </div>
                 </div>
         </div>
 
-        <p style="height: 3vh;" id="RosDnia"></p>
+        <p class="pHeight3vh" id="RosDnia"></p>
 
         <div class="TitleDividerSmall">
+            <img src="Assets/Images/DividerLine.png">
+            <p class="pHeight5vh"></p>
             <p>Popularne w tym tygodniu:</p>
         </div>
 
-        <p style="height: 3vh;"></p>
+        <p class="pHeight3vh"></p>
 
-        <div class="ElementContainer">
+        <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się 4 (chyba, że chcecie więcej) produkty, które zostały zakupione najwięcej razy w przeciągu tygodnia.-->
+
+            <div class="ShopElement"> <!-- Pojedynczy Kontener Produktu-->
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button onclick="window.location.href=''" class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button onclick="window.location.href=''" class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+                
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+                
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+                
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+        </div> <!--Koniec Kontenera-->
+
+        <p class="pHeight3vh" id="Rosliny"></p>
+
+        <div class="TitleDividerSmall">
+            <img src="Assets/Images/DividerLine.png">
+            <p class="pHeight5vh"></p>
+            <p>Wszystkie Rośliny:</p>
+        </div>
+
+        <p class="pHeight3vh"></p>
+
+        <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się wszystkie rośliny (BEZ Type = Nasiona i bez eliksirów i wyposarzenia ig) -->
+
             <div class="ShopElement">
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/GrzybGlow.png" alt="">
-                <h2>Świecący Grzyb</h2>
+                <h2 style="color: #4db8b4;">Świecący Grzyb</h2>
+
                 <div class="ShopQuickDescDiv">
-                <p>Świecący Grzyb. Zaczyna świecić dopiero po pełnym wyrosnięciu. Emituje światło niebieskie więc chyba złe dla twoich oczu.
-                </p></div>
+                    <p>Świecący Grzyb. Zaczyna świecić dopiero po pełnym wyrosnięciu. Emituje światło niebieskie więc chyba złe dla twoich oczu.</p>
+                </div>
+
                 <h2>Kategoria: Grzyby</h2>
                 <h3>Liczba w magazynie: 115 </h3>
                 <h3><i>Cena: 45 zł</i></h3><br>
                 
                 <div class="fleksik">
                     <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
                     </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
 
             </div>
-            <div class="ShopElement">
-                <img class="ShopElementIMG" src="Assets/Images/Produkty/GrzybGlowSeeds600x600.png" alt="">
-                <h2>Świecący Grzyb - Nasiona</h2>
-                <div class="ShopQuickDescDiv">
-                <p>Zarodniki świecących grzybów. Przechowywać na słońcu - pobiera promienie UV.
-                </p>
-            </div>
-                <h2>Kategoria: Nasiona</h2>
-                <h3>Liczba w magazynie: Brak </h3>
-                <h3><i>Cena: 69 zł</i></h3><br>
-                
-                <div class="fleksik">
-                    <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
-                    </button>
-                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
-                </div>
 
-            </div>
 
             <div class="ShopElement">
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/Odbijogudki.png" alt="">
-                <h2>Odbijogudki</h2>
+                <h2 style="color: #FF0037;">Odbijogódki</h2>
                 <div class="ShopQuickDescDiv">
-                <p>Odbijające się jagody idk. Mają skorupe zrobioną z kauczuku czy coś.
+                <p>Odbijające się jagody idk. Mają skorupę zrobioną z kauczuku czy coś.
                 </p></div>
                 <h2>Kategoria: Owoce</h2>
                 <h3>Liczba w magazynie: 43 </h3>
@@ -157,39 +239,17 @@
                 
                 <div class="fleksik">
                     <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
                     </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
 
             </div>
 
-            <div class="ShopElement">
-                <img class="ShopElementIMG" src="Assets/Images/Produkty/OdbijogudkiSeeds600x600.png" alt="">
-                <h2>Odbijogudki - Nasiona</h2>
-                <div class="ShopQuickDescDiv">
-                <p>Nasiona Odbijojagudek. Pokryte odbijającą kauczukową skorupą.
-                </p></div>
-                <h2>Kategoria: Nasiona</h2>
-                <h3>Liczba w magazynie: 167 </h3>
-                <h3><i>Cena: 60 zł</i></h3><br>
-                
-                <div class="fleksik">
-                    <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
-                    </button>
-                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
-                </div>
 
-            </div>
-        </div>
-
-        <p style="height: 3vh;"></p>
-
-        <div class="ElementContainer">
             <div class="ShopElement">
                 <img class="ShopElementIMG" src="Assets/Images/Produkty/FireFlower.png" alt="">
-                <h2>Płomienny Tulipan</h2>
+                <h2 style="color: #e68116;">Płomienny Tulipan</h2>
                 <div class="ShopQuickDescDiv">
                 <p>Wiecznie palący się kwiat, sprowadzony prosto z odchłani wulkanicznych jaskiń.
                 </p></div>
@@ -199,7 +259,129 @@
                 
                 <div class="fleksik">
                     <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+
+            </div>
+
+        
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/WoskoGrzyby.png" alt="">
+                <h2 style="color: #C493AA;">Woskogrzyby</h2>
+                <div class="ShopQuickDescDiv">
+                <p>Grzyby, których pień jest zbudowany z wosku. Różowy kapelusz jest bardzo słodki (1kg cukru na sztukę!).
+                </p></div>
+                <h2>Kategoria: Grzyby</h2>
+                <h3>Liczba w magazynie: 69 </h3>
+                <h3><i>Cena: 16 zł</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+
+            </div>
+            
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/Kiełek.png" alt="">
+                <h2 style="color: #DA916F;">Kiełek</h2>
+                <div class="ShopQuickDescDiv">
+                <p>Mięsożerna roślina. Lubi zjadać różnego rodzaju owady. Jeżeli ich zabraknie... lepiej nie.
+                </p></div>
+                <h2>Kategoria: Kwiaty</h2>
+                <h3>Liczba w magazynie: 218 </h3>
+                <h3><i>Cena: 65 zł</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+
+            </div>
+
+            
+
+
+        </div> <!--Koniec Kontenera-->
+
+        <p class="pHeight3vh" id="Nasiona"></p>
+
+        <div class="TitleDividerSmall">
+            <img src="Assets/Images/DividerLine.png">
+            <p class="pHeight5vh"></p>
+            <p>Wszystkie Nasiona:</p>
+        </div>
+
+        <p class="pHeight3vh"></p>
+
+        <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się wszystkie produkty gdzie type = Nasiona -->
+            
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/GrzybGlowSeeds.png" alt="">
+                <h2 style="color: #4db8b4;">Świecący Grzyb</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Zarodniki świecących grzybów. Przechowywać na słońcu - pobiera promienie UV.</p>
+                </div>
+
+                <h2>Kategoria: Nasiona</h2>
+                <h3>Liczba w magazynie: Brak </h3>
+                <h3><i>Cena: 69 zł</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+
+            </div>
+
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/OdbijogudkiSeeds.png" alt="">
+                <h2 style="color: #FF0037;">Odbijogódki</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Nasiona Odbijojagudek. Pokryte odbijającą kauczukową skorupą nachłoniętą betaniną.</p>
+                </div>
+
+                <h2>Kategoria: Nasiona</h2>
+                <h3>Liczba w magazynie: 167 </h3>
+                <h3><i>Cena: 60 zł</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+
+            </div>
+
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/FireFlowerSeeds.png" alt="">
+                <h2 style="color: #e68116;">Płomienny Tulipan</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Obsydianowe nasiona płomiennego Tulipana. Zasadzić w spalonej lub wulkanicznej ziemii.</p>
+                </div>
+
+                <h2>Kategoria: Nasiona</h2>
+                <h3>Liczba w magazynie: 47 </h3>
+                <h3><i>Cena: 131 zł</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
                     </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
@@ -207,30 +389,56 @@
             </div>
 
             <div class="ShopElement">
-                <img class="ShopElementIMG" src="Assets/Images/Produkty/FireFlowerSeeds.png" alt="">
-                <h2>Płomienny Tulipan</h2>
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/WoskogrzybySeeds.png" alt="">
+                <h2 style="color: #C493AA;">Woskogrzyby</h2>
                 <div class="ShopQuickDescDiv">
-                <p>Obsydianowe nasiona płomiennego Tulipana. Zasadzić w spalonej lub wulkanicznej ziemii.
+                <p>Grzybnia wewnątrz wosku. Nie wiem jak to działa, ale przecież to magia!
                 </p></div>
                 <h2>Kategoria: Nasiona</h2>
-                <h3>Liczba w magazynie: 47 </h3>
-                <h3><i>Cena: 131 zł</i></h3><br>
+                <h3>Liczba w magazynie: 81 </h3>
+                <h3><i>Cena: 50 zł</i></h3><br>
                 
                 <div class="fleksik">
                     <button class="AddToCartButton">
-                        <img class="AddToCartIcon" style="width: 1.8vw;" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
                     </button>
                     <button class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
 
             </div>
-            <div class="ShopElement"></div>
-            <div class="ShopElement"></div>
-        </div>
 
-        <p style="height: 3vh;"></p>
+            
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/KiełekSeeds.png" alt="">
+                <h2 style="color: #DA916F;">Kiełek</h2>
+                <div class="ShopQuickDescDiv">
+                <p>Nasiona kiełka. Kwiat otworzy się dopiero po 5 dniach roboczych.
+                </p></div>
+                <h2>Kategoria: Nasiona</h2>
+                <h3>Liczba w magazynie: 32 </h3>
+                <h3><i>Cena: 149 zł</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+
+            </div>
+
+            
+
+            
+
+
+        </div> <!--Koniec Kontenera-->
+
+        <p class="pHeight5vh"></p>
 
     </main>
 
 </body>
 </html>
+
+<script>console.log("Browser width: " + window.innerWidth + " pixels"); //Tymczasowe, pomaga w dobieraniu @media</script>
