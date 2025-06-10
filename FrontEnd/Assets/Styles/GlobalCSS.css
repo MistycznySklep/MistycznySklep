@@ -359,14 +359,6 @@ menu a:hover {
     text-align: center;
 }
 
-/* Może użyję tego później.
-
-.TitleDividerSmall img {
-    width: 40%;
-    min-width: 320px;
-    display: flex;
-    align-self: center;
-} */
 
 /* ===--- Fleksik ---=== */
 
@@ -409,14 +401,6 @@ menu a:hover {
     row-gap: 3vh;
 }
 
-/* .ElementContainer2 {
-    display: flex;
-    justify-self: center;
-    justify-content: center;
-    width: 100%;
-    gap: 2vw;
-    flex-wrap: wrap;
-} */
 
 @media (max-width: 850px) {
     #Username {
