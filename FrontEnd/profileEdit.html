@@ -72,9 +72,10 @@
 
 <script>
 
-function EdytujProfil() {
-
-    console.log(document.getElementById('InputNewUsername').value);
+async function EdytujProfil() {
+    const newUsername = document.getElementById('InputNewUsername').value;
+    const response = await API.AuthPost("/api/editProfile.php", { newUsername });
+    await ReloadVariables();
 }
 
 

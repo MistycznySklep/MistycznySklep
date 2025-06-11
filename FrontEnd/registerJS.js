@@ -155,5 +155,3 @@ async function Checker(e) {
         location.href = "index.html";
     }
 }
-
-form.onsubmit = Checker;

@@ -15,18 +15,6 @@ const API = {
             }
         });
     },
-    AuthPost: async (url, body) => {
-        if (API.accessToken === null) throw new Error("Access token was null");
-
-        return await fetch(url, {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: API.accessToken
-            },
-            method: "POST",
-            body: JSON.stringify(body)
-        });
-    },
     LocalUser: async () => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
@@ -38,7 +26,7 @@ const API = {
     }
 };
 
-window.onload = async () => {
+const ReloadVariables = async () => {
     if (API.accessToken === null) return;
     try {
         const user = await API.LocalUser();
@@ -55,4 +43,6 @@ window.onload = async () => {
     } catch (e) {
         if (!location.href.includes("login.html")) location.href = "login.html";
     }
-}
+};
+
+window.onload = ReloadVariables;
