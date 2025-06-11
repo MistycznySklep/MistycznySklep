@@ -1,10 +1,12 @@
-let errorDiv = document.querySelector(".error");
-let textError = document.querySelector("p");
+let textError = document.querySelector(".error");
 let form = document.getElementById("registerForm");
-
+let button = document.querySelector("button")
 let emptyInputNum = 0;
 
-
+button.onclick = (e) =>{
+    Checker(e);
+    return false;
+}
 inputsForm = [
     { name: "login", type: "text", content: "Login" },
     { name: "username", type: "text", content: "Nazwa użytkownika" },
