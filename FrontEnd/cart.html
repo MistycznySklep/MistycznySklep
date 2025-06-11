@@ -1,154 +1,140 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="auth.js"></script>
-    <!-- Musi byc zaladowane jako pierwsze -->
-    <title>Koszyk</title>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul class="pasek">
-          <li><p id="HeaderTitle">Lumoflor -</p></li>
-          <li>
-            <img
-              onclick="window.location.href='profile.html'"
-              id="LogIcon"
-              src="Assets/Images/500x500.png"
-            />
-            <p id="NapisZalogowano">Zalogowany jako:</p>
-            <p id="Username">
-              <span class="autoload" data-autoload="localUser.username"></span>
-            </p>
-          </li>
 
-          <li>
-            <button
-              class="PasekZastepczeIMG"
-              onclick="window.location.href='index.html'"
-            >
-              <b>Strona Główna</b
-              ><img src="Assets/Images/MainPageIconFar.png" />
-            </button>
-          </li>
-          <li>
-            <button class="PasekZastepczeIMG" onclick="window.location.href=''">
-              <b>Zakładka 1</b
-              ><img src="Assets/Images/StoreIconFar.png" alt="Koszyk" />
-            </button>
-          </li>
-          <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="auth.js"></script>
+  <!-- Musi byc zaladowane jako pierwsze -->
+  <title>Koszyk</title>
+</head>
 
-          <li><div class="HeaderSeperator"></div></li>
-          <li>
-            <button class="HeaderIconButton" onclick="window.location.href=''">
-              <img
-                onclick=""
-                src="Assets/Images/StoreIconFar.png"
-                alt="Koszyk"
-              />
-            </button>
-          </li>
-          <li>
-            <button class="HeaderIconButton" onclick="window.location.href=''">
-              <img
-                onclick=""
-                src="Assets/Images/InventoryIconFar.png"
-                alt="Magazyn"
-              />
-            </button>
-          </li>
-          <li>
-            <button
-              class="HeaderMoneyCount"
-              onclick="window.location.href='funds.html'"
-            >
-              500 zł
-            </button>
-          </li>
-          <li><div class="HeaderSeperator"></div></li>
-          <li>
-            <button
-              id="LogoutButton"
-              onclick="window.location.href='login.html'"
-            >
-              <b>Wyloguj</b>
-            </button>
-          </li>
-          <!--Dodać img jako LogOut-->
-        </ul>
-      </nav>
-    </header>
+<body>
+  <header>
+    <nav>
+      <ul class="pasek">
+        <li>
+          <p id="HeaderTitle">Lumoflor -</p>
+        </li>
+        <li>
+          <img onclick="window.location.href='profile.html'" id="LogIcon" src="Assets/Images/500x500.png" />
+          <p id="NapisZalogowano">Zalogowany jako:</p>
+          <p id="Username">
+            <span class="autoload" data-autoload="localUser.username"></span>
+          </p>
+        </li>
 
-    <div class="freeSpaceCart">
-      <h1>Twój koszyk</h1>
-    </div>
+        <li>
+          <button class="PasekZastepczeIMG" onclick="window.location.href='index.html'">
+            <b>Strona Główna</b><img src="Assets/Images/MainPageIconFar.png" />
+          </button>
+        </li>
+        <li>
+          <button class="PasekZastepczeIMG" onclick="window.location.href=''">
+            <b>Zakładka 1</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk" />
+          </button>
+        </li>
+        <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
 
-    <div class="cartElements">
-      <div class="cartProductElements">
-        <div class="productPhoto">
-          <img src="Assets/Images/Produkty/FireFlower.png" alt="" />
-        </div>
-        <div class="productSummary">
-          <p>Nazwa: Płomienny tulipan</p>
-          <p>Ilość sztuk:</p>
-          <div class="productQuantityAddition">
-            <button>-</button>
-            <p>1</p>
-            <!-- tu jest ze + i - sa na koncach tego diva a ilosc w boldzie na koncu -->
-            <button>+</button>
-          </div>
-          <p>11zl</p>
-          <p>11111zl</p>
-          <button>Usuń z koszyka</button>
-        </div>
+        <li>
+          <div class="HeaderSeperator"></div>
+        </li>
+        <li>
+          <button class="HeaderIconButton" onclick="window.location.href=''">
+            <img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk" />
+          </button>
+        </li>
+        <li>
+          <button class="HeaderIconButton" onclick="window.location.href=''">
+            <img onclick="" src="Assets/Images/InventoryIconFar.png" alt="Magazyn" />
+          </button>
+        </li>
+        <li>
+          <button class="HeaderMoneyCount" onclick="window.location.href='funds.html'">
+            <span class="autoload" data-autoload="localUser.balance"></span> zł
+          </button>
+        </li>
+        <li>
+          <div class="HeaderSeperator"></div>
+        </li>
+        <li>
+          <button id="LogoutButton" onclick="window.location.href='login.html'">
+            <b>Wyloguj</b>
+          </button>
+        </li>
+        <!--Dodać img jako LogOut-->
+      </ul>
+    </nav>
+  </header>
+
+  <div class="freeSpaceCart">
+    <h1>Twój koszyk</h1>
+  </div>
+
+  <div class="cartElements">
+    <div class="cartProductElements">
+      <div class="productPhoto">
+        <img src="Assets/Images/Produkty/FireFlower.png" alt="" />
       </div>
-
-      <div class="cartProductElements">
-        <div class="productPhoto">
-          <img src="Assets/Images/Produkty/FireFlower.png" alt="" />
+      <div class="productSummary">
+        <p>Nazwa: Płomienny tulipan</p>
+        <p>Ilość sztuk:</p>
+        <div class="productQuantityAddition">
+          <button>-</button>
+          <p>1</p>
+          <!-- tu jest ze + i - sa na koncach tego diva a ilosc w boldzie na koncu -->
+          <button>+</button>
         </div>
-        <div class="productSummary">
-          <p>Nazwa: Płomienny tulipan</p>
-          <p>Ilość sztuk:</p>
-          <div class="productQuantityAddition">
-            <button>-</button>
-            <p>1</p>
-            <!-- tu jest ze + i - sa na koncach tego diva a ilosc w boldzie na koncu -->
-            <button>+</button>
-          </div>
-          <p>11zl</p>
-          <p>11111zl</p>
-          <button>Usuń z koszyka</button>
-        </div>
-      </div>
-
-      <div class="cartProductElements">
-        <div class="productPhoto">
-          <img src="Assets/Images/Produkty/FireFlower.png" alt="" />
-        </div>
-        <div class="productSummary">
-          <p>Nazwa: Płomienny tulipan</p>
-          <p>Ilość sztuk:</p>
-          <div class="productQuantityAddition">
-            <button>-</button>
-            <p>1</p>
-            <!-- tu jest ze + i - sa na koncach tego diva a ilosc w boldzie na koncu -->
-            <button>+</button>
-          </div>
-          <p>11zl</p>
-          <p>11111zl</p>
-          <button>Usuń z koszyka</button>
-        </div>
-      </div>
-
-      <div class="cartOrderSummary">
-        <p>Razem: 150</p>
-        <button>Złóż zamówienie</button>
+        <p>11zl</p>
+        <p>11111zl</p>
+        <button>Usuń z koszyka</button>
       </div>
     </div>
-  </body>
+
+    <div class="cartProductElements">
+      <div class="productPhoto">
+        <img src="Assets/Images/Produkty/FireFlower.png" alt="" />
+      </div>
+      <div class="productSummary">
+        <p>Nazwa: Płomienny tulipan</p>
+        <p>Ilość sztuk:</p>
+        <div class="productQuantityAddition">
+          <button>-</button>
+          <p>1</p>
+          <!-- tu jest ze + i - sa na koncach tego diva a ilosc w boldzie na koncu -->
+          <button>+</button>
+        </div>
+        <p>11zl</p>
+        <p>11111zl</p>
+        <button>Usuń z koszyka</button>
+      </div>
+    </div>
+
+    <div class="cartProductElements">
+      <div class="productPhoto">
+        <img src="Assets/Images/Produkty/FireFlower.png" alt="" />
+      </div>
+      <div class="productSummary">
+        <p>Nazwa: Płomienny tulipan</p>
+        <p>Ilość sztuk:</p>
+        <div class="productQuantityAddition">
+          <button>-</button>
+          <p>1</p>
+          <!-- tu jest ze + i - sa na koncach tego diva a ilosc w boldzie na koncu -->
+          <button>+</button>
+        </div>
+        <p>11zl</p>
+        <p>11111zl</p>
+        <button>Usuń z koszyka</button>
+      </div>
+    </div>
+
+    <div class="cartOrderSummary">
+      <p>Razem: 150</p>
+      <button>Złóż zamówienie</button>
+    </div>
+  </div>
+</body>
+
 </html>
