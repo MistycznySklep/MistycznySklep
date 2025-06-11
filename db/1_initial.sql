@@ -30,7 +30,7 @@ CREATE TABLE `products` (
   `type` enum('Sprzęt','Kwiaty','Grzyby','Narośl','Pielęgnacja','Nasiona','Owoce','Warzywa') NOT NULL,
   `price` double(10,2) NOT NULL,
   `description` text(150) NOT NULL,
-  `description2` text NOT NULL,
+  `description2` text NULL,
   `quantity` int(5) NOT NULL,
   `hexColor` varchar(10) NOT NULL,
   `status` enum('Dostępny','Wyprzedany') NOT NULL,
