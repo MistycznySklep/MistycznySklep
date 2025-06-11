@@ -15,6 +15,18 @@ const API = {
             }
         });
     },
+    AuthPost: async (url, body) => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        return await fetch(url, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: API.accessToken
+            },
+            method: "POST",
+            body: JSON.stringify(body)
+        });
+    },
     LocalUser: async () => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
