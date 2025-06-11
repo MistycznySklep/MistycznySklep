@@ -5,7 +5,7 @@ let inputsForm = document.querySelectorAll("input");
 let form = document.getElementById("registerForm");
 let button = document.querySelector(".wyslij")
 
-button.onclick = (e) =>{
+button.onclick = (e) => {
     Checker(e)
 }
 inputsForm.forEach(input => {
@@ -146,55 +146,28 @@ async function Checker(e) {
     });
     console.log("Kod się wykonuje");
     if (emptyInputs.length > 0) {
-        
+
         EmptyInputAproved(approvedInputs);
         EmptyInputError(emptyInputs);
     } else {
-        const login = document.getElementById("inputLogin")
-        const username = document.getElementById("inputUsername");
-        const email = document.getElementById("inputEmail");
-        const password = document.getElementById("inputPassword");
-
-        const response = await fetch("/api/register.php", {
+        const login = document.getElementById("inputLogin").value;
+        const password = document.getElementById("inputPassword").value;
+        const loginResponse = await fetch("/api/login.php", {
+            method: "POST",
+            body: JSON.stringify({ login, password }),
             headers: {
                 "Content-Type": "application/json"
-            },
-            method: "POST",
-            body: JSON.stringify({ login: login.value, username: username.value, email: email.value, password: password.value })
+            }
+
         });
-        const json = await response.json();
-        if (!response.ok) {
-            console.error(json);
+
+        if (!loginResponse.ok) {
+
+            errorText.textContent = "Zły login lub haslo";
             return;
         }
+        const json = await loginResponse.json();
         localStorage.setItem("token", json.token);
         location.href = "index.html";
     }
 }
-
-
-
-
-loginForm.onsubmit = async e => {
-    e.preventDefault();
-    errorText.textContent = "";
-    const login = document.getElementById("inputLogin").value;
-    const password = document.getElementById("inputPassword").value;
-    const loginResponse = await fetch("/api/login.php", {
-        method: "POST",
-        body: JSON.stringify({ login, password }),
-        headers: {
-            "Content-Type": "application/json"
-        }
-        
-    });
-    
-    if (!loginResponse.ok) {
-
-        errorText.textContent = "Zły login lub haslo";
-        return;
-    }
-    const json = await loginResponse.json();
-    localStorage.setItem("token", json.token);
-    location.href = "index.html";
-};
