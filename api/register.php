@@ -3,6 +3,8 @@ require_once "misc.php";
 require_once "Models/Accounts.php";
 require_once "Models/LoginToken.php";
 
+header("Content-Type: application/json");
+
 if (
     !isset($_POST["password"]) || !isset($_POST["login"]) || !isset($_POST["email"]) || !isset($_POST["username"])
     || empty($_POST["password"]) || empty($_POST["login"] || empty($_POST["email"]) || empty($_POST["username"]))
