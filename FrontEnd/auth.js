@@ -38,7 +38,7 @@ const API = {
     }
 };
 
-window.onload = async () => {
+const ReloadVariables = async () => {
     if (API.accessToken === null) return;
     try {
         const user = await API.LocalUser();
@@ -55,4 +55,6 @@ window.onload = async () => {
     } catch (e) {
         if (!location.href.includes("login.html")) location.href = "login.html";
     }
-}
+};
+
+window.onload = ReloadVariables;
