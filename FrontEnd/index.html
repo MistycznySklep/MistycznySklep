@@ -24,7 +24,7 @@
                 <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
 
                     <li><div class="HeaderSeperator"></div></li>
-                <li><button class="HeaderIconButton" onclick="window.location.href=''"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
                 <li><button class="HeaderIconButton" onclick="window.location.href=''"><img onclick="" src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
                 <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload" data-autoload="localUser.balance"></span> zł</button></li>
                     <li><div class="HeaderSeperator"></div></li>
@@ -38,7 +38,7 @@
         <nav class="glass">
             <ul>
                 <li><a href="#Info"><b>Informacje</b></a></li>
-                <li><a href="#RosDnia"><b>Popularne</b></a></li>
+                <li><a href="#RosTyg"><b>Popularne</b></a></li>
                 <li><a href="#Rosliny"><b>Lista Roślin</b></a></li>
                 <li><a href="#Nasiona"><b>Nasiona</b></a></li>
                 <li><a href="#Eliksiry"><b>Eliksiry</b></a></li>
@@ -97,7 +97,7 @@
                         <p>Magiczne efekty, specjalne właściwości czy składniki do własnej roboty mikstur. Znajdziesz tu wszystko czego twoja dusza zapragnie!</p>
                     </div>
                 </div>
-                <div class="DivElement KategoriaDiv KatEliksiry">
+                <div onclick="window.location.href='index.html#Eliksiry'" class="DivElement KategoriaDiv KatEliksiry">
                     <b>Eliksiry</b>
                     <div class="pKategorie">
                         <p>Chcesz wspomóc wzrost roślin? Nadać im efekty? Znajdziesz to tutaj! Najróżniejszego rodzaju mikstury o najróżniejszych efektach.</p>
@@ -113,7 +113,7 @@
             </div>
         </div>
 
-        <p class="pHeight3vh" id="RosDnia"></p>
+        <p class="pHeight3vh" id="RosTyg"></p>
 
         <div class="TitleDividerSmall">
             <img src="Assets/Images/DividerLine.png">
@@ -123,9 +123,9 @@
 
         <p class="pHeight3vh"></p>
 
-        <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się 4 (chyba, że chcecie więcej) produkty, które zostały zakupione najwięcej razy w przeciągu tygodnia.-->
+        <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się 4 produkty, które zostały zakupione najwięcej razy w przeciągu tygodnia.-->
 
-            <div class="ShopElement"> <!-- Pojedynczy Kontener Produktu-->
+            <div class="ShopElement"> <!-- Pojedynczy Element Produktu, to jest kopiowane za pomocą php-->
                 <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
                 <h2>Placeholer Text</h2>
 
@@ -143,7 +143,7 @@
                     </button>
                     <button onclick="window.location.href=''" class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
-            </div>
+            </div> <!-- Koniec Elementu Produktu-->
 
             <div class="ShopElement">
                 <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
@@ -220,7 +220,7 @@
 
         <p class="pHeight3vh"></p>
 
-        <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się wszystkie rośliny (BEZ Type = Nasiona i bez eliksirów i wyposarzenia ig) -->
+        <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się wszystkie rośliny (BEZ Type = Nasiona, BEZ Type = eliksirów i BEZ Type = wyposazenia) -->
 
             <div class="ShopElement">
 
@@ -447,9 +447,195 @@
 
             </div>
 
-            
+        </div> <!--Koniec Kontenera-->
 
-            
+        <p class="pHeight3vh" id="Eliksiry"></p>
+
+        <div class="TitleDividerSmall">
+            <img src="Assets/Images/DividerLine.png">
+            <p class="pHeight5vh"></p>
+            <p>Eliksiry:</p>
+        </div>
+
+        <p class="pHeight3vh"></p>
+
+        <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się 4 produkty gdzie Type = Eliksiry.-->
+
+            <div class="ShopElement"> <!-- Pojedynczy Kontener Produktu-->
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/EliksirWzrostu.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button onclick="window.location.href=''" class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button onclick="window.location.href=''" class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/UspokającyEliksir.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+                
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/OcieplającyEliksir.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+                
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/EliksirObronny.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+                
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+
+
+        </div> <!--Koniec Kontenera-->
+
+<p class="pHeight3vh" id="Wyposazenie"></p>
+
+        <div class="TitleDividerSmall">
+            <img src="Assets/Images/DividerLine.png">
+            <p class="pHeight5vh"></p>
+            <p>Wyposażenie:</p>
+        </div>
+
+        <p class="pHeight3vh"></p>
+
+        <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się 4 produkty, gdzie type = Wyposazenie-->
+
+            <div class="ShopElement"> <!-- Pojedynczy Kontener Produktu-->
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button onclick="window.location.href=''" class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button onclick="window.location.href=''" class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+                
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+                
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+                
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+                
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
 
 
         </div> <!--Koniec Kontenera-->
