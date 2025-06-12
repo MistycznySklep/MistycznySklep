@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="auth.js"></script> <!-- Musi byc zaladowane jako pierwsze -->
+    <script src="loginJS.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -17,11 +18,11 @@
 
 
                 <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 1</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+<li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel Admina</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
                 <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
 
                     <li><div class="HeaderSeperator"></div></li>
-                <li><button class="HeaderIconButton" onclick="window.location.href=''"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
                 <li><button class="HeaderIconButton" onclick="window.location.href=''"><img onclick="" src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
                 <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload" data-autoload="localUser.balance"></span> zł</button></li>
                     <li><div class="HeaderSeperator"></div></li>
@@ -31,39 +32,31 @@
         </nav>
     </header>
 
-    <menu>
-        <nav class="glass">
-            <ul>
-                <li></li>
-            </ul>
-        </nav>
-    </menu>
 
     <main>
 
-        <p style="height: 20vh;"></p>
+  <p class="pHeight10vh"></p>
 
-        <div class="TitleDivider">
-            <p>Fundusze</p>
-            <img src="Assets/Images/DividerLine.png">
-            Dodaj Fundusze i przeglądaj swoją historię zakupów!
-        </div>
+  <div class="TitleDividerSmall">
+      <p>Moje Fundusze</p>
+      <img src="Assets/Images/DividerLine.png">
+  </div>
 
         
-        <p style="height: 5vh;"></p>
+        <p class="pHeight5vh"></p>
 
         <div class="ElementContainer">
 
             <div class="ColumnFleksik">
                 <div><h1>Balans</h1></div>
-                <div class="DivElement DivInfo" style="width: 26.5vw;">
+                <div class="DivElement DivInfo DivInfo26">
                     <p id="PokazBalans"><span class="autoload" data-autoload="localUser.balance"></span> zł</p>
                 </div>
             </div>
             
             <div class="ColumnFleksik">
                 <div><h1>Historia Zakupów</h1></div>
-                <div class="DivElement DivInfo DivHistoria" style="width: 44.5vw;">
+                <div class="DivElement DivInfo DivHistoria DivInfo44">
                     <ol>
                         <li>Jakiś zakup zrobiłeś idk</li>
                         <li>okok</li>
@@ -75,17 +68,19 @@
             </div>
         </div>
 
-                <p style="height: 5vh;"></p>
+                <p class="pHeight5vh"></p>
         
         <div class="ElementContainer">
 
             <div class="FundsDiv">
 
-                <form action="">
-                    <h3>Dodaj swoje magiczne fundusze!</h3>
-                    <p>Używamy tylko wyspecjalizowanej waluty.</p>
-                    <input type="text">
+                <h1>WPROWADŹ KOD:</h1>
+                <p>Dodaj swoje Magiczne Fundusze!</p>
+                <p class="pHeight2vh"></p>
 
+                <form class="FundsForm" action="" method="POST">
+                <input class="InputFunds" type="text" name="_code" placeholder="Tutaj wpisz kod..."><br>
+                <button type="submit">Submit Code</button>
                 </form>
 
             </div>
