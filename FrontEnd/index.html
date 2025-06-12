@@ -20,7 +20,7 @@
                   <p id="Username"><span class="autoload" data-autoload="localUser.username"></span></p></li>
 
                 <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 1</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel Admina</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
                 <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
 
                     <li><div class="HeaderSeperator"></div></li>
@@ -39,7 +39,7 @@
             <ul>
                 <li><a href="#Info"><b>Informacje</b></a></li>
                 <li><a href="#RosTyg"><b>Popularne</b></a></li>
-                <li><a href="#Rosliny"><b>Lista Roślin</b></a></li>
+                <li><a href="#Rosliny"><b>Rośliny</b></a></li>
                 <li><a href="#Nasiona"><b>Nasiona</b></a></li>
                 <li><a href="#Eliksiry"><b>Eliksiry</b></a></li>
                 <li><a href="#Wyposazenie"><b>Wyposażenie</b></a></li>
@@ -103,7 +103,7 @@
                         <p>Chcesz wspomóc wzrost roślin? Nadać im efekty? Znajdziesz to tutaj! Najróżniejszego rodzaju mikstury o najróżniejszych efektach.</p>
                     </div>
                 </div>
-                <div class="DivElement KategoriaDiv KatWyposazenie">
+                <div onclick="window.location.href='index.html#Wyposazenie'" class="DivElement KategoriaDiv KatWyposazenie">
                     <b>Wyposażenie</b>
                     <div class="pKategorie">
                         <p>Narzędzia do ogrodnictwa. Magiczne rękawice, Nożyce będące w stanie wytrzymać wysokie temperatury. Tego typu rzeczy możesz tu znaleźć.</p>
@@ -558,7 +558,7 @@
         <div class="ShopContainer"> <!-- Backend - tutaj wyswietlają się 4 produkty, gdzie type = Wyposazenie-->
 
             <div class="ShopElement"> <!-- Pojedynczy Kontener Produktu-->
-                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/DiamentoweNozyce.png" alt="">
                 <h2>Placeholer Text</h2>
 
                 <div class="ShopQuickDescDiv">
@@ -578,7 +578,8 @@
             </div>
 
             <div class="ShopElement">
-                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/RekawiceTermiczne.png" alt="">
                 <h2>Placeholer Text</h2>
 
                 <div class="ShopQuickDescDiv">
@@ -598,7 +599,8 @@
             </div>
 
             <div class="ShopElement">
-                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/ZmiennokrztaltnaDoniczka.png" alt="">
                 <h2>Placeholer Text</h2>
 
                 <div class="ShopQuickDescDiv">
@@ -618,7 +620,7 @@
             </div>
 
             <div class="ShopElement">
-                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <img class="ShopElementIMG" src="Assets/Images/Produkty/SzmaragdowaŁopata.png" alt="">
                 <h2>Placeholer Text</h2>
 
                 <div class="ShopQuickDescDiv">
