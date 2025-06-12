@@ -3,6 +3,8 @@ require_once "misc.php";
 require_once "Models/Accounts.php";
 require_once "Models/LoginToken.php";
 
+header("Content-Type: application/json");
+
 $login = trim($_POST["login"] ?? "");
 $password = trim($_POST["password"] ?? "");
 
