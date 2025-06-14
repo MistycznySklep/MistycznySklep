@@ -44,7 +44,7 @@ const AddProductsToContainer = (products, categoryId, categoryName) => {
         productDiv.appendChild(descDiv);
 
         const category = document.createElement("h2");
-        category.textContent = `Kategoria: ${product.type}`;
+        category.textContent = `Kategoria: ${categoryName}`;
         productDiv.appendChild(category);
 
         const stock = document.createElement("h3");
