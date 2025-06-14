@@ -1110,3 +1110,49 @@ menu a:hover {
 .DetailsCartAddButton:hover {
   text-shadow: 0 0 5px #2E882E;
 }
+
+.inventoryGridItem img {
+  width: 100%;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+  border-radius: 10px;
+}
+
+.inventoryGridItem p {
+  text-shadow: 0 0 5px var(--textSzary);
+  padding-top: 0.5vh;
+}
+
+.BrakPrzedmiotuWInventory {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+.CartNazwa {
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.UsunFromCart {
+  text-align: center;
+  font-size: 0.78vw;
+  height: 4vh;
+  width: 12vw;
+  margin-top: 1.5vh;
+  padding: 0 1.5vw;
+
+  color: rgb(206, 132, 132);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.UsunFromCart:hover {
+  text-shadow: 0 0 5px rgb(206, 132, 132); /*rgb(63, 108, 150)*/
+  box-shadow: 0 0 3px 3px rgb(206, 132, 132);
+  color: rgb(206, 132, 132);
+  scale: 1.05;
+}
