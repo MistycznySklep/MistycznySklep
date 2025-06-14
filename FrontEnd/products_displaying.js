@@ -1,13 +1,29 @@
-const ShopContainer = document.querySelector(".plants");
+const ProductsContainer = document.getElementById("ProductsContainer");
 
-window.onload = async () => {
-    const response = await API.GetProductList();
-    console.log(response);
+const AddProductsToContainer = (products, categoryId, categoryName) => {
+    const container = document.createElement("div");
+    container.className = "ShopContainer";
 
-    for (const product of response) {
+    const tileDetail = document.createElement("div");
+    tileDetail.className = "TitleDividerSmall";
+    const tileImg = document.createElement("img");
+    tileImg.src = "Assets/Images/DividerLine.png";
+    const heightParagraph = document.createElement("p");
+    heightParagraph.className = "pHeight5vh";
+    const tileTextParagrapoh = document.createElement("p");
+    tileTextParagrapoh.textContent = `Wszystkie ${categoryName}:`;
+    tileDetail.appendChild(tileImg);
+    tileDetail.appendChild(heightParagraph);
+    tileDetail.appendChild(tileTextParagrapoh);
+    ProductsContainer.appendChild(tileDetail);
+    
+    ProductsContainer.appendChild(container);
+
+    for (const product of products) {
+        if (product.idProduct_categories != categoryId) continue;
         const productDiv = document.createElement("div");
         productDiv.classList.add("ShopElement");
-        ShopContainer.appendChild(productDiv);
+        container.appendChild(productDiv);
 
         const productImg = document.createElement("img");
         productImg.classList.add("ShopElementIMG");
@@ -59,5 +75,19 @@ window.onload = async () => {
         actionFlex.appendChild(addButton);
         actionFlex.appendChild(infoButton);
         productDiv.appendChild(actionFlex);
+    }
+}
+
+window.onload = async () => {
+    const response = await API.GetProductList();
+    const categories = await API.GetCategoryList();
+    console.log(categories);
+
+    let displayedCategories = [];
+    for (const product of response) {
+        if (displayedCategories.includes(product.idProduct_categories)) continue;
+        displayedCategories.push(product.idProduct_categories);
+
+        AddProductsToContainer(response, product.idProduct_categories, categories[product.idProduct_categories]);
     }
 };
