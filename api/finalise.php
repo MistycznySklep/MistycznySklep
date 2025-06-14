@@ -18,4 +18,3 @@ $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
 
-// TODO: Implement 
