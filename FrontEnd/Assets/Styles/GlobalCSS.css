@@ -38,11 +38,6 @@ body {
 }
 
 .glass {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 0px;
@@ -118,6 +113,12 @@ header {
 }
 
 #HeaderTitle {
+  font-weight: 600;
+  margin: 0 0 0 1vw;
+  font-size: clamp(18px, 1.3vw, 1.3vw);
+}
+
+#HeaderTitleLogin {
   font-weight: 600;
   margin: 0 0 0 1vw;
   font-size: clamp(18px, 1.3vw, 1.3vw);
@@ -238,6 +239,10 @@ nav li {
 
   .ShopContainer {
     grid-template-columns: auto auto auto !important;
+  }
+
+  .inventoryGrid {
+    grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5% !important;
   }
 
   .ShopQuickDescDiv p {
@@ -404,6 +409,10 @@ menu a:hover {
     grid-template-columns: auto auto !important;
   }
 
+  .inventoryGrid {
+    grid-template-columns: 25% 25% 25% 25% !important;
+  }
+
   .ShopElement::after {
     top: -3.7vw !important;
   }
@@ -460,6 +469,7 @@ menu a:hover {
 .DivElement {
   height: 27vh;
 }
+
 .DivElement p,
 .DivElement b {
   margin-left: 1vw;
@@ -552,11 +562,11 @@ menu a:hover {
 }
 
 .KatEliksiry {
-  background-image: url(../Images/EliksiryKatWIP.png);
+  background-image: url(../Images/EliksiryKat.png);
 }
 
 .KatWyposazenie {
-  background-image: url(../Images/WyposazenieKatWIP.png);
+  background-image: url(../Images/WyposazenieKat.png);
 }
 
 .ShopElement {
@@ -608,7 +618,7 @@ menu a:hover {
   display: none;
 }
 
-.ShopElement button {
+.ShopElement button, .FundsDiv button {
   text-align: center;
   font-size: 0.78vw;
   height: 4vh;
@@ -621,6 +631,16 @@ menu a:hover {
   border: 0;
   border-radius: 6px;
   transition-duration: 400ms;
+}
+
+.FundsDiv button {
+  color: var(--textSzary);
+}
+
+.FundsDiv button:hover {
+  scale: 1.05;
+  text-shadow: 0 0 5px var(--textSzary) !important;
+  box-shadow: 0 0 3px 3px #cccccc !important;
 }
 
 .ShopElement button:hover {
@@ -675,9 +695,37 @@ menu a:hover {
 .FundsDiv {
   display: flex;
   width: 100%;
-  height: 30vh;
+  height: 25vh;
   padding: 25px;
   justify-self: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.InputFunds {
+  padding: 0 0.8vw;
+  height: 5vh;
+  width: 15vw;
+
+  color: var(--textSzary);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.InputFunds:focus {
+  outline: none;
+  background-color: var(--brazowyDark);
+  box-shadow: 0 0 3px 3px #cccccc !important;
+}
+
+.FundsForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #PokazBalans {
@@ -725,31 +773,22 @@ menu a:hover {
 
 /* CART */
 
-.freeSpaceCart {
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-}
-
 .cartElements {
   display: flex;
-  background-color: #462f1f;
-  width: 54vw;
+  width: 70vw;
   height: 60vh;
   padding: 20px;
   border-radius: 10px;
-  border: 4px solid var(--textBrazowy);
+
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.15);
   overflow-y: auto;
   align-items: center;
   flex-direction: column;
   gap: 15px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  justify-self: center;
   justify-content: flex-start;
   padding-left: 30px;
   padding-right: 30px;
@@ -757,9 +796,7 @@ menu a:hover {
 }
 
 .cartProductElements {
-  background-color: var(--brazowyCiemniejszy);
-  border: 4px solid var(--textBrazowy);
-  border-radius: 10px;
+  border-bottom: 4px solid var(--brazowyCiemniejszy);
   padding: 11px;
   display: flex;
   flex-direction: row;
@@ -770,50 +807,210 @@ menu a:hover {
 
 .cartOrderSummary {
   display: flex;
-  gap: 5vw;
-  background-color: var(--brazowyCiemniejszy);
-  border: 4px solid var(--textBrazowy);
+  justify-content: center;
+
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+
+  align-items: center;
+  justify-self: center;
+  gap: 0.5vw;
+
   border-radius: 10px;
-  padding: 11px;
+  margin-bottom: 2vh;
+  width: 30vw;
+  padding: 10px;
+}
+
+.cartOrderSummary p {
+  padding: 12px;
+  font-size: clamp(30px, 1.5vw, 1.5vw);
+  text-shadow: 0 0 5px var(--textSzary);
+  width: fit-content;
+  border-radius: 7px;
+}
+
+.cartOrderSummary button {
+  text-align: center;
+  font-size: 0.78vw;
+  height: 4vh;
+  padding: 0 1.5vw;
+
+  color: var(--textSzary);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.cartOrderSummary button:hover {
+  scale: 1.05;
 }
 
 .productPhoto {
-  background-color: #462f1f;
-  border: 4px solid var(--textBrazowy);
-  size: 400px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+  border-radius: 7px;
+  aspect-ratio: 1 / 1 !important;
   margin: 20px;
-  width: 40%;
+  width: 25%;
 }
 
 .productQuantityAddition {
-  background-color: #462f1f;
-  border: 4px solid var(--textBrazowy);
-  size: 400px;
+  background-color: var(--brazowyBasic);
+  border: clamp(2px, 0.26vw, 0.26vw) solid var(--brazowyCiemniejszy);
+  padding: 5px;
+  border-radius: 7px;
   margin: 20px;
-  width: 40%;
+  width: 8vw;
+  min-width: 120px;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: clamp(15px, 1vw, 1vw);
   display: flex;
   flex-wrap: row;
 }
 
 .productQuantityAddition button {
+  color: var(--textSzary);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
   background-color: var(--brazowyCiemniejszy);
-  border: 4px solid var(--textBrazowy);
+  border-radius: 6px;
+  border: none;
   padding: 20px;
   font-weight: bold;
   width: 30px;
   display: flex;
   justify-content: center;
   margin: 10px;
+
+  transition-duration: 400ms;
+}
+
+.productQuantityAddition button:hover {
+  text-shadow: 0 0 5px var(--textSzary); /*rgb(63, 108, 150)*/
+  box-shadow: 0 0 3px 3px var(--textSzary);
+  color: var(--textSzary);
+  scale: 1.05;
+}
+
+.cartOrderSummary button:hover {
+  text-shadow: 0 0 5px var(--akcentRozowy); /*rgb(63, 108, 150)*/
+  box-shadow: 0 0 3px 3px var(--akcentRozowy);
+  color: var(--akcentRozowy);
+  scale: 1.05;
 }
 
 .productPhoto img {
-  width: 300px;
+  width: 100%;
   height: auto;
 }
 
 .productSummary {
   display: flex;
+  margin-top: 3vh;
+  flex-direction: column;
+  width: 80%;
+}
+
+.CartNazwa {
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.UsunFromCart {
+  text-align: center;
+  font-size: 0.78vw;
+  height: 4vh;
+  width: 12vw;
+  margin-top: 1.5vh;
+  padding: 0 1.5vw;
+
+  color: rgb(206, 132, 132);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.UsunFromCart:hover {
+  text-shadow: 0 0 5px rgb(206, 132, 132); /*rgb(63, 108, 150)*/
+  box-shadow: 0 0 3px 3px rgb(206, 132, 132);
+  color: rgb(206, 132, 132);
+  scale: 1.05;
+}
+
+/* Inventory */
+
+.inventoryGrid {
+  display: grid;
+  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  row-gap: 2vh;
+  
+  width: 100%;
+}
+
+.inventoryGridItem {
+  display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
   width: 80%;
+  aspect-ratio: 1 / 1;
+
+  font-size: clamp(15px, 1.2vw, 1.2vw);
+
+}
+
+.inventoryGridItem img {
+  width: 100%;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+  border-radius: 10px;
+}
+
+.inventoryGridItem p {
+  text-shadow: 0 0 5px var(--textSzary);
+  padding-top: 0.5vh;
+}
+
+.BrakPrzedmiotuWInventory {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+.CartNazwa {
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.UsunFromCart {
+  text-align: center;
+  font-size: 0.78vw;
+  height: 4vh;
+  width: 12vw;
+  margin-top: 1.5vh;
+  padding: 0 1.5vw;
+
+  color: rgb(206, 132, 132);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.UsunFromCart:hover {
+  text-shadow: 0 0 5px rgb(206, 132, 132); /*rgb(63, 108, 150)*/
+  box-shadow: 0 0 3px 3px rgb(206, 132, 132);
+  color: rgb(206, 132, 132);
+  scale: 1.05;
 }
