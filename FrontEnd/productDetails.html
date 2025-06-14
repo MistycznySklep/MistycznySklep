@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="auth.js"></script>
+    <!-- Musi byc zaladowane jako pierwsze -->
+    <title>Szczegóły</title>
+  </head>
+  <body>
+    <header>
+        <nav>
+            <ul class="pasek">
+
+                <li><p id="HeaderTitle">Lumoflor -</p></li>
+                <li><img onclick="window.location.href='profile.html'" id="LogIcon" src="Assets/Images/500x500.png">
+                  <p id="NapisZalogowano">Zalogowany jako:</p>
+                  <p id="Username"><span class="autoload" data-autoload="localUser.username"></span></p></li>
+
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel Admina</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
+                <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
+
+                    <li><div class="HeaderSeperator"></div></li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='inventory.html'"><img onclick="" src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
+                <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload" data-autoload="localUser.balance"></span> zł</button></li>
+                    <li><div class="HeaderSeperator"></div></li>
+                <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li> <!--Dodać img jako LogOut-->
+                
+            </ul>
+        </nav>
+    </header>
+
+  <main>
+
+  <p class="pHeight10vh"></p>
+
+  <div class="TitleDividerSmall">
+      <p>Szczegóły Produktu</p>
+      <img src="Assets/Images/DividerLine.png">
+
+  </div>
+
+    <p class="pHeight3vh"></p>
+
+    <div class="productDetailsDiv">
+
+        <div class="productDetailsFlex">
+
+            <img class="imageDetails" src="Assets/Images/Produkty/EliksirObronny.png">
+            <div class="infoDetails">
+                <h1>Nazwa Produktu</h1> <!-- Tutaj też kolor z bazy dodany-->
+                <h2>Kategoria: Grzyby</h2>
+                <p>Liczba w Magazynie: 115</p>
+                <p>Cena: 52 zł</p>
+
+                <div class="DetailsQuickDescDiv">
+                    <p>Zarodniki świecących grzybów. Przechowywać na słońcu - pobiera promienie UV.</p>
+                </div>
+
+                <button class="AddToCartButton DetailsCartAddButton">
+                    <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    <p class="PasekZastepczeIMG">Add to Cart</p>
+                </button>
+
+            </div>
+
+        </div> <br>
+        
+        <p class="pDesc2">Długi opis przedmiotu okokok wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
+
+    </div>
+
+
+  </main>
+
+  </body>
+</html>
