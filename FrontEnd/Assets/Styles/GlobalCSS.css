@@ -618,7 +618,7 @@ menu a:hover {
   display: none;
 }
 
-.ShopElement button, .FundsDiv button {
+.ShopElement button, .FundsDiv button, .infoDetails button {
   text-align: center;
   font-size: 0.78vw;
   height: 4vh;
@@ -967,6 +967,148 @@ menu a:hover {
 
   font-size: clamp(15px, 1.2vw, 1.2vw);
 
+}
+
+.inventoryGridItem img {
+  width: 100%;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+  border-radius: 10px;
+}
+
+.inventoryGridItem p {
+  text-shadow: 0 0 5px var(--textSzary);
+  padding-top: 0.5vh;
+}
+
+.BrakPrzedmiotuWInventory {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+
+}
+
+.CartNazwa {
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.UsunFromCart {
+  text-align: center;
+  font-size: 0.78vw;
+  height: 4vh;
+  width: 12vw;
+  margin-top: 1.5vh;
+  padding: 0 1.5vw;
+
+  color: rgb(206, 132, 132);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.UsunFromCart:hover {
+  text-shadow: 0 0 5px rgb(206, 132, 132); /*rgb(63, 108, 150)*/
+  box-shadow: 0 0 3px 3px rgb(206, 132, 132);
+  color: rgb(206, 132, 132);
+  scale: 1.05;
+}
+
+
+
+/* Product Details */
+
+.productDetailsFlex {
+  display: flex;
+  width: 100%;
+}
+
+.productDetailsDiv {
+  width: 70%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  
+  padding: 15px;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+  border-radius: 10px;
+}
+
+.imageDetails {
+  width: 25%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+
+  background-color: var(--brazowyCiemniejszy);
+
+}
+
+.infoDetails {
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 0.5vh;
+  margin-left: 1vw;
+  height: max-content;
+}
+
+.infoDetails p {
+  font-size: 150%;
+}
+
+
+.infoDetails h2 {
+  font-size: 180%;
+  font-weight: 600;
+}
+
+.infoDetails h1 {
+  font-size: 250%;
+}
+
+.pDesc2 {
+  overflow-wrap: break-word;
+  font-size: 120%;
+  margin-left: 1vw;
+  
+}
+
+.DetailsQuickDescDiv {
+  overflow-wrap: break-word;
+
+  margin-top: 1vh;
+  padding: 5px 3px 5px 3px;
+
+  font-size: 70%;
+  border-top: 2px solid #2c1f16;
+  border-bottom: 2px solid #2c1f16;
+
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.DetailsCartAddButton {
+  width: 10vw !important;
+  margin-top: 1.5vh !important;
+}
+
+.DetailsCartAddButton p {
+  font-size: clamp(10px, 0.8vw, 0.8vw);
+  color: #2E882E;
+}
+
+.DetailsCartAddButton:hover {
+  text-shadow: 0 0 5px #2E882E;
 }
 
 .inventoryGridItem img {
