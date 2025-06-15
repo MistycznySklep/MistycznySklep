@@ -618,9 +618,7 @@ menu a:hover {
   display: none;
 }
 
-.ShopElement button,
-.FundsDiv button,
-.infoDetails button {
+.ShopElement button, .FundsDiv button, .infoDetails button {
   text-align: center;
   font-size: 0.78vw;
   height: 4vh;
@@ -638,6 +636,7 @@ menu a:hover {
 .FundsDiv button {
   color: var(--textSzary);
 }
+
 
 .FundsDiv button:hover {
   scale: 1.05;
@@ -953,7 +952,6 @@ menu a:hover {
   display: grid;
   grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
   row-gap: 2vh;
-
   width: 100%;
 }
 
@@ -968,6 +966,7 @@ menu a:hover {
   aspect-ratio: 1 / 1;
 
   font-size: clamp(15px, 1.2vw, 1.2vw);
+
 }
 
 .inventoryGridItem img {
@@ -987,6 +986,7 @@ menu a:hover {
   display: flex;
   justify-self: center;
   align-self: center;
+
 }
 
 .CartNazwa {
@@ -1032,7 +1032,7 @@ menu a:hover {
   flex-direction: column;
   justify-content: center;
   justify-self: center;
-
+  
   padding: 15px;
   box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
   background-color: var(--brazowyBasic);
@@ -1049,6 +1049,7 @@ menu a:hover {
 }
 
 .infoDetails {
+  
   display: flex;
   flex-direction: column;
 
@@ -1074,6 +1075,7 @@ menu a:hover {
   overflow-wrap: break-word;
   font-size: 120%;
   margin-left: 1vw;
+
 }
 
 .DetailsQuickDescDiv {
@@ -1098,11 +1100,11 @@ menu a:hover {
 
 .DetailsCartAddButton p {
   font-size: clamp(10px, 0.8vw, 0.8vw);
-  color: #2e882e;
+  color: #2E882E;
 }
 
 .DetailsCartAddButton:hover {
-  text-shadow: 0 0 5px #2e882e;
+  text-shadow: 0 0 5px #2E882E;
 }
 
 .inventoryGridItem img {
@@ -1123,6 +1125,7 @@ menu a:hover {
   justify-self: center;
   align-self: center;
 }
+
 
 .CartNazwa {
   font-size: 150%;
