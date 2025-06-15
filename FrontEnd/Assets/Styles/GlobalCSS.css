@@ -441,6 +441,15 @@ menu a:hover {
   #Username {
     display: none;
   }
+
+  .AddToCartDetails {
+    display: none;
+  }
+
+  .productDetailsFlex {
+    flex-direction: column !important;
+  }
+
 }
 
 @media (max-width: 1432px) {
@@ -1018,6 +1027,7 @@ menu a:hover {
   scale: 1.05;
 }
 
+
 /* Product Details */
 
 .productDetailsFlex {
@@ -1046,6 +1056,7 @@ menu a:hover {
   border-radius: 10px;
 
   background-color: var(--brazowyCiemniejszy);
+
 }
 
 .infoDetails {
@@ -1062,6 +1073,7 @@ menu a:hover {
   font-size: 150%;
 }
 
+
 .infoDetails h2 {
   font-size: 180%;
   font-weight: 600;
@@ -1075,7 +1087,6 @@ menu a:hover {
   overflow-wrap: break-word;
   font-size: 120%;
   margin-left: 1vw;
-
 }
 
 .DetailsQuickDescDiv {
