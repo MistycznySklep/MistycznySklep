@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mistyczny Sklep</title>
     <script src="auth.js"></script>
 </head>
@@ -32,45 +32,30 @@
         </nav>
     </header>
 
-    <menu>
-        <nav class="glass">
-            <ul>
-                <li><a href="#Info"><b>Informacje</b></a></li>
-                <li><a href="#RosDnia"><b>Popularne</b></a></li>
-                <li><a href="#Rosliny"><b>Lista Roślin</b></a></li>
-                <li><a href="#Nasiona"><b>Nasiona</b></a></li>
-                <li><a href="#Eliksiry"><b>Eliksiry</b></a></li>
-                <li><a href="#Wyposazenie"><b>Wyposażenie</b></a></li>
-            </ul>
-        </nav>
-    </menu>
-
     <main>
-        <p class="pHeight20vh" id="Info"></p>
+      <p class="pHeight20vh" id="Info"></p>
 
-        <div class="TitleDivider">
-            <p>Edytuj Profil</p>
-            <img src="Assets/Images/DividerLine.png">
+      <div class="TitleDivider">
+        <p>Edytuj Profil</p>
+        <img src="Assets/Images/DividerLine.png" />
+      </div>
+
+      <p class="pHeight5vh"></p>
+
+      <div class="ElementContainer">
+        <div class="FundsDiv">
+          <input
+            id="InputNewUsername"
+            type="text"
+            placeholder="Nowa nazwa użytkownika"
+          />
+          <button onclick="EdytujProfil()">Zatwierdź</button>
         </div>
+      </div>
 
-        <p class="pHeight5vh"></p>
-
-        <div class="ElementContainer">
-
-            <div class="FundsDiv">
-
-                <input id="InputNewUsername" type="text" placeholder="Nowa nazwa użytkownika">
-                <button onclick="EdytujProfil()">Zatwierdź</button>
-
-            </div>
-            
-        </div>
-
-        <p class="pHeight5vh"></p>
-
+      <p class="pHeight5vh"></p>
     </main>
-
-</body>
+  </body>
 </html>
 
 <script>
