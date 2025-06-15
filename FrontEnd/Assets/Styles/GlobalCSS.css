@@ -646,6 +646,7 @@ menu a:hover {
   color: var(--textSzary);
 }
 
+
 .FundsDiv button:hover {
   scale: 1.05;
   text-shadow: 0 0 5px var(--textSzary) !important;
@@ -960,7 +961,6 @@ menu a:hover {
   display: grid;
   grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
   row-gap: 2vh;
-  
   width: 100%;
 }
 
@@ -1028,7 +1028,6 @@ menu a:hover {
 }
 
 
-
 /* Product Details */
 
 .productDetailsFlex {
@@ -1061,7 +1060,7 @@ menu a:hover {
 }
 
 .infoDetails {
-
+  
   display: flex;
   flex-direction: column;
 
@@ -1088,7 +1087,6 @@ menu a:hover {
   overflow-wrap: break-word;
   font-size: 120%;
   margin-left: 1vw;
-  
 }
 
 .DetailsQuickDescDiv {
@@ -1118,4 +1116,132 @@ menu a:hover {
 
 .DetailsCartAddButton:hover {
   text-shadow: 0 0 5px #2E882E;
+}
+
+.inventoryGridItem img {
+  width: 100%;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+  border-radius: 10px;
+}
+
+.inventoryGridItem p {
+  text-shadow: 0 0 5px var(--textSzary);
+  padding-top: 0.5vh;
+}
+
+.BrakPrzedmiotuWInventory {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+}
+
+
+.CartNazwa {
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.UsunFromCart {
+  text-align: center;
+  font-size: 0.78vw;
+  height: 4vh;
+  width: 12vw;
+  margin-top: 1.5vh;
+  padding: 0 1.5vw;
+
+  color: rgb(206, 132, 132);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.UsunFromCart:hover {
+  text-shadow: 0 0 5px rgb(206, 132, 132); /*rgb(63, 108, 150)*/
+  box-shadow: 0 0 3px 3px rgb(206, 132, 132);
+  color: rgb(206, 132, 132);
+  scale: 1.05;
+}
+
+/* Profile & Profile edit*/
+
+.ProfileDiv {
+  display: flex;
+  flex-direction: column;
+
+  color: var(--textSzary);
+
+  text-overflow: ellipsis !important;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+  border-radius: 10px;
+
+  font-size: clamp(10px, 0.85vw, 0.85vw);
+}
+
+.ProfileDiv {
+  display: flex;
+  width: 70%;
+  height: 25vh;
+  padding: 25px;
+  justify-self: center;
+  flex-direction: row;
+}
+
+.ProfileDiv button {
+  color: var(--textSzary);
+  padding: 5px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+  font-size: 0.78vw;
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.ProfileDiv button:hover {
+  scale: 1.05;
+  text-shadow: 0 0 5px var(--textSzary) !important;
+  box-shadow: 0 0 3px 3px #cccccc !important;
+}
+
+.ProfileActions img {
+  display: flex;
+  justify-content: center;
+  border-radius: 7px;
+  width: 80%;
+  height: auto;
+}
+
+.ProfileActions {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1vh;
+}
+
+.ProfileActions button {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+
+.ProfileDetails {
+  width: 70%;
+  padding-left: 2vw;
+}
+
+.ProfileElementContainer {
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  width: 75%;
+  flex-wrap: wrap;
+  row-gap: 3vh;
 }
