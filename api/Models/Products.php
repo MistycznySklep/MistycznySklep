@@ -11,7 +11,7 @@ class Products extends Model
     public int $quantity;
     public string $hexColor;
     public int $idImgs;
-    public int $idProduct_categories;
+    public int $idProduct_subcategories;
 
     public static function all(): array {
         $db = Database::getInstance();

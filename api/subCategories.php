@@ -1,7 +1,7 @@
 <?php
 require_once "misc.php";
 require_once "Models/Accounts.php";
-require_once "Models/Categories.php";
+require_once "Models/ProductSubcategories.php";
 
 header("Content-Type: application/json");
 
@@ -18,4 +18,4 @@ $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
 
-echo json_encode(Categories::all());
+echo json_encode(ProductSubcategories::all());
