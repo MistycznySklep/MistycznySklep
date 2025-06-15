@@ -441,6 +441,15 @@ menu a:hover {
   #Username {
     display: none;
   }
+
+  .AddToCartDetails {
+    display: none;
+  }
+
+  .productDetailsFlex {
+    flex-direction: column !important;
+  }
+
 }
 
 @media (max-width: 1432px) {
