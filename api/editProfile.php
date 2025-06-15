@@ -3,7 +3,11 @@ require_once "misc.php";
 require_once "Models/Accounts.php";
 require_once "Models/LoginToken.php";
 
-header("Content-Type: application/json");
+$newUsername = trim($_POST["newUsername"] ?? "");
+
+if (empty($newUsername)) {
+    HttpUtils::Status(400, "Missing username");
+}
 
 $token = trim(getallheaders()["Authorization"] ?? "");
 
@@ -17,8 +21,7 @@ $db = new Database($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_E
 $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
+$account->username = $newUsername;
+$account->Save();
 
-echo json_encode([
-    "username" => $account->username,
-    "balance" => $account->balance
-]);
+http_response_code(201);

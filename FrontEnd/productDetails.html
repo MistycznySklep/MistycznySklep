@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mistyczny Sklep</title>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="auth.js"></script>
-</head>
-<body>
+    <!-- Musi byc zaladowane jako pierwsze -->
+    <title>Szczegóły</title>
+  </head>
+  <body>
     <header>
         <nav>
             <ul class="pasek">
@@ -32,54 +33,48 @@
         </nav>
     </header>
 
-    <menu>
-        <nav class="glass">
-            <ul>
-                <li><a href="#Info"><b>Informacje</b></a></li>
-                <li><a href="#RosDnia"><b>Popularne</b></a></li>
-                <li><a href="#Rosliny"><b>Lista Roślin</b></a></li>
-                <li><a href="#Nasiona"><b>Nasiona</b></a></li>
-                <li><a href="#Eliksiry"><b>Eliksiry</b></a></li>
-                <li><a href="#Wyposazenie"><b>Wyposażenie</b></a></li>
-            </ul>
-        </nav>
-    </menu>
+  <main>
 
-    <main>
-        <p class="pHeight20vh" id="Info"></p>
+  <p class="pHeight10vh"></p>
 
-        <div class="TitleDivider">
-            <p>Edytuj Profil</p>
-            <img src="Assets/Images/DividerLine.png">
-        </div>
+  <div class="TitleDividerSmall">
+      <p>Szczegóły Produktu</p>
+      <img src="Assets/Images/DividerLine.png">
 
-        <p class="pHeight5vh"></p>
+  </div>
 
-        <div class="ElementContainer">
+    <p class="pHeight3vh"></p>
 
-            <div class="FundsDiv">
+    <div class="productDetailsDiv">
 
-                <input id="InputNewUsername" type="text" placeholder="Nowa nazwa użytkownika">
-                <button onclick="EdytujProfil()">Zatwierdź</button>
+        <div class="productDetailsFlex">
+
+            <img class="imageDetails" src="Assets/Images/Produkty/EliksirObronny.png">
+            <div class="infoDetails">
+                <h1>Nazwa Produktu</h1> <!-- Tutaj też kolor z bazy dodany-->
+                <h2>Kategoria: Grzyby</h2>
+                <p>Liczba w Magazynie: 115</p>
+                <p>Cena: 52 zł</p>
+
+                <div class="DetailsQuickDescDiv">
+                    <p>Zarodniki świecących grzybów. Przechowywać na słońcu - pobiera promienie UV.</p>
+                </div>
+
+                <button class="AddToCartButton DetailsCartAddButton">
+                    <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    <p class="PasekZastepczeIMG">Add to Cart</p>
+                </button>
 
             </div>
-            
-        </div>
 
-        <p class="pHeight5vh"></p>
+        </div> <br>
+        
+        <p class="pDesc2">Długi opis przedmiotu okokok wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
 
-    </main>
+    </div>
 
-</body>
+
+  </main>
+
+  </body>
 </html>
-
-<script>
-
-async function EdytujProfil() {
-    const newUsername = document.getElementById('InputNewUsername').value;
-    const response = await API.AuthPost("/api/editProfile.php", { newUsername });
-    await ReloadVariables();
-}
-
-
-</script>

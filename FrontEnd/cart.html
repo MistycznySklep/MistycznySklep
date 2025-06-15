@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="auth.js"></script>
+    <!-- Musi byc zaladowane jako pierwsze -->
+    <title>Koszyk</title>
+  </head>
+  <body>
+    <header>
+        <nav>
+            <ul class="pasek">
+
+                <li><p id="HeaderTitle">Lumoflor -</p></li>
+                <li><img onclick="window.location.href='profile.html'" id="LogIcon" src="Assets/Images/500x500.png">
+                  <p id="NapisZalogowano">Zalogowany jako:</p>
+                  <p id="Username"><span class="autoload" data-autoload="localUser.username"></span></p></li>
+
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel Admina</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
+                <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
+
+                    <li><div class="HeaderSeperator"></div></li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='inventory.html'"><img onclick="" src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
+                <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload" data-autoload="localUser.balance"></span> zł</button></li>
+                    <li><div class="HeaderSeperator"></div></li>
+                <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li> <!--Dodać img jako LogOut-->
+                
+            </ul>
+        </nav>
+    </header>
+
+  <main>
+
+  <p class="pHeight10vh"></p>
+
+  <div class="TitleDividerSmall">
+      <p>Mój Koszyk</p>
+      <img src="Assets/Images/DividerLine.png">
+
+      
+  </div>
+
+  <div class="cartOrderSummary">
+    <p>Razem: 55 zł</p>
+    <button>Złóż zamówienie</button>
+  </div>
+  
+
+    <div class="cartElements">
+
+      <div class="cartProductElements"> <!-- Pojedynczy element, to się wyświetla z php-->
+        <div class="productPhoto">
+          <img src="Assets/Images/Produkty/FireFlower.png" alt="" />
+        </div>
+        <div class="productSummary">
+          <p class="CartNazwa">Płomienny tulipan</p>
+          <p class="CartKategoria">Kategoria: Kwiaty</p>
+          <div class="productQuantityAddition">
+            <button>-</button>
+            <p>1</p>
+            <!-- tu jest ze + i - sa na koncach tego diva a ilosc w boldzie na koncu -->
+            <button>+</button>
+          </div>
+          <p>Cena z 1 szute: 11zl</p>
+          <p>Łączna cena: 11zl</p>
+          <button class="UsunFromCart">Usuń z koszyka</button>
+        </div>
+      </div>
+
+      <div class="cartProductElements"> <!-- Pojedynczy element, to się wyświetla z php-->
+        <div class="productPhoto">
+          <img src="Assets/Images/Produkty/FireFlower.png" alt="" />
+        </div>
+        <div class="productSummary">
+          <p class="CartNazwa">Płomienny tulipan</p>
+          <p class="CartKategoria">Kategoria: Kwiaty</p>
+          <div class="productQuantityAddition">
+            <button>-</button>
+            <p>3</p>
+            <!-- tu jest ze + i - sa na koncach tego diva a ilosc w boldzie na koncu -->
+            <button>+</button>
+          </div>
+          <p>Cena z 1 szute: 11zl</p>
+          <p>Łączna cena: 33zl</p>
+          <button class="UsunFromCart">Usuń z koszyka</button>
+        </div>
+      </div>
+
+      <div class="cartProductElements"> <!-- Pojedynczy element, to się wyświetla z php-->
+        <div class="productPhoto">
+          <img src="Assets/Images/Produkty/FireFlower.png" alt="" />
+        </div>
+        <div class="productSummary">
+          <p class="CartNazwa">Płomienny tulipan</p>
+          <p class="CartKategoria">Kategoria: Kwiaty</p>
+          <div class="productQuantityAddition">
+            <button>-</button>
+            <p>1</p>
+            <!-- tu jest ze + i - sa na koncach tego diva a ilosc w boldzie na koncu -->
+            <button>+</button>
+          </div>
+          <p>Cena z 1 szute: 11zl</p>
+          <p>Łączna cena: 11zl</p>
+          <button class="UsunFromCart">Usuń z koszyka</button>
+        </div>
+      </div>
+
+    </div>
+
+
+  </main>
+
+  </body>
+</html>
