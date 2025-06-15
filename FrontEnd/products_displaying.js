@@ -20,7 +20,8 @@ const AddProductsToContainer = (products, categoryId, categoryName, categories) 
     ProductsContainer.appendChild(container);
 
     for (const product of products) {
-        if (product.idProduct_subcategories != categoryId) continue;
+        console.log(categories[product.idProduct_subcategories]);
+        if (categories[product.idProduct_subcategories].idCategories != categoryId) continue;
         const productDiv = document.createElement("div");
         productDiv.classList.add("ShopElement");
         container.appendChild(productDiv);
@@ -90,6 +91,6 @@ window.onload = async () => {
         if (displayedCategories.includes(subcategories[product.idProduct_subcategories].idCategories)) continue;
         displayedCategories.push(subcategories[product.idProduct_subcategories].idCategories);
 
-        AddProductsToContainer(response, product.idProduct_subcategories, categories[subcategories[product.idProduct_subcategories].idCategories], subcategories);
+        AddProductsToContainer(response, subcategories[product.idProduct_subcategories].idCategories, categories[subcategories[product.idProduct_subcategories].idCategories], subcategories);
     }
 };
