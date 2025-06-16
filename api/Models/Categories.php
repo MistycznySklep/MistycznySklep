@@ -1,17 +1,18 @@
 <?php
 require_once "misc.php";
 
-class ProductCategories extends Model
+class Categories extends Model
 {
-    public int $idProduct_categories;
+    #[Id]
+    public int $idCategories;
     public string $category;
 
     public static function all(): array {
         $db = Database::getInstance();
-        $result = $db->query("select idProduct_categories from product_categories");
+        $result = $db->query("select idCategories from categories");
         $products = [];
         while ($row = $result->fetch_assoc()) {
-            $products[] = new ProductCategories($row["idProduct_categories"]);
+            $products[] = new Categories($row["idCategories"]);
         }
         return $products;
     }
