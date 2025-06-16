@@ -3,8 +3,6 @@ CREATE TABLE `product_categories` (
   `category` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--
-
 INSERT INTO `product_categories` (`idProduct_categories`, `category`) VALUES
 (1, 'Wyposażenie'),
 (2, 'Kwiaty'),
@@ -14,6 +12,3 @@ INSERT INTO `product_categories` (`idProduct_categories`, `category`) VALUES
 (6, 'Owoce'),
 (7, 'Warzywa'),
 (8, 'Eliksiry');
-
---
-
