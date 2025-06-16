@@ -21,6 +21,9 @@ const AddProductsToContainer = (products, categoryId, categoryName, categories) 
     spacingParagraph.id = categoryName;
     ProductsContainer.appendChild(spacingParagraph);
     ProductsContainer.appendChild(tileDetail);
+    const spacingParagraphWithoutId = document.createElement("p");
+    spacingParagraphWithoutId.className = "pHeight3vh";
+    spacingParagraphWithoutId.appendChild(spacingParagraph);
     
     ProductsContainer.appendChild(container);
 
