@@ -21,7 +21,6 @@ const AddProductsToContainer = (products, categoryId, categoryName, categories) 
     spacingParagraph.id = categoryName;
     ProductsContainer.appendChild(spacingParagraph);
     ProductsContainer.appendChild(tileDetail);
-    ProductsContainer.appendChild(spacingParagraph);
     
     ProductsContainer.appendChild(container);
 
