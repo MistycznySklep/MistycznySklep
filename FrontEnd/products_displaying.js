@@ -15,13 +15,20 @@ const AddProductsToContainer = (products, categoryId, categoryName, categories) 
     tileDetail.appendChild(tileImg);
     tileDetail.appendChild(heightParagraph);
     tileDetail.appendChild(tileTextParagrapoh);
+        
+    const spacingParagraph = document.createElement("p");
+    spacingParagraph.className = "pHeight3vh";
+    spacingParagraph.id = categoryName;
+    ProductsContainer.appendChild(spacingParagraph);
     ProductsContainer.appendChild(tileDetail);
+    ProductsContainer.appendChild(spacingParagraph);
     
     ProductsContainer.appendChild(container);
 
     for (const product of products) {
         console.log(categories[product.idProduct_subcategories]);
         if (categories[product.idProduct_subcategories].idCategories != categoryId) continue;
+
         const productDiv = document.createElement("div");
         productDiv.classList.add("ShopElement");
         container.appendChild(productDiv);
