@@ -204,6 +204,7 @@ td {
 
 .SmallerPadding:hover {
     scale: 1.05;
+    cursor: pointer !important;
     box-shadow: 0 0 3px 3px #cccccc !important;
 }
 

@@ -789,6 +789,10 @@ menu a:hover {
   height: 20vh;
 }
 
+.pHeight13vh {
+  height: 13vh;
+}
+
 .pHeight10vh {
   height: 10vh;
 }
