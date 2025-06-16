@@ -3,14 +3,7 @@ CREATE TABLE `carts` (
   `idAccounts` int(11) NOT NULL,
   `idProducts` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
-)
-
-
-
-
-
-
-
+);
 
 ALTER TABLE carts ADD CONSTRAINT fk_accounts_carts FOREIGN KEY(idAccounts) REFERENCES accounts(idAccounts); 
 

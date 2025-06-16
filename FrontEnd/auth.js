@@ -53,10 +53,31 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         let categories = {};
-        for (const category of json) categories[category.idProduct_categories] = category.category; 
+        for (const category of json) categories[category.idCategories] = category.category; 
 
         return categories;
     },
+    GetSubCategoryList: async () => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthGet("/api/subcategories.php");
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        let categories = {};
+        for (const category of json) categories[category.idProduct_subcategories] = category; 
+
+        return categories;
+    },
+    GetCartProducts: async () => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthGet("/api/cart.php");
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    }
 };
 
 const ReloadVariables = async () => {

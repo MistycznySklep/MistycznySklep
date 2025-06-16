@@ -1,6 +1,6 @@
 const ProductsContainer = document.getElementById("ProductsContainer");
 
-const AddProductsToContainer = (products, categoryId, categoryName) => {
+const AddProductsToContainer = (products, categoryId, categoryName, categories) => {
     const container = document.createElement("div");
     container.className = "ShopContainer";
 
@@ -15,12 +15,22 @@ const AddProductsToContainer = (products, categoryId, categoryName) => {
     tileDetail.appendChild(tileImg);
     tileDetail.appendChild(heightParagraph);
     tileDetail.appendChild(tileTextParagrapoh);
+        
+    const spacingParagraph = document.createElement("p");
+    spacingParagraph.className = "pHeight3vh";
+    spacingParagraph.id = categoryName;
+    ProductsContainer.appendChild(spacingParagraph);
     ProductsContainer.appendChild(tileDetail);
+    const spacingParagraphWithoutId = document.createElement("p");
+    spacingParagraphWithoutId.className = "pHeight3vh";
+    ProductsContainer.appendChild(spacingParagraphWithoutId);
     
     ProductsContainer.appendChild(container);
 
     for (const product of products) {
-        if (product.idProduct_categories != categoryId) continue;
+        console.log(categories[product.idProduct_subcategories]);
+        if (categories[product.idProduct_subcategories].idCategories != categoryId) continue;
+
         const productDiv = document.createElement("div");
         productDiv.classList.add("ShopElement");
         container.appendChild(productDiv);
@@ -44,7 +54,7 @@ const AddProductsToContainer = (products, categoryId, categoryName) => {
         productDiv.appendChild(descDiv);
 
         const category = document.createElement("h2");
-        category.textContent = `Kategoria: ${categoryName}`;
+        category.textContent = `Kategoria: ${categories[product.idProduct_subcategories].subcategory}`;
         productDiv.appendChild(category);
 
         const stock = document.createElement("h3");
@@ -81,13 +91,15 @@ const AddProductsToContainer = (products, categoryId, categoryName) => {
 window.onload = async () => {
     const response = await API.GetProductList();
     const categories = await API.GetCategoryList();
+    const subcategories = await API.GetSubCategoryList();
+    console.log(subcategories);
     console.log(categories);
 
     let displayedCategories = [];
     for (const product of response) {
-        if (displayedCategories.includes(product.idProduct_categories)) continue;
-        displayedCategories.push(product.idProduct_categories);
+        if (displayedCategories.includes(subcategories[product.idProduct_subcategories].idCategories)) continue;
+        displayedCategories.push(subcategories[product.idProduct_subcategories].idCategories);
 
-        AddProductsToContainer(response, product.idProduct_categories, categories[product.idProduct_categories]);
+        AddProductsToContainer(response, subcategories[product.idProduct_subcategories].idCategories, categories[subcategories[product.idProduct_subcategories].idCategories], subcategories);
     }
 };
