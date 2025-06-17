@@ -1,9 +1,7 @@
 const container = document.getElementById("logi");
 
 API.FetchLogs().then(logs => {
-    console.log(logs);
     logs.forEach(log => {
-        console.log(log);
         const panel = document.createElement("div");
         panel.className = "PanelDiv TableDiv";
 
