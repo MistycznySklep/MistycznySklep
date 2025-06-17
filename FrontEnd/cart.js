@@ -1,10 +1,10 @@
 const cart = document.getElementById("cartElements");
 
-API.GetCartProducts().then(async carts => {
+const RefreshCarts = async () => {
+    const carts = await API.GetCartProducts();
     const categories = await API.GetSubCategoryList();
-
+    cart.innerHTML = "";
     for (const item of carts) {
-        console.log(item);
         const container = document.createElement("div");
         container.className = "cartProductElements";
 
@@ -50,9 +50,15 @@ API.GetCartProducts().then(async carts => {
         const removeBtn = document.createElement("button");
         removeBtn.className = "UsunFromCart";
         removeBtn.textContent = "Usuń z koszyka";
+        removeBtn.onclick = async () => {
+            await API.DeleteFromCart(item.id);
+            await RefreshCarts();
+        };
 
         summaryDiv.append(nameP, categoryP, quantityDiv, pricePerUnitP, totalPriceP, removeBtn);
         container.append(photoDiv, summaryDiv);
         cart.appendChild(container);
     }
-});
+
+}
+RefreshCarts();
