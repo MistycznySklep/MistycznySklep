@@ -1,3 +1,15 @@
+:root {
+  --brazowyBasic: #61422d;
+  --brazowyCiemniejszy: #503623; /*#533925; #4d3422*/
+  --brazowyDark: #4b3322;
+  --ciemnyBrazowyBorder: #462f1f;
+
+  --textBrazowy: #2c1f16;
+  --textSzary: #e0e0e0;
+
+  --akcentRozowy: #b169a7;
+}
+
 #finishMFA {
     display: none;
     position: absolute;
@@ -10,15 +22,17 @@
     justify-self: center;
     color: var(--textBrazowy);
     background-color: var(--brazowyBasic);
-    border: 0.32vw solid var(--ciemnyBrazowyBorder);
+    border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
     border-radius: 10px;
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 50px;
 }
+
 .MFASetup {
     position: relative;
     justify-self: center;
+    row-gap: 0.8vw;
     color: var(--textBrazowy);
     background-color: var(--brazowyBasic);
     display: flex;
@@ -32,7 +46,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid #deadda;
+    border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
     padding: 2rem;
     border-radius: 1rem;
     width: fit-content;
@@ -83,22 +97,35 @@
     width: 200px;
     height: 200px;
     object-fit: contain;
-    border: 1px solid #deadda;
     border-radius: 0.5rem;
 }
 
 #nextStep, #goBack {
-    background-color: var(--akcentRozowy);
+    text-align: center;
+    font-size: 0.78vw;
+    height: 4vh;
+    width: 10vw;
+    margin: 0 0.3vw 0.5vh 0.3vw;
+    padding: 0 1.5vw;
+
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+    background-color: var(--brazowyCiemniejszy);
+
     border: 0;
-    padding-block: 15px;
-    padding-inline: 15px;
-    border-radius: 10px;
-    font-size: 1.5rem;
+    border-radius: 6px;
+    transition-duration: 400ms;
+}
+
+#nextStep:hover, #goBack:hover {
+    scale: 1.05;
+    color: var(--akcentRozowy);
+    box-shadow: 0 0 3px 3px var(--akcentRozowy);
+    text-shadow: 0 0 5px var(--akcentRozowy);
 }
 
 #nextStep:disabled {
     cursor: not-allowed;
-    background-color: grey;
+    background-color: var(--brazowyDark);
 }
 
 #success {
