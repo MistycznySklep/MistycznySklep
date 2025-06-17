@@ -53,7 +53,7 @@ a:hover {
     justify-self: center;
     color: var(--textBrazowy);
     background-color: var(--brazowyBasic);
-    border: 0.32vw solid var(--ciemnyBrazowyBorder);
+    border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
     border-radius: 10px;
 
 
