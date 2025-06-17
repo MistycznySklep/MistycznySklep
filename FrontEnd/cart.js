@@ -1,9 +1,12 @@
 const cart = document.getElementById("cartElements");
+const summaryCount = document.getElementById("summary-price");
 
 const RefreshCarts = async () => {
     const carts = await API.GetCartProducts();
     const categories = await API.GetSubCategoryList();
     cart.innerHTML = "";
+    let sumPrice = 0;
+
     for (const item of carts) {
         const container = document.createElement("div");
         container.className = "cartProductElements";
@@ -54,6 +57,7 @@ const RefreshCarts = async () => {
 
         const totalPriceP = document.createElement("p");
         totalPriceP.textContent = `Łączna cena: ${Math.round(item.product.price * item.quantity * 100) / 100}zl`;
+        sumPrice += item.product.price * item.quantity;
 
         const removeBtn = document.createElement("button");
         removeBtn.className = "UsunFromCart";
@@ -67,5 +71,13 @@ const RefreshCarts = async () => {
         container.append(photoDiv, summaryDiv);
         cart.appendChild(container);
     }
+
+    summaryCount.textContent = `${Math.round(sumPrice * 100) / 100} zł`;
 }
+
+document.getElementById("placeOrderButton").onclick = async () => {
+    await API.FinaliseOrder();
+    await RefreshCarts();
+};
+
 RefreshCarts();

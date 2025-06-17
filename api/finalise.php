@@ -18,3 +18,16 @@ $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
 
+$totalCost = 0;
+$items = Carts::all($account->idAccounts);
+
+foreach ($items as $item) {
+    $totalCost += $item->product()->price * $item->quantity;
+}
+
+if ($account->balance < $totalCost) {
+    HttpUtils::Status(401, "Insufficient balance");
+}
+$account->balance = $totalCost;
+$account->Save();
+
