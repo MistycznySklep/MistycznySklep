@@ -196,6 +196,15 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
+    },
+    FetchLogs: async () => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthGet("/api/logs.php");
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
     }
 };
 
