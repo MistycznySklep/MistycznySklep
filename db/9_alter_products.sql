@@ -1,5 +1,4 @@
-ALTER TABLE `products` CHANGE `type` `idProduct_categories`; 
-ALTER TABLE `products` CHANGE type idProduct_categories INT NOT NULL;
+ALTER TABLE `products` CHANGE `type` `idProduct_categories` INT(11) NOT NULL;
 
 UPDATE products SET idProduct_categories = '5' WHERE products.idProducts = 6;
 UPDATE products SET idProduct_categories = '5' WHERE products.idProducts = 7;
