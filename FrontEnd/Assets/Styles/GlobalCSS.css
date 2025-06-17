@@ -46,6 +46,10 @@ body {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
 }
 
+textarea {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 /* ===================== Pasek / Header ===================== */
 
 header {
@@ -651,7 +655,7 @@ menu a:hover {
   display: none;
 }
 
-.ShopElement button, .FundsDiv button, .infoDetails button, .FiltrDiv button {
+.ShopElement button, .FundsDiv button, .infoDetails button, .FiltrDiv button, .DivHistoria button {
   text-align: center;
   font-size: 0.78vw;
   height: 4vh;
@@ -666,8 +670,28 @@ menu a:hover {
   transition-duration: 400ms;
 }
 
-.FundsDiv button {
+
+.FundsDiv button, .DivHistoria button {
   color: var(--textSzary);
+}
+
+.DivHistoria {
+  position: relative;
+}
+
+.DivHistoria button {
+  margin-top: 3vh;
+  margin-bottom: 1.5vh;
+  margin-left: 1vw;
+  justify-self: flex-end;
+  position: absolute;
+  bottom: 0;
+}
+
+.DivHistoria button:hover {
+  scale: 1.05;
+  text-shadow: 0 0 5px var(--textSzary);
+  box-shadow: 0 0 3px 3px var(--textSzary);
 }
 
 
@@ -775,6 +799,7 @@ menu a:hover {
   justify-content: flex-start !important;
   align-items: flex-start !important;
 }
+
 
 .DivHistoria ol {
   font-size: clamp(15px, 1vw, 1vw);
@@ -1197,9 +1222,13 @@ menu a:hover {
 
 /* Profile & Profile edit*/
 
-.ProfileDiv {
+.ProfileDiv, .ProfileEditDiv {
   display: flex;
-  flex-direction: column;
+  width: 70%;
+  height: fit-content;
+  padding: 25px;
+  justify-self: center;
+  flex-direction: row;
 
   color: var(--textSzary);
 
@@ -1212,16 +1241,34 @@ menu a:hover {
   font-size: clamp(10px, 0.85vw, 0.85vw);
 }
 
-.ProfileDiv {
-  display: flex;
-  width: 70%;
-  height: 25vh;
-  padding: 25px;
-  justify-self: center;
-  flex-direction: row;
+.ProfileEditDiv {
+  width: fit-content !important;
 }
 
-.ProfileDiv button {
+.ProfileEditDiv textarea {
+    padding: 1vh 0.8vw;
+    width: 15vw;
+    height: 10vh;
+
+    color: var(--textSzary);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+    background-color: var(--brazowyCiemniejszy);
+
+    resize: vertical;
+
+    border: 0;
+    border-radius: 6px;
+    transition-duration: 400ms;
+}
+
+
+.ProfileEditDiv textarea:focus {
+  outline: none;
+  background-color: var(--brazowyDark);
+  box-shadow: 0 0 3px 3px #cccccc !important;
+}
+
+.ProfileDiv button, .ProfileEditDiv button {
   color: var(--textSzary);
   padding: 5px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
@@ -1240,14 +1287,14 @@ menu a:hover {
 
 .ProfileActions img {
   display: flex;
+  width: 90%;
   justify-content: center;
   border-radius: 7px;
-  width: 80%;
   height: auto;
 }
 
 .ProfileActions {
-  width: 30%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1257,12 +1304,23 @@ menu a:hover {
 .ProfileActions button {
   display: flex;
   justify-content: center;
-  width: 80%;
+  align-items: center;
+  height: 4vh;
+  width: 90%;
+}
+
+.ProfileEdit button {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  height: 4vh;
+  width: 70%;
 }
 
 .ProfileDetails {
   width: 70%;
-  padding-left: 2vw;
+  margin-top: 0.5vh;
 }
 
 .ProfileElementContainer {
@@ -1273,6 +1331,41 @@ menu a:hover {
   flex-wrap: wrap;
   row-gap: 3vh;
 }
+
+.ProfileEdit {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  margin: 0 auto;
+  gap: 1vw;
+}
+
+.ProfileEdit input[type="text"] {
+  padding: 0 0.8vw;
+  height: 4vh;
+  width: 15vw;
+
+  color: var(--textSzary);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.ProfileEdit input[type="text"]:focus {
+  outline: none;
+  background-color: var(--brazowyDark);
+  box-shadow: 0 0 3px 3px #cccccc !important;
+}
+
+#profileLogin {
+  filter: brightness(0.75);
+}
+
+/* Filtry */
 
 .FiltrDiv select, .FiltrDiv option {
   margin: 0 0.3vw 0.5vh 0.3vw;
@@ -1334,4 +1427,111 @@ menu a:hover {
 
 .pWidth3vw {
   width: 3vw;
+}
+
+/* FILE */
+
+.customFileInput input[type="file"] {
+  visibility: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.customFileInput2 input[type="file"] {
+  visibility: hidden;
+  position: relative;
+  width: 8vw;
+  height: 0;
+}
+
+
+.customFileInput, .customFileInput2 {
+  position: relative;
+  display: inline-block;
+  height: 4vh;
+
+  background-color: var(--brazowyCiemniejszy);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  color: var(--textSzary);
+  font-size: clamp(10px, 0.78vw, 0.78vw);
+  border-radius: 6px;
+  cursor: pointer;
+  overflow: hidden;
+  transition-duration: 400ms;
+}
+
+.customFileInput2{
+  margin: 3px;
+}
+
+.customFileInput::after, .customFileInput2::after {
+  content: "Wybierz Zdjęcie";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+
+.customFileInput:hover, .customFileInput2:hover {
+  scale: 1.05;
+  box-shadow: 0 0 3px 3px var(--textSzary);
+  text-shadow: 0 0 5px var(--textSzary);
+}
+
+.fundsTable {
+    display: flex;
+    align-self: center;
+    padding: 15px !important;
+    flex-direction: row !important;
+}
+
+th, td, tr {
+    /* border: 2.5px solid rgb(152, 169, 184); */
+    border-collapse: collapse;
+    padding: 7px;
+    background-color: var(--brazowyCiemniejszy);
+    border-radius: 7px;
+}
+
+td, th {
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+td {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.passtd {
+    max-width: 12vw;
+}
+
+.tableWidth5vw {
+    width: 5vw;
+    max-width: 5vw;
+}
+
+.tableWidth7vw {
+    width: 7vw;
+    max-width: 7vw;
+}
+
+.tableWidth30vw {
+    width: 30vw !important;
+    max-width: 30vw !important;
+}
+
+.DivOrders {
+  display: flex;
+  justify-self: center;
+  height: fit-content !important;
+  padding-bottom: 1vh !important;
 }

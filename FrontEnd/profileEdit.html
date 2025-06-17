@@ -33,23 +33,34 @@
     </header>
 
     <main>
-      <p class="pHeight20vh" id="Info"></p>
 
-      <div class="TitleDivider">
-        <p>Edytuj Profil</p>
-        <img src="Assets/Images/DividerLine.png" />
-      </div>
+      <p class="pHeight10vh"></p>
 
-      <p class="pHeight5vh"></p>
+        <div class="TitleDividerSmall">
+            <p>Edytuj Profil</p>
+            <img src="Assets/Images/DividerLine.png">
 
-      <div class="ElementContainer">
-        <div class="FundsDiv">
-          <input
-            id="InputNewUsername"
-            type="text"
-            placeholder="Nowa nazwa użytkownika"
-          />
-          <button onclick="EdytujProfil()">Zatwierdź</button>
+        </div>
+
+        <p class="pHeight3vh"></p>
+
+      <div class="ProfileElementContainer">
+        <div class="ProfileEditDiv">
+          <div class="ProfileEdit">
+            <input
+              id="InputNewUsername"
+              type="text"
+              placeholder="Nowa nazwa użytkownika"
+            />
+
+            <textarea id="InputNewDesc" placeholder="Opis Profilu"></textarea>
+
+            <label class="customFileInput"><input id="InputNewPicture" type="file" accept="image/png"></label>
+
+            <p class="pHeight3vh"></p>
+
+            <button onclick="EdytujProfil()">Zatwierdź</button>
+          </div>
         </div>
       </div>
 
