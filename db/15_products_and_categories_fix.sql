@@ -2,4 +2,4 @@ UPDATE products SET name = 'Magiczna Doniczka' WHERE products.idProducts = 17;
 UPDATE categories SET category = 'Wyposażenia' WHERE categories.idCategories = 4;
 UPDATE `products` SET `idProduct_subcategories` = '6' WHERE `products`.`idProducts` = 2; 
 
-ALTER TABLE `accounts` ADD `MFA_token` TEXT NOT NULL AFTER `balance`; 
+ALTER TABLE `accounts` ADD `MFA_token` TEXT NULL AFTER `balance`; 
