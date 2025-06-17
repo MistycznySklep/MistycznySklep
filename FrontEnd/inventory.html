@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="auth.js"></script>
+    <!-- Musi byc zaladowane jako pierwsze -->
+    <title>Magazyn</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+          <ul class="pasek">
+              <li><p id="HeaderTitle">Lumoflor -</p></li>
+
+              <li><img onclick="window.location.href='profile.html'" id="LogIcon" src="Assets/Images/500x500.png">
+                <p id="NapisZalogowano">Zalogowany jako:</p>
+                <p><span class="autoload" data-autoload="localUser.username"></span></p></li>
+
+
+              <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
+<li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel Admina</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
+              <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
+
+                  <li><div class="HeaderSeperator"></div></li>
+                  <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+              <li><button class="HeaderIconButton" onclick="window.location.href=''"><img onclick="" src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
+              <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload" data-autoload="localUser.balance"></span> zł</button></li>
+                  <li><div class="HeaderSeperator"></div></li>
+              <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li> <!--Dodać img jako LogOut-->
+              
+          </ul>
+      </nav>
+  </header>
+
+  <main>
+
+  <p class="pHeight10vh"></p>
+
+  <div class="TitleDividerSmall">
+      <p>Twój Magazyn</p>
+    <img src="Assets/Images/DividerLine.png">
+      
+  </div>
+  
+    <div class="TitleDividerSmall">
+      <p>✧*:･ﾟ✧ Rośliny ✧･ﾟ: *✧</p>
+    </div>
+
+    <!-- PARAGRAF POKAZUJE SIĘ JEŻELI NIE MA ŻADNEGO ELEMENTU DO WYŚWIETLENIA Z PODANEJ KATEGORII-->
+    <!-- <p class="BrakPrzedmiotuWInventory">Nie masz żadnego przedmiotu o tej kategorii.</p> -->
+
+    <div class="inventoryGrid">
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/GrzybGlow.png">
+            <p>Liczba: 15</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/Odbijogudki.png">
+            <p>Liczba: 37</p>
+        </div>
+        
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/FireFlower.png">
+            <p>Liczba: 100</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/WoskoGrzyby.png">
+            <p>Liczba: 15</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/Kiełek.png">
+            <p>Liczba: 8</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/GrzybGlow.png">
+            <p>Liczba: 15</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/GrzybGlow.png">
+            <p>Liczba: 15</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/GrzybGlow.png">
+            <p>Liczba: 15</p>
+        </div>
+        
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/GrzybGlow.png">
+            <p>Liczba: 15</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/GrzybGlow.png">
+            <p>Liczba: 15</p>
+        </div>
+
+
+    </div> <!--Koniec Kontenera "Rośliny"-->
+
+    <div class="TitleDividerSmall">
+      <p>✧*:･ﾟ✧ Nasiona ✧･ﾟ: *✧</p>
+    </div>
+
+    <!-- <p class="BrakPrzedmiotuWInventory">Nie masz żadnego przedmiotu o tej kategorii.</p> -->
+
+    <div class="inventoryGrid">
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/GrzybGlowSeeds.png">
+            <p>Liczba: 15</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/OdbijogudkiSeeds.png">
+            <p>Liczba: 37</p>
+        </div>
+        
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/FireFlowerSeeds.png">
+            <p>Liczba: 100</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/WoskogrzybySeeds.png">
+            <p>Liczba: 15</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/KiełekSeeds.png">
+            <p>Liczba: 8</p>
+        </div>
+
+    </div> <!--Koniec kontenera "Nasiona"-->
+
+    <div class="TitleDividerSmall">
+      <p>✧*:･ﾟ✧ Eliksiry ✧･ﾟ: *✧</p>
+    </div>
+
+    <!-- <p class="BrakPrzedmiotuWInventory">Nie masz żadnego przedmiotu o tej kategorii.</p> -->
+
+    <div class="inventoryGrid">
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/EliksirWzrostu.png">
+            <p>Liczba: 15</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/UspokającyEliksir.png">
+            <p>Liczba: 37</p>
+        </div>
+        
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/OcieplającyEliksir.png">
+            <p>Liczba: 100</p>
+        </div>
+
+        <div class="inventoryGridItem">
+            <img id="" src="Assets/Images/Produkty/EliksirObronny.png">
+            <p>Liczba: 15</p>
+        </div>
+
+    </div> <!--Koniec kontenera "Eliskiry"-->
+
+        <div class="TitleDividerSmall">
+      <p>✧*:･ﾟ✧ Wyposażenie ✧･ﾟ: *✧</p>
+    </div>
+
+        <p class="BrakPrzedmiotuWInventory">Nie masz żadnego przedmiotu o tej kategorii.</p>
+
+        <div class="inventoryGrid">
+
+            
+        </div>
+
+
+
+    <p class="pHeight5vh"></p>
+
+  </main>
+
+  </body>
+</html>
