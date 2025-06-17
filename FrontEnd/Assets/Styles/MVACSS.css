@@ -27,9 +27,6 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 50px;
-    
-
-
 }
 
 .number {
@@ -70,6 +67,10 @@ input[type="number"]:focus {
     cursor: pointer;
 } */
 
+input[type="number"]:disabled {
+    background-color: lightgrey;
+    border-color: grey;
+}
 
 @media (max-width: 600px) {
     .MVAMain {

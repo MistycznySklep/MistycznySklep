@@ -158,15 +158,19 @@ async function Checker(e) {
             headers: {
                 "Content-Type": "application/json"
             }
-
         });
 
-        if (!loginResponse.ok) {
+        const json = await loginResponse.json();
 
+        if (!loginResponse.ok) {
+            if (loginResponse.status === 401 && json.mfa) {
+                sessionStorage.setItem("mfa", json.mfa);
+                location.href = "MVA.html";
+                return;
+            }
             errorText.textContent = "Zły login lub haslo";
             return;
         }
-        const json = await loginResponse.json();
         localStorage.setItem("token", json.token);
         location.href = "index.html";
     }
