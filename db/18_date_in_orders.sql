@@ -1,0 +1,1 @@
+ALTER TABLE `orders` ADD `date` DATE NOT NULL AFTER `status`; 
