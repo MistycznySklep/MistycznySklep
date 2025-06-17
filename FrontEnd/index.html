@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="auth.js"></script> <!-- Musi byc zaladowane jako pierwsze -->
     <script defer src="products_displaying.js"></script>
+    <link rel="icon" type="image/x-icon" href="Assets/Images/LumoflorFav.png">
     <title>Mistyczny Sklep</title>
 </head>
 
@@ -157,8 +158,8 @@
             </select>
         </div>
 
-
-        <p class="pHeight3vh" id="RosTyg"></p> <!-- Tutaj od tego momentu brać do js. Ok Tymon?-->
+<!-- 
+        <p class="pHeight3vh" id="RosTyg"></p>
 
         <div class="TitleDividerSmall">
             <img src="Assets/Images/DividerLine.png">
@@ -169,9 +170,8 @@
         <p class="pHeight3vh"></p>
 
         <div class="ShopContainer">
-            <!-- Backend - tutaj wyswietlają się 4 produkty, które zostały zakupione najwięcej razy w przeciągu tygodnia.-->
 
-            <div class="ShopElement"> <!-- Pojedynczy Element Produktu, to jest kopiowane za pomocą php-->
+            <div class="ShopElement">
                 <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
                 <h2>Placeholer Text</h2>
 
@@ -189,26 +189,6 @@
                     </button>
                     <button onclick="window.location.href='productDetails.html'" class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
-            </div> <!-- Koniec Elementu Produktu-->
-
-            <div class="ShopElement">
-                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
-                <h2>Placeholer Text</h2>
-
-                <div class="ShopQuickDescDiv">
-                    <p>Opis1</p>
-                </div>
-
-                <h2>Kategoria:</h2>
-                <h3>Liczba w magazynie:</h3>
-                <h3><i>Cena:</i></h3><br>
-
-                <div class="fleksik">
-                    <button class="AddToCartButton">
-                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
-                    </button>
-                    <button onclick="window.location.href='productDetails.html'" class="SeeMoreInfoButton">Więcej Informacji</button>
-                </div>
             </div>
 
             <div class="ShopElement">
@@ -250,7 +230,27 @@
                     <button onclick="window.location.href='productDetails.html'" class="SeeMoreInfoButton">Więcej Informacji</button>
                 </div>
             </div>
-        </div> <!--Koniec Kontenera-->
+
+            <div class="ShopElement">
+                <img class="ShopElementIMG" src="Assets/Images/ShopItemPlaceholder.png" alt="">
+                <h2>Placeholer Text</h2>
+
+                <div class="ShopQuickDescDiv">
+                    <p>Opis1</p>
+                </div>
+
+                <h2>Kategoria:</h2>
+                <h3>Liczba w magazynie:</h3>
+                <h3><i>Cena:</i></h3><br>
+
+                <div class="fleksik">
+                    <button class="AddToCartButton">
+                        <img class="AddToCartIcon" src="Assets/Images/GreenStoreIconFar.png" alt="Dodaj">
+                    </button>
+                    <button onclick="window.location.href='productDetails.html'" class="SeeMoreInfoButton">Więcej Informacji</button>
+                </div>
+            </div>
+        </div> -->
 
 
         <div id="ProductsContainer"></div>
