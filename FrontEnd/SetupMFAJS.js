@@ -59,6 +59,13 @@ document.querySelector(".MFASetup").querySelectorAll("input").forEach((input, in
                             }
                             document.getElementById("counter").textContent = counter === 1 ? "1 sekundę" : `${counter} sekund`;
                         }, 900);
+                    } else {
+                        document.getElementById("maybeError").style.color = "red";
+                        document.getElementById("maybeError").textContent = "Niepoprawny kod, wybierz kod z aplikacji";
+                        inputs.forEach(input => {
+                            input.value = "";
+                            input.disabled = false;
+                        });
                     }
                 });
         }
