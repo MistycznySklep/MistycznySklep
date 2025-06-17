@@ -100,10 +100,8 @@
                 <p>Dodaj swoje Magiczne Fundusze!</p>
                 <p class="pHeight2vh"></p>
 
-                <form class="FundsForm" action="" method="POST">
-                <input class="InputFunds" type="text" name="_code" placeholder="Tutaj wpisz kod..."><br>
-                <button type="submit">Submit Code</button>
-                </form>
+                <input class="InputFunds" type="text" name="_code" placeholder="Tutaj wpisz kod..." id="code"><br>
+                <button type="submit" id="codeThing">Submit Code</button>
 
             </div>
 
@@ -111,5 +109,14 @@
 
     </main>
 
+    <script>
+        const codeThing = document.getElementById("codeThing");
+        const code = document.getElementById("code");
+        codeThing.onclick = async () => {
+            API.RedeemCode(code.value).then(ReloadVariables);
+            code.value = 0;
+            return false;
+        };
+    </script>
 </body>
 </html>
