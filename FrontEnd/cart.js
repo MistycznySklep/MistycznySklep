@@ -32,6 +32,10 @@ const RefreshCarts = async () => {
 
         const minusBtn = document.createElement("button");
         minusBtn.textContent = "-";
+        minusBtn.onclick = async () => {
+            await API.DecrementCartItem(item.id);
+            await RefreshCarts();
+        };
 
         const quantityP = document.createElement("p");
         quantityP.textContent = item.quantity;

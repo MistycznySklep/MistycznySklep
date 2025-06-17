@@ -158,6 +158,16 @@ const API = {
 
         return json;
     },
+    DecrementCartItem: async cartId => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPatch(`/api/decrementCartitem.php?id=${cartId}`);
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
 };
 
 const ReloadVariables = async () => {
