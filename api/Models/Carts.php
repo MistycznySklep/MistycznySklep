@@ -16,7 +16,7 @@ class Carts extends Model
     }
     public function product(): Products
     {
-        return new Products($this->idAccounts);
+        return new Products($this->idProducts);
     }
 
     public function asJson(): mixed
