@@ -56,4 +56,4 @@ if (
 }
 
 
-echo json_encode(Products::all());
+echo json_encode(Products::all($_GET["q"] ?? ""));
