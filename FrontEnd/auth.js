@@ -114,6 +114,9 @@ const ReloadVariables = async () => {
     if (API.accessToken === null) return;
     try {
         const user = await API.LocalUser();
+        console.log(user);
+        if (location.href.includes("admin") && user.type !== "admin")
+            location.href = "index.html";
 
         const autoloadElements = document.getElementsByClassName("autoload");
         for (const autoload of autoloadElements) {
