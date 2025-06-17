@@ -46,23 +46,21 @@ a {
 }
 
 a:hover {
-    color: var(--textSzary);
-    text-shadow: 0 0 5px var(--textSzary);
+    color: var(--InputRozowy);
+    text-shadow: 0 0 5px var(--InputRozowy);
 
 }
 
 .formLogowanie {
+    padding-top: 20px;
     width: 500px;
     height: auto;
-    left: 50%;
     top: 53.5%;
-    transform: translate(-50%, -50%);
-    position: absolute;
+    justify-self: center;
     color: var(--textBrazowy);
     background-color: var(--brazowyBasic);
     border: 0.32vw solid var(--ciemnyBrazowyBorder);
     border-radius: 10px;
-
 
 
 
@@ -85,11 +83,11 @@ a:hover {
 
 form input {
     position: relative;
-    width: 96.5%;
+    width: 95.5%;
+    padding: 10px;
     height: 2vh;
     margin-top: 10px;
     margin-bottom: 40px;
-    padding: 7px;
     font-size: 15px;
     border-radius: 5px;
     background-color: var(--brazowyDark);
@@ -146,7 +144,7 @@ p.rejestracja {
 }
 
 a {
-    color: rgb(227, 56, 56);
+    color: var(--InputRozowy);
 }
 
 .hr {
@@ -211,7 +209,7 @@ hr span {
     position: relative;
     margin-block: 15px;
     text-align: center;
-    color: red;
+    color: rgb(227, 56, 56);
 }
 @media screen and (max-height: 900px) {
     .formLogowanie {

@@ -241,6 +241,10 @@ nav li {
     grid-template-columns: auto auto auto !important;
   }
 
+  .inventoryGrid {
+    grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5% !important;
+  }
+
   .ShopQuickDescDiv p {
     height: 4.7vh !important;
   }
@@ -405,6 +409,10 @@ menu a:hover {
     grid-template-columns: auto auto !important;
   }
 
+  .inventoryGrid {
+    grid-template-columns: 25% 25% 25% 25% !important;
+  }
+
   .ShopElement::after {
     top: -3.7vw !important;
   }
@@ -433,6 +441,15 @@ menu a:hover {
   #Username {
     display: none;
   }
+
+  .AddToCartDetails {
+    display: none;
+  }
+
+  .productDetailsFlex {
+    flex-direction: column !important;
+  }
+
 }
 
 @media (max-width: 1432px) {
@@ -443,6 +460,7 @@ menu a:hover {
 
 .ShopElement,
 .DivElement,
+.FiltrDiv,
 .FundsDiv {
   display: flex;
   flex-direction: column;
@@ -456,6 +474,29 @@ menu a:hover {
   border-radius: 10px;
 
   font-size: clamp(10px, 0.85vw, 0.85vw);
+}
+
+.FiltrDiv {
+  width: fit-content !important;
+  padding: 2vh 1.2vw 2vh 1.2vw;
+  justify-self: center;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.FiltrDiv button {
+    color: var(--textSzary);
+}
+
+.FiltrDiv button:hover {
+  scale: 1.05;
+  box-shadow: 0 0 3px 3px var(--akcentRozowy);
+  text-shadow: 0 0 5px var(--akcentRozowy);
+  color: var(--akcentRozowy);
 }
 
 .DivElement {
@@ -610,7 +651,7 @@ menu a:hover {
   display: none;
 }
 
-.ShopElement button, .FundsDiv button {
+.ShopElement button, .FundsDiv button, .infoDetails button, .FiltrDiv button {
   text-align: center;
   font-size: 0.78vw;
   height: 4vh;
@@ -628,6 +669,7 @@ menu a:hover {
 .FundsDiv button {
   color: var(--textSzary);
 }
+
 
 .FundsDiv button:hover {
   scale: 1.05;
@@ -745,6 +787,10 @@ menu a:hover {
 
 .pHeight20vh {
   height: 20vh;
+}
+
+.pHeight13vh {
+  height: 13vh;
 }
 
 .pHeight10vh {
@@ -935,4 +981,357 @@ menu a:hover {
   box-shadow: 0 0 3px 3px rgb(206, 132, 132);
   color: rgb(206, 132, 132);
   scale: 1.05;
+}
+
+/* Inventory */
+
+.inventoryGrid {
+  display: grid;
+  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  row-gap: 2vh;
+  width: 100%;
+}
+
+.inventoryGridItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  width: 80%;
+  aspect-ratio: 1 / 1;
+
+  font-size: clamp(15px, 1.2vw, 1.2vw);
+
+}
+
+.inventoryGridItem img {
+  width: 100%;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+  border-radius: 10px;
+}
+
+.inventoryGridItem p {
+  text-shadow: 0 0 5px var(--textSzary);
+  padding-top: 0.5vh;
+}
+
+.BrakPrzedmiotuWInventory {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+
+}
+
+.CartNazwa {
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.UsunFromCart {
+  text-align: center;
+  font-size: 0.78vw;
+  height: 4vh;
+  width: 12vw;
+  margin-top: 1.5vh;
+  padding: 0 1.5vw;
+
+  color: rgb(206, 132, 132);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.UsunFromCart:hover {
+  text-shadow: 0 0 5px rgb(206, 132, 132); /*rgb(63, 108, 150)*/
+  box-shadow: 0 0 3px 3px rgb(206, 132, 132);
+  color: rgb(206, 132, 132);
+  scale: 1.05;
+}
+
+
+/* Product Details */
+
+.productDetailsFlex {
+  display: flex;
+  width: 100%;
+}
+
+.productDetailsDiv {
+  width: 70%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  
+  padding: 15px;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+  border-radius: 10px;
+}
+
+.imageDetails {
+  width: 25%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+
+  background-color: var(--brazowyCiemniejszy);
+
+}
+
+.infoDetails {
+  
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 0.5vh;
+  margin-left: 1vw;
+  height: max-content;
+}
+
+.infoDetails p {
+  font-size: 150%;
+}
+
+
+.infoDetails h2 {
+  font-size: 180%;
+  font-weight: 600;
+}
+
+.infoDetails h1 {
+  font-size: 250%;
+}
+
+.pDesc2 {
+  overflow-wrap: break-word;
+  font-size: 120%;
+  margin-left: 1vw;
+}
+
+.DetailsQuickDescDiv {
+  overflow-wrap: break-word;
+
+  margin-top: 1vh;
+  padding: 5px 3px 5px 3px;
+
+  font-size: 70%;
+  border-top: 2px solid #2c1f16;
+  border-bottom: 2px solid #2c1f16;
+
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.DetailsCartAddButton {
+  width: 10vw !important;
+  margin-top: 1.5vh !important;
+}
+
+.DetailsCartAddButton p {
+  font-size: clamp(10px, 0.8vw, 0.8vw);
+  color: #2E882E;
+}
+
+.DetailsCartAddButton:hover {
+  text-shadow: 0 0 5px #2E882E;
+}
+
+.inventoryGridItem img {
+  width: 100%;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+  border-radius: 10px;
+}
+
+.inventoryGridItem p {
+  text-shadow: 0 0 5px var(--textSzary);
+  padding-top: 0.5vh;
+}
+
+.BrakPrzedmiotuWInventory {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+}
+
+
+.CartNazwa {
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.UsunFromCart {
+  text-align: center;
+  font-size: 0.78vw;
+  height: 4vh;
+  width: 12vw;
+  margin-top: 1.5vh;
+  padding: 0 1.5vw;
+
+  color: rgb(206, 132, 132);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.UsunFromCart:hover {
+  text-shadow: 0 0 5px rgb(206, 132, 132); /*rgb(63, 108, 150)*/
+  box-shadow: 0 0 3px 3px rgb(206, 132, 132);
+  color: rgb(206, 132, 132);
+  scale: 1.05;
+}
+
+/* Profile & Profile edit*/
+
+.ProfileDiv {
+  display: flex;
+  flex-direction: column;
+
+  color: var(--textSzary);
+
+  text-overflow: ellipsis !important;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyBasic);
+  border: clamp(3px, 0.32vw, 0.32vw) solid var(--ciemnyBrazowyBorder);
+  border-radius: 10px;
+
+  font-size: clamp(10px, 0.85vw, 0.85vw);
+}
+
+.ProfileDiv {
+  display: flex;
+  width: 70%;
+  height: 25vh;
+  padding: 25px;
+  justify-self: center;
+  flex-direction: row;
+}
+
+.ProfileDiv button {
+  color: var(--textSzary);
+  padding: 5px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+  font-size: 0.78vw;
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.ProfileDiv button:hover {
+  scale: 1.05;
+  text-shadow: 0 0 5px var(--textSzary) !important;
+  box-shadow: 0 0 3px 3px #cccccc !important;
+}
+
+.ProfileActions img {
+  display: flex;
+  justify-content: center;
+  border-radius: 7px;
+  width: 80%;
+  height: auto;
+}
+
+.ProfileActions {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1vh;
+}
+
+.ProfileActions button {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+
+.ProfileDetails {
+  width: 70%;
+  padding-left: 2vw;
+}
+
+.ProfileElementContainer {
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  width: 75%;
+  flex-wrap: wrap;
+  row-gap: 3vh;
+}
+
+.FiltrDiv select, .FiltrDiv option {
+  margin: 0 0.3vw 0.5vh 0.3vw;
+  padding: 0 0.8vw;
+  height: 4vh;
+
+  color: var(--textSzary);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+
+.FiltrDiv input {
+  margin: 0 0.3vw 0.5vh 0.3vw;
+  padding: 0 0.8vw;
+  height: 4vh;
+
+  color: var(--textSzary);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--brazowyCiemniejszy);
+
+  border: 0;
+  border-radius: 6px;
+  transition-duration: 400ms;
+}
+
+.FiltrFlex {
+  display: flex;
+  align-items: center;
+}
+
+.FiltrDiv input:focus,
+.FiltrDiv select:focus {
+
+  outline: none;
+  box-shadow: 0 0 3px 3px var(--akcentRozowy);
+  background-color: var(--ciemnyBrazowyBorder);
+  color: var(--akcentRozowy);
+
+}
+
+.FiltrFlex button {
+  padding: 0 0.6vw;
+}
+
+.FiltrFlex img {
+  width: clamp(25px, 1.8vw, 1.8vw) !important;
+  margin-bottom: 0vh;
+  transition-duration: 400ms;
+}
+
+.FiltrDiv button:hover img {
+  filter: drop-shadow(0px 0px 3px var(--textSzary));
+}
+
+.pWidth3vw {
+  width: 3vw;
 }

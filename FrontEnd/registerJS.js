@@ -57,7 +57,7 @@ function EmptyInputAproved(approvedInputs) {
     }
 }
 function ErrorInputColor(emptyInput) {
-    emptyInput.style.boxShadow = "0 0 3px 3px #ff0000";
+    emptyInput.style.boxShadow = "0 0 3px 3px rgb(227, 56, 56)";
     // console.log(emptyInput.name)
     let emptyLabel = document.querySelector(`label[for="${emptyInput.name}"]`)
     ErrorLabelColor(emptyLabel)
@@ -65,7 +65,7 @@ function ErrorInputColor(emptyInput) {
 
 }
 function ErrorLabelColor(emptyLabel) {
-    emptyLabel.style.color = "#ff0000";
+    emptyLabel.style.color = "rgb(227, 56, 56)";
 }
 
 function EmptyInputError(inputsNames) {
