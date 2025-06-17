@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="Assets/Styles/AdminPanel.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="auth.js"></script> <!-- Musi byc zaladowane jako pierwsze -->
-    <script defer src="products_displaying.js"></script>
     <link rel="icon" type="image/x-icon" href="Assets/Images/LumoflorFav.png">
     <title>Mistyczny Sklep</title>
 </head>
@@ -27,17 +26,27 @@
 
                 <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona
                             Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel Admina</b><img src="Assets/Images/AdminIcon.png" alt="Admin"></button></li> <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel
+                            Admina</b><img src="Assets/Images/AdminIcon.png" alt="Admin"></button></li>
+                <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
                 <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
                 <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
 
-                    <li><div class="HeaderSeperator"></div></li>
-                <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
-                <li><button class="HeaderIconButton" onclick="window.location.href='inventory.html'"><img onclick="" src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
-                <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload" data-autoload="localUser.balance"></span> zł</button></li>
-                    <li><div class="HeaderSeperator"></div></li>
-                <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li> <!--Dodać img jako LogOut-->
-                
+                <li>
+                    <div class="HeaderSeperator"></div>
+                </li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick=""
+                            src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='inventory.html'"><img onclick=""
+                            src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
+                <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload"
+                            data-autoload="localUser.balance"></span> zł</button></li>
+                <li>
+                    <div class="HeaderSeperator"></div>
+                </li>
+                <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li>
+                <!--Dodać img jako LogOut-->
+
             </ul>
         </nav>
     </header>
@@ -55,44 +64,71 @@
 
 
         <div class="PanelDiv">
-
-            <form id="formularzProduktu" action="" method="POST" enctype="multipart/form-data">
+            <div id="formularzProduktu">
                 <div class="InsideFormDiv">
                     <div class="InsideFormDiv2">
-                        <input type="text" name="_name" placeholder="Nazwa Produktu"><br>
+                        <input type="text" name="_name" id="name" placeholder="Nazwa Produktu"><br>
                         <div class="formSpaceBetween">
-                            <input type="text" name="_price" placeholder="Cena">
-                            <input type="text" name="_hex" placeholder="Kolor (#HEX)">
+                            <input type="text" name="_price" placeholder="Cena" id="johncena">
+                            <input type="text" name="_hex" placeholder="Kolor (#HEX)" id="kolor">
                         </div>
-                        <input type="text" name="_liczba" placeholder="Liczba w Magazynie"><br>
+                        <input type="text" name="_liczba" placeholder="Liczba w Magazynie" id="quantity"><br>
                     </div>
-                    <textarea class="descShort" name="_desc" id="" placeholder="Krótki Opis"></textarea>
+                    <textarea class="descShort" name="_desc" placeholder="Krótki Opis"
+                        id="description"></textarea>
                 </div>
 
                 <div class="formSpaceBetween">
-                            <select type="text" name="_kategoria" placeholder="Kategoria">
-                                <option value="">Grzyby</option>
-                                <option value="">Kwiaty</option>
-                                <option value="">Owoce</option>
-                                <option value="">Eliksiry</option>
-                                <option value="">Wyposażenie</option>
-                                
-                            </select>
+                    <select type="text" name="_kategoria" placeholder="Kategoria" id="cat">
+                        <option value="1">Wyposażenie</option>
+                        <option value="2">Kwiaty</option>
+                        <option value="3">Grzyby</option>
+                        <option value="4">Narośl</option>
+                        <option value="5">Nasiona</option>
+                        <option value="6">Owoce</option>
+                        <option value="7">Warzywa</option>
+                        <option value="8">Eliksiry</option>
 
-                            <label class="customFileInput2"><input class="inputFile" type="file" accept="image/png" name="_img"></label> <br>
-                        </div>
+                    </select>
+
+                    <label class="customFileInput2"><input class="inputFile" type="file" id="image-in"
+                            accept="image/png" name="_img"></label> <br>
+                </div>
 
                 <textarea class="descLong" name="_longDesc" id="" placeholder="Długi Opis"></textarea>
 
-                <button type="submit">Dodaj Produkt</button>
-
-            </form>  
+                <button type="submit" id="addProduct">Dodaj Produkt</button>
+            </div>
         </div>
 
         <p class="pHeight5vh"></p>
 
     </main>
+    <script>
+        const addProduct = document.getElementById("addProduct");
 
+        addProduct.onclick = () => {
+            console.log("onclick");
+            const file = document.getElementById("image-in").files[0];
+            const reader = new FileReader();
+
+
+            reader.onload = async () => {
+                console.log("onload");
+                const response = await API.AuthPost("/api/products.php", {
+                    name: document.getElementById("name").value,
+                    johncena: document.getElementById("johncena").value,
+                    kolor: document.getElementById("kolor").value,
+                    description: document.getElementById("description").value,
+                    image: reader.result,
+                    cat: document.getElementById("cat").value,
+                    quantity: document.getElementById("quantity").value,
+                });
+            }
+
+            reader.readAsDataURL(file);
+        };
+    </script>
 </body>
 
 </html>
