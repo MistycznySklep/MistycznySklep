@@ -53,7 +53,7 @@ a:hover {
 
 .formLogowanie {
     padding-top: 20px;
-    width: 500px;
+    width: 400px;
     height: auto;
     top: 53.5%;
     justify-self: center;
@@ -178,6 +178,7 @@ hr span {
     width: 90%;
     left: 2.5%;
     margin-block: 10px;
+    margin-bottom: 35px;
     border: 1px solid #fff;
     backdrop-filter: blur(50px);
     text-align: center;
