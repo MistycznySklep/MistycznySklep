@@ -789,6 +789,10 @@ menu a:hover {
   height: 20vh;
 }
 
+.pHeight13vh {
+  height: 13vh;
+}
+
 .pHeight10vh {
   height: 10vh;
 }
@@ -1303,7 +1307,6 @@ menu a:hover {
   display: flex;
   align-items: center;
 }
-
 
 .FiltrDiv input:focus,
 .FiltrDiv select:focus {
