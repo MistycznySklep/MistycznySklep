@@ -18,4 +18,4 @@ $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
 
-echo json_encode(Products::all());
+echo json_encode(Products::all($_GET["q"] ?? ""));
