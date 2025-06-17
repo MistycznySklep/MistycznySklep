@@ -67,6 +67,5 @@ const RefreshCarts = async () => {
         container.append(photoDiv, summaryDiv);
         cart.appendChild(container);
     }
-
 }
 RefreshCarts();
