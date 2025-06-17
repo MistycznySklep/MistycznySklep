@@ -90,12 +90,13 @@ const AddProductsToContainer = (products, categoryId, categoryName, categories) 
     }
 }
 
-window.onload = async () => {
-    const response = await API.GetProductList();
+const reloadProducts = async () => {
+    const response = await API.GetProductList(document.getElementById("query_thing").value);
     const categories = await API.GetCategoryList();
     const subcategories = await API.GetSubCategoryList();
 
     let displayedCategories = [];
+    ProductsContainer.innerHTML = "";
     for (const product of response) {
         if (displayedCategories.includes(subcategories[product.idProduct_subcategories].idCategories)) continue;
         displayedCategories.push(subcategories[product.idProduct_subcategories].idCategories);
@@ -103,3 +104,5 @@ window.onload = async () => {
         AddProductsToContainer(response, subcategories[product.idProduct_subcategories].idCategories, categories[subcategories[product.idProduct_subcategories].idCategories], subcategories);
     }
 };
+window.onload = reloadProducts;
+document.getElementById("query_thing").onchange = reloadProducts;

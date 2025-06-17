@@ -13,7 +13,7 @@ class Products extends Model
     public string $hexColor;
     public int $idImgs;
 
-    public static function all(int $userId): array {
+    public static function all(string $query = ""): array {
         $db = Database::getInstance();
         $result = $db->query("select idProducts from products where ");
         $products = [];
