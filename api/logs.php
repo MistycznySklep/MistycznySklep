@@ -17,6 +17,9 @@ $db = new Database($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_E
 $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
+if ($account->type !== "admin") {
+    HttpUtils::Status(403, "Access denied");
+}
 
 echo json_encode([
     "username" => $account->username,
