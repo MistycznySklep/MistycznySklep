@@ -116,6 +116,16 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
+    },
+    AddToCart: async productId => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/addToCart.php`, { productId });
+        if (response.status === 201) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
     }
 };
 
