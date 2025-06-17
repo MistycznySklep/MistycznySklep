@@ -171,8 +171,8 @@ const API = {
     FinaliseOrder: async () => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
-        const response = await API.AuthPost(`/api/finalise.php?id=${cartId}`, {});
-        if (response.status === 204) return null;
+        const response = await API.AuthPost(`/api/finalise.php`, {});
+        if (response.status === 200) return null;
         const json = await response.json();
         if (!response.ok) throw new Error(json);
 

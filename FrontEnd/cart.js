@@ -78,6 +78,7 @@ const RefreshCarts = async () => {
 document.getElementById("placeOrderButton").onclick = async () => {
     await API.FinaliseOrder();
     await RefreshCarts();
+    await ReloadVariables();
 };
 
 RefreshCarts();

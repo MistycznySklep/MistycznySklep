@@ -2,6 +2,7 @@
 require_once "misc.php";
 require_once "Models/Accounts.php";
 require_once "Models/LoginToken.php";
+require_once "Models/Carts.php";
 
 header("Content-Type: application/json");
 
@@ -28,6 +29,8 @@ foreach ($items as $item) {
 if ($account->balance < $totalCost) {
     HttpUtils::Status(401, "Insufficient balance");
 }
-$account->balance = $totalCost;
+$account->balance -= $totalCost;
 $account->Save();
 
+foreach ($items as $item)
+    $item->Delete();

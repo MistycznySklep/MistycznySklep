@@ -247,8 +247,9 @@ abstract class Model
         $db = Database::getInstance();
         $idColumn = $this->idColumn;
         $idValue = $this->$idColumn;
-        $sql = "delete from $this->tableName where $idColumn = idValue;";
+        $sql = "delete from $this->tableName where $idColumn = $idValue;";
         $result = $db->query($sql);
+        print_r($sql);
         HttpUtils::Assert($result !== false, "SQL Error: $sql");
     }
  }
