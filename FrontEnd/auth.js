@@ -15,6 +15,28 @@ const API = {
             }
         });
     },
+    AuthDelete: async (url) => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        return await fetch(url, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: API.accessToken
+            },
+            method: "DELETE"
+        });
+    },
+    AuthPatch: async (url) => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        return await fetch(url, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: API.accessToken
+            },
+            method: "PATCH"
+        });
+    },
     AuthPost: async (url, body) => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
@@ -77,13 +99,84 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
-    }
+    },
+    GetAccounts: async () => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthGet("/api/accounts.php");
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    DeleteAccount: async id => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthDelete(`/api/accounts.php?id=${id}`);
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    GetCartProducts: async () => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthGet("/api/cart.php");
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    AddToCart: async productId => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/addToCart.php`, { productId });
+        if (response.status === 201) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    DeleteFromCart: async cartId => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthDelete(`/api/deleteFromCart.php?id=${cartId}`);
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    IncrementCartItem: async cartId => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPatch(`/api/incrementCartitem.php?id=${cartId}`);
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    DecrementCartItem: async cartId => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPatch(`/api/decrementCartitem.php?id=${cartId}`);
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
 };
 
 const ReloadVariables = async () => {
     if (API.accessToken === null) return;
     try {
         const user = await API.LocalUser();
+        console.log(user);
+        if (location.href.includes("admin") && user.type !== "admin")
+            location.href = "index.html";
 
         const autoloadElements = document.getElementsByClassName("autoload");
         for (const autoload of autoloadElements) {
@@ -99,4 +192,4 @@ const ReloadVariables = async () => {
     }
 };
 
-window.onload = ReloadVariables;
+window.addEventListener("load", ReloadVariables);

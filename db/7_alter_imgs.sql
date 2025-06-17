@@ -1,6 +1,3 @@
-ALTER TABLE imgs CHANGE idImgs
-idImgs INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (idImgs);
-
 INSERT INTO 
 imgs (idImgs, name) 
 VALUES 

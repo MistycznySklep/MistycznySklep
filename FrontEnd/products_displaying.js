@@ -28,7 +28,6 @@ const AddProductsToContainer = (products, categoryId, categoryName, categories) 
     ProductsContainer.appendChild(container);
 
     for (const product of products) {
-        console.log(categories[product.idProduct_subcategories]);
         if (categories[product.idProduct_subcategories].idCategories != categoryId) continue;
 
         const productDiv = document.createElement("div");
@@ -72,6 +71,9 @@ const AddProductsToContainer = (products, categoryId, categoryName, categories) 
 
         const addButton = document.createElement("button");
         addButton.classList.add("AddToCartButton");
+        addButton.onclick = async () => {
+            await API.AddToCart(product.idProducts);
+        };
         const addIcon = document.createElement("img");
         addIcon.classList.add("AddToCartIcon");
         addIcon.src = "Assets/Images/GreenStoreIconFar.png";
@@ -92,8 +94,6 @@ window.onload = async () => {
     const response = await API.GetProductList();
     const categories = await API.GetCategoryList();
     const subcategories = await API.GetSubCategoryList();
-    console.log(subcategories);
-    console.log(categories);
 
     let displayedCategories = [];
     for (const product of response) {

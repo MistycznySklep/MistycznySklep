@@ -1,7 +1,7 @@
 <?php
 require_once "misc.php";
 require_once "Models/Accounts.php";
-require_once "Models/LoginToken.php";
+require_once "Models/Carts.php";
 
 header("Content-Type: application/json");
 
@@ -18,8 +18,16 @@ $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
 
-echo json_encode([
-    "username" => $account->username,
-    "balance" => $account->balance,
-    "type" => $account->type
-]);
+if (!isset($_GET["id"])) {
+    HttpUtils::Status(400, "Missing field: productId");
+}
+
+$cartId = Database::getInstance()->real_escape_string($_GET["id"]);
+
+$idAccount = $account->idAccounts;
+$sql = "delete from carts where idCarts = ? and idAccounts = $idAccount;";
+$stmt = Database::getInstance()->prepare($sql);
+$stmt->bind_param("i", $cartId);
+$stmt->execute();
+http_response_code(204);
+?>
