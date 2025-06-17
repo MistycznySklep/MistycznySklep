@@ -27,6 +27,7 @@ class Carts extends Model
             "quantity" => $this->quantity
         ];
     }
+  
     /**
      * @return Carts[]
      */
