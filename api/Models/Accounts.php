@@ -45,11 +45,11 @@ class Accounts extends Model
     {
         $db = Database::getInstance();
 
-        $stmt = mysqli_prepare($db, "SELECT idAccounts, login, username, password, email, type, balance FROM accounts");
+        $stmt = mysqli_prepare($db, "SELECT idAccounts, login, username, email, type, balance FROM accounts");
         if (!$stmt) return [];
 
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $id, $login, $username, $password, $email, $type, $balance);
+        mysqli_stmt_bind_result($stmt, $id, $login, $username, $email, $type, $balance);
 
         $accounts = [];
 
@@ -60,7 +60,6 @@ class Accounts extends Model
             $instance->idAccounts = $id;
             $instance->login = $login;
             $instance->username = $username;
-            $instance->password = $password;
             $instance->email = $email;
             $instance->type = $type;
             $instance->balance = $balance;
