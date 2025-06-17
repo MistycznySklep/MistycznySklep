@@ -11,9 +11,12 @@ Lumoflor to jedyna w swoim rodzaju strona, gdzie kupisz magiczne rośliny! Produ
 
 -Składanie zamówień  
 
--Przeglądanie swojego magazynu (produkty, które zakupiłeś w jednym miejscu)  
+-Przeglądanie swojego magazynu
 
--Przeglądanie historii zamówień
+-Przeglądanie historii zamówień  
+
+-Ustawienie/zmiana opisu oraz zdjęcia profilowego
+
 
 ## Jako administrator
 -Edycja i dodawanie produktów  
@@ -31,9 +34,8 @@ Lumoflor to jedyna w swoim rodzaju strona, gdzie kupisz magiczne rośliny! Produ
 2. Odpalając projekt lokalnie
 
 ## Odpalenie Lumofloru lokalnie:
-
-
-Use .env to store secrets (.env.example contains the template)
+1. Sklonuj repozyturium z GitHuba
+2. Use .env to store secrets (.env.example contains the template)
 ```env
 DB_HOST=
 DB_USER=
@@ -41,4 +43,5 @@ DB_PASSWORD=
 DB_NAME=
 ```
 
-Create a directory called `userImages` for dynamic images
+3. Create a directory called `userImages` for dynamic images
+4. Zimportuj lokalnie do XAMPPa bazę danych
