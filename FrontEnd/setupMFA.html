@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie</title>
+    <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css">
+    <link rel="stylesheet" href="Assets/Styles/LoginCSS.css">
+    <link rel="stylesheet" href="Assets/Styles/MVACSS.css">
+    <link rel="stylesheet" href="Assets/Styles/MFASetup.css">
+    <script src="auth.js"></script> <!-- Musi byc zaladowane jako pierwsze -->
+    <script defer src="SetupMFAJS.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="pasek">
+                <li>
+                    <p id="HeaderTitleLogin">Lumoflor - Mistyczny Sklep Ogrodniczy!</p>
+                </li>
+                <li></li>
+            </ul>
+        </nav>
+    </header>
+    <p class="pHeight13vh"></p>
+    <div class="TitleDividerSmall">
+        <p>Ustawianie MFA</p>
+    </div>
+    <div id="setupMFA">
+        <div class="MFASections">
+            <div class="mfaLeft">
+                <label for="mfaSecret">Twój sekret:</label>
+                <input type="text" id="mfaSecret" readonly placeholder="Ładowanie...">
+            </div>
+            <div class="mfaDivider"></div>
+            <div class="mfaRight">
+                <img id="mfaQr" src="Assets/Images/loading.gif" alt="Ładowanie kodu QR">
+            </div>
+        </div>
+        <button id="nextStep" disabled>Mam kod</button>
+    </div>
+    <div id="finishMFA">
+        <h1>Wpisz kod z aplikacji</h1>
+        <div class="MFASetup">
+            <div class="numberDiv">
+                <input type="number" id="1" class="number" maxlength="1">
+            </div>
+            <div class="numberDiv">
+                <input type="number" id="2" class="number" maxlength="1">
+            </div>
+            <div class="numberDiv">
+                <input type="number" id="3" class="number" maxlength="1">
+            </div>
+            <div class="numberDiv">
+                <input type="number" id="4" class="number" maxlength="1">
+            </div>
+            <div class="numberDiv">
+                <input type="number" id="5" class="number" maxlength="1">
+            </div>
+            <div class="numberDiv">
+                <input type="number" id="6" class="number" maxlength="1">
+            </div>
+        </div>
+        <button id="goBack">Jednak nie mam</button>
+    </div>
+    <div id="success">
+        <h2>Udało się</h2>
+        <i>Przekierowanie nastąpi za <span id="counter"></span>...</i>
+    </div>
+</body>
+
+</html>

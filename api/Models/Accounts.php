@@ -19,7 +19,8 @@ class Accounts extends Model
         string $password,
         string $email,
         string $type,
-        float $balance
+        float $balance,
+        string | null $MFA_token = null
     ) {
         $this->login = $login;
         $this->username = $username;
@@ -27,6 +28,8 @@ class Accounts extends Model
         $this->email = $email;
         $this->type = $type;
         $this->balance = $balance;
+        $this->MFA_token = $MFA_token;
+
         $this->Insert();
     }
 
@@ -79,4 +82,5 @@ class Accounts extends Model
     public string $email;
     public string $type;
     public float $balance;
+    public string | null $MFA_token;
 }

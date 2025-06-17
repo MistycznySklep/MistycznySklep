@@ -488,3 +488,41 @@ function GetAccountOrDie(string $token): Accounts
 
     return Accounts::fromId($row["idAccounts"]);
 }
+
+function base32Decode(string $b32): string {
+    $alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+    $b32 = strtoupper($b32);
+    $binary = '';
+    $buffer = 0;
+    $bitsLeft = 0;
+    foreach (str_split($b32) as $char) {
+        $val = strpos($alphabet, $char);
+        if ($val === false) continue;
+        $buffer = ($buffer << 5) | $val;
+        $bitsLeft += 5;
+        if ($bitsLeft >= 8) {
+            $bitsLeft -= 8;
+            $binary .= chr($buffer >> $bitsLeft & 0xFF);
+        }
+    }
+    return $binary;
+}
+
+function generateCode(string $secret, int $timeSlice): string {
+    $key = base32Decode($secret);
+    $time = pack('N*', 0) . pack('N*', $timeSlice);
+    $hash = hash_hmac('sha1', $time, $key, true);
+    $offset = ord($hash[19]) & 0xF;
+    $truncated = unpack('N', substr($hash, $offset, 4))[1] & 0x7FFFFFFF;
+    return str_pad($truncated % 1000000, 6, '0', STR_PAD_LEFT);
+}
+
+function verifyCode(string $secret, string $code, int $window = 1): bool {
+    $timeSlice = floor(time() / 30);
+    for ($i = -$window; $i <= $window; $i++) {
+        if (generateCode($secret, $timeSlice + $i) === $code) {
+            return true;
+        }
+    }
+    return false;
+}
