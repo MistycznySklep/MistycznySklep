@@ -1,5 +1,10 @@
 <?php
 
+const LogNewAccount = 1;
+const LogFailedLogin = 2;
+const LogSuccessfulLogin = 3;
+
+
 if (isset(getallheaders()["Content-Type"]) && getallheaders()["Content-Type"] === "application/json") {
     $_POST = json_decode(file_get_contents("php://input"), true);
 }
