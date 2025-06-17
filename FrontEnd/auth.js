@@ -186,6 +186,16 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
+    },
+    RedeemCode: async code => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/redeem.php`, { code });
+        if (response.status === 200) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
     }
 };
 
