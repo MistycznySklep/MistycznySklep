@@ -43,6 +43,16 @@ $expirationDate = (new DateTime())->add(DateInterval::createFromDateString("7 da
 $ip = Database::getInstance()->real_escape_string($_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER["REMOTE_ADDR"] ?? "");
 
 $token = LoginToken::create($tokenValue, getallheaders()["User-Agent"] ?? "", $account->idAccounts, $expirationDate, $ip);
+
+$tokenId = $token->idLogin_token;
+$id = $account->idAccounts;
+$sql = "insert into admin_log_details (idAccount, idToken) values ($id, $tokenId);";
+Database::getInstance()->query($sql);
+$detailsId = Database::getInstance()->insert_id;
+$type = LogNewAccount;
+$sql = "insert into admin_logs (type, idDetails) values ($type, $detailsId);";
+Database::getInstance()->query($sql);
+
 echo json_encode([
     "name" => $account->username,
     "token" => $token->value
