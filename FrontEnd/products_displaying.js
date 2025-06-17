@@ -71,6 +71,9 @@ const AddProductsToContainer = (products, categoryId, categoryName, categories) 
 
         const addButton = document.createElement("button");
         addButton.classList.add("AddToCartButton");
+        addButton.onclick = async () => {
+            await API.AddToCart(product.idProducts);
+        };
         const addIcon = document.createElement("img");
         addIcon.classList.add("AddToCartIcon");
         addIcon.src = "Assets/Images/GreenStoreIconFar.png";

@@ -26,6 +26,17 @@ const API = {
             method: "DELETE"
         });
     },
+    AuthPatch: async (url) => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        return await fetch(url, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: API.accessToken
+            },
+            method: "PATCH"
+        });
+    },
     AuthPost: async (url, body) => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
@@ -116,7 +127,47 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
-    }
+    },
+    AddToCart: async productId => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/addToCart.php`, { productId });
+        if (response.status === 201) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    DeleteFromCart: async cartId => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthDelete(`/api/deleteFromCart.php?id=${cartId}`);
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    IncrementCartItem: async cartId => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPatch(`/api/incrementCartitem.php?id=${cartId}`);
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    DecrementCartItem: async cartId => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPatch(`/api/decrementCartitem.php?id=${cartId}`);
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
 };
 
 const ReloadVariables = async () => {
