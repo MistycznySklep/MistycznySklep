@@ -67,6 +67,15 @@ const API = {
 
         return json;
     },
+    GetInventory: async () => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthGet("/api/inventory.php");
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
     GetCategoryList: async () => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
@@ -177,6 +186,25 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
+    },
+    RedeemCode: async code => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/redeem.php`, { code });
+        if (response.status === 200) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    FetchLogs: async () => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthGet("/api/logs.php");
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
     }
 };
 
@@ -198,7 +226,7 @@ const ReloadVariables = async () => {
             }
         }
     } catch (e) {
-        if (!location.href.includes("login.html")) location.href = "login.html";
+        if (!location.href.includes("login.html") && !location.href.includes("MVA.html") && !location.href.includes("register.html")) location.href = "login.html";
     }
 };
 

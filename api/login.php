@@ -46,6 +46,16 @@ if (!password_verify($password, $row["password"])) {
 $id = $row["idAccounts"];
 $account = Accounts::fromId($id);
 
+if ($account->MFA_token !== null && !empty($account->MFA_token)) {
+    $mfaToken = base64_encode(string: random_bytes(24));
+    $mfaTokenSql = Database::getInstance()->real_escape_string($mfaToken);
+    $sql = "insert into awaiting_mfa_logins (token, expires_at, idAccounts) values ('$mfaTokenSql', curdate(), $id);";
+    Database::getInstance()->query($sql);
+    HttpUtils::Status(401,[
+        "mfa" => $mfaToken,
+    ]);
+}
+
 $tokenValue = base64_encode(string: random_bytes(32));
 $expirationDate = (new DateTime())->add(DateInterval::createFromDateString("7 days"));
 $ip = Database::getInstance()->real_escape_string($_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER["REMOTE_ADDR"] ?? "");

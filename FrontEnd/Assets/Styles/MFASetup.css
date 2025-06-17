@@ -1,0 +1,113 @@
+#finishMFA {
+    display: none;
+    position: absolute;
+    padding-top: 20px;
+    width: 500px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-self: center;
+    color: var(--textBrazowy);
+    background-color: var(--brazowyBasic);
+    border: 0.32vw solid var(--ciemnyBrazowyBorder);
+    border-radius: 10px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 50px;
+}
+.MFASetup {
+    position: relative;
+    justify-self: center;
+    color: var(--textBrazowy);
+    background-color: var(--brazowyBasic);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 50px
+}
+
+#setupMFA {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #deadda;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: fit-content;
+    margin: 2rem auto;
+    background-color: var(--brazowyBasic);
+    gap: 2rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.MFASections {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: fit-content;
+    margin: 2rem auto;
+    gap: 2rem;
+}
+
+.mfaLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: sans-serif;
+}
+
+.mfaLeft input {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    width: 20rem;
+    background-color: var(--brazowyBasic);
+    outline: none;
+}
+.mfaLeft input::placeholder {
+    font-style: italic;
+}
+
+.mfaDivider {
+    width: 2px;
+    background-color: #ddd;
+    height: 120px;
+}
+
+.mfaRight img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border: 1px solid #deadda;
+    border-radius: 0.5rem;
+}
+
+#nextStep, #goBack {
+    background-color: var(--akcentRozowy);
+    border: 0;
+    padding-block: 15px;
+    padding-inline: 15px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+#nextStep:disabled {
+    cursor: not-allowed;
+    background-color: grey;
+}
+
+#success {
+    display: none;
+    font-size: 3rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#success h2 {
+    color: lightgreen;
+}

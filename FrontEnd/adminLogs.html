@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Assets/Styles/AdminPanel.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="auth.js"></script> <!-- Musi byc zaladowane jako pierwsze -->
-    <script defer src="products_displaying.js"></script>
+    <script defer src="logs.js"></script>
     <title>Mistyczny Sklep</title>
 </head>
 
@@ -26,9 +26,7 @@
 
                 <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona
                             Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel
-                            Admina</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
-                <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel Admina</b><img src="Assets/Images/AdminIcon.png" alt="Admin"></button></li> <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
                 <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
 
                     <li><div class="HeaderSeperator"></div></li>
@@ -50,67 +48,8 @@
             <img src="Assets/Images/DividerLine.png">
 
         </div>
-
-        
-            <p class="pHeight3vh"></p>
-
-
-
-            <div class="PanelDiv TableDiv"> <!-- Jeden element. To jest kopiowane za pomocą php itd.-->
-
-                <table>
-                    
-                    <tr>
-                        <th>ID</th>
-                        <th>Typ</th>
-                        <th>Data</th>
-                        <th>Nazwa Konta</th>
-                        <th>Agent</th>
-                        <th>Ostatnie IP</th>
-
-                    </tr>
-                    <tr>
-                        <td class="tableWidth2vw">1</td>
-                        <td class="tableWidth10vw">failed_login</td>
-                        <td class="tableWidth10vw">2025-23-23</td>
-                        <td class="tableWidth12vw">HasloOkok (hash hasła)</td>
-                        <td class="tableWidth7vw">jakiś agent</td>
-                        <td class="tableWidth7vw">000000 ip lol</td>
-                    </tr>
-
-                </table>
-            </div>
-
-            <div class="PanelDiv TableDiv"> <!-- Jeden element. To jest kopiowane za pomocą php itd.-->
-
-                <table>
-                    
-                    <tr>
-                        <th>ID</th>
-                        <th>Typ</th>
-                        <th>Data</th>
-                        <th>Nazwa Konta</th>
-                        <th>Agent</th>
-                        <th>Ostatnie IP</th>
-
-                    </tr>
-                    <tr>
-                        <td class="tableWidth2vw">1</td>
-                        <td class="tableWidth10vw">failed_login</td>
-                        <td class="tableWidth10vw">2025-23-23</td>
-                        <td class="tableWidth12vw">HasloOkok (hash hasła)</td>
-                        <td class="tableWidth7vw">jakiś agent</td>
-                        <td class="tableWidth7vw">000000 ip lol</td>
-                    </tr>
-
-                </table>
-            </div>
-
-            
-
-
-        <p class="pHeight5vh"></p>
-
+        <div id="logi">
+        </div>
     </main>
 
 </body>

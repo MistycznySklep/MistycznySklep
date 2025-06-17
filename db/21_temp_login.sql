@@ -1,0 +1,2 @@
+create table awaiting_mfa_logins (id int primary key auto_increment, token text not null, expires_at datetime not null, idAccounts int not null);
+alter table awaiting_mfa_logins add constraint fk_awaiting_mfa_login_accounts foreign key (idAccounts) references accounts(idAccounts);
