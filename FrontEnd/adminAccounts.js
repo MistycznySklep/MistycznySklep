@@ -1,6 +1,8 @@
 const container = document.getElementById("userTableContainer");
 
-API.GetAccounts().then(users => {
+const refreshAccountList = async () => {
+    const users = await API.GetAccounts();
+    container.innerHTML = "";
     for (const user of users) {
         const panelDiv = document.createElement("div");
         panelDiv.className = "PanelDiv TableDiv";
@@ -43,6 +45,10 @@ API.GetAccounts().then(users => {
         const removeLink = document.createElement("a");
         removeLink.className = "adminRemovehref";
         removeLink.textContent = "Usuń";
+        removeLink.onclick = async () => {
+            await API.DeleteAccount(user.idAccounts);
+            await refreshAccountList();
+        };
 
         actionsDiv.appendChild(removeLink);
         tdActions.appendChild(actionsDiv);
@@ -53,4 +59,5 @@ API.GetAccounts().then(users => {
         panelDiv.appendChild(table);
         container.appendChild(panelDiv);
     }
-})
+}
+refreshAccountList();
