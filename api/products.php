@@ -42,7 +42,7 @@ if (
         $id = Database::getInstance()->insert_id;
 
         $fileName = "$id.png";
-        $filePath = __DIR__ . "/userImages/$fileName";
+        $filePath = __DIR__ . "/../userImages/$fileName";
 
         file_put_contents($filePath, $data);
         $sql = "insert into products values (NULL, ?, ?, ?, ?, null, ?, ?, $id);";
