@@ -49,7 +49,7 @@
                 <li><a href="#Rośliny"><b>Rośliny</b></a></li>
                 <li><a href="#Nasiona"><b>Nasiona</b></a></li>
                 <li><a href="#Eliksiry"><b>Eliksiry</b></a></li>
-                <li><a href="#Wyposazenie"><b>Wyposażenie</b></a></li>
+                <li><a href="#Wyposażenia"><b>Wyposażenie</b></a></li>
             </ul>
         </nav>
     </menu>
@@ -103,7 +103,7 @@
 
         <div class="ElementContainer" id="Kategorie">
 
-            <div onclick="window.location.href='index.html#Rosliny'" class="DivElement KategoriaDiv KatRosliny">
+            <div onclick="window.location.href='index.html#Rośliny'" class="DivElement KategoriaDiv KatRosliny">
                 <b>Rośliny</b>
                 <div class="pKategorie">
                     <p>Magiczne efekty, specjalne właściwości czy składniki do własnej roboty mikstur. Znajdziesz tu
@@ -117,7 +117,7 @@
                         mikstury o najróżniejszych efektach.</p>
                 </div>
             </div>
-            <div onclick="window.location.href='index.html#Wyposazenie'" class="DivElement KategoriaDiv KatWyposazenie">
+            <div onclick="window.location.href='index.html#Wyposażenia'" class="DivElement KategoriaDiv KatWyposazenie">
                 <b>Wyposażenie</b>
                 <div class="pKategorie">
                     <p>Narzędzia do ogrodnictwa. Magiczne rękawice, Nożyce będące w stanie wytrzymać wysokie
@@ -128,7 +128,37 @@
         </div>
         </div>
 
-        <p class="pHeight3vh" id="RosTyg"></p>
+
+        <div class="TitleDividerSmall">
+            <p>Filtrowanie:</p>
+        </div>
+
+        <div class="FiltrDiv">
+            
+            <div class="FiltrFlex">
+                <input placeholder="Szukaj" type="text">
+                <button><img src="Assets/Images/LupaIcon.png"></button> <!-- Uruchamia search-->
+            </div>
+
+            <p class="pWidth3vw"></p>
+
+            <select name="" id="">
+                <option>Wyświetl Wszystkie</option> <!--Wszystkie podkategorie-->
+
+                <!--Reszta <option> brane z bazy i filtruje np.
+                    
+                    <option>Kwiaty</option>
+                    <option>Grzyby</option>
+                    <option>Eliksiry</option>
+                    <option>Wyposażenie</option> -->
+                    
+                    <option>Testowy jakiś</option>
+
+            </select>
+        </div>
+
+
+        <p class="pHeight3vh" id="RosTyg"></p> <!-- Tutaj od tego momentu brać do js. Ok Tymon?-->
 
         <div class="TitleDividerSmall">
             <img src="Assets/Images/DividerLine.png">
@@ -222,13 +252,8 @@
             </div>
         </div> <!--Koniec Kontenera-->
 
-        <p class="pHeight3vh" id="Rosliny"></p>
-
-        <p class="pHeight3vh"></p>
 
         <div id="ProductsContainer"></div>
-
-        <p class="pHeight3vh" id="Nasiona"></p>
 
         <p class="pHeight5vh"></p>
 
