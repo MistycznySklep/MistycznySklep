@@ -27,7 +27,10 @@ class Carts extends Model
             "quantity" => $this->quantity
         ];
     }
-
+  
+    /**
+     * @return Carts[]
+     */
     public static function all(int $userId): array
     {
         $db = Database::getInstance();
