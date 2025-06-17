@@ -1,0 +1,1 @@
+ALTER TABLE inventory ADD UNIQUE INDEX uq_product_account (idProducts, idAccounts);

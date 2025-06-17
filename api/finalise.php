@@ -32,5 +32,14 @@ if ($account->balance < $totalCost) {
 $account->balance -= $totalCost;
 $account->Save();
 
-foreach ($items as $item)
+foreach ($items as $item) {
+    $sql = "INSERT INTO inventory (idProducts, idAccounts, quantity)
+            VALUES (?, ?, ?)
+            ON DUPLICATE KEY UPDATE quantity = quantity + VALUES(quantity)";
+
+    $stmt = Database::getInstance()->prepare($sql);
+    $stmt->bind_param("iii", $item->idProducts, $account->idAccounts, $item->quantity);
+    $stmt->execute();
+
     $item->Delete();
+}
