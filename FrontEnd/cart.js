@@ -38,6 +38,10 @@ const RefreshCarts = async () => {
 
         const plusBtn = document.createElement("button");
         plusBtn.textContent = "+";
+        plusBtn.onclick = async () => {
+            await API.IncrementCartItem(item.id);
+            await RefreshCarts();
+        };
 
         quantityDiv.append(minusBtn, quantityP, plusBtn);
 
