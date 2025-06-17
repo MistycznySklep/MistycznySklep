@@ -2,10 +2,21 @@
 
 Lumoflor to jedyna w swoim rodzaju strona, gdzie kupisz magiczne rośliny! Produkty pochodzą ze 100% legalnego źródła i są regularnie uzupełniane.
 
-## Jako użytkownik:
+## Jako użytkownik
+-Przeglądanie wszsytkich produktów: sortowanie, filtrowanie, szukanie po nazwie
+-Dogłębne dowiedzenie się o magicznych atrybutach każdego z produktów
+-Korzystanie z koszyka
+-Składanie zamówień
+-Przeglądanie swojego magazynu (produkty, które zakupiłeś w jednym miejscu)
+-Przeglądanie historii zamówień
 
+## Jako administrator
+-Edycja i dodawanie produktów
+-Przegląd, edycja kont
+-Widok na logi
 
-## Jako administrator:
+## Dodatkowe funkcje
+-MFA
 
 
 ## Są dwa sposoby, przez które można przeglądać stronę:
