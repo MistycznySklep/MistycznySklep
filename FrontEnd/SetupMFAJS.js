@@ -53,7 +53,7 @@ document.querySelector(".MFASetup").querySelectorAll("input").forEach((input, in
                         let counter = 3;
                         document.getElementById("counter").textContent = `${counter} sekund`;
                         let interval = setInterval(() => {
-                            if (-- counter <= 0) {
+                            if (--counter <= 0) {
                                 clearInterval(interval);
                                 location.href = "index.html";
                             }
