@@ -1,6 +1,6 @@
 <?php
 require_once "misc.php";
-require_once "Accounts.php";
+require_once "Models/Accounts.php";
 require_once "Models/Products.php";
 
 class Carts extends Model

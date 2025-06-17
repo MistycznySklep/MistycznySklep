@@ -20,5 +20,6 @@ $account = GetAccountOrDie($token);
 
 echo json_encode([
     "username" => $account->username,
-    "balance" => $account->balance
+    "balance" => $account->balance,
+    "type" => $account->type
 ]);
