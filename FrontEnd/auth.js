@@ -77,6 +77,15 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
+    },
+    GetAccounts: async () => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthGet("/api/accounts.php");
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
     }
 };
 

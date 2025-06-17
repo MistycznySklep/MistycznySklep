@@ -1,6 +1,6 @@
 <?php
 require_once "misc.php";
-require_once "Accounts.php";
+require_once "Models/Accounts.php";
 
 // CREATE TABLE `login_token` (
 //   `idLogin_token` int(11) NOT NULL AUTO_INCREMENT,

@@ -1,17 +1,14 @@
-const container = document.getElementById("categoryTableContainer");
+const container = document.getElementById("userTableContainer");
 
-API.GetSubCategoryList().then(async categories => {
-    const parentCategories = await API.GetCategoryList();
-
-    for (const categoryId in categories) {
-        const category = categories[categoryId];
+API.GetAccounts().then(users => {
+    for (const user of users) {
         const panelDiv = document.createElement("div");
         panelDiv.className = "PanelDiv TableDiv";
 
         const table = document.createElement("table");
 
         const headerRow = document.createElement("tr");
-        const headers = ["ID", "Nazwa Kategorii", "Typ Kategorii", "Akcje"];
+        const headers = ["ID", "Login", "Nazwa", "E-mail", "Akcje"];
         for (const text of headers) {
             const th = document.createElement("th");
             th.textContent = text;
@@ -23,39 +20,37 @@ API.GetSubCategoryList().then(async categories => {
 
         const tdId = document.createElement("td");
         tdId.className = "tableWidth2vw";
-        tdId.textContent = category.idProduct_subcategories;
+        tdId.textContent = user.idAccounts;
+
+        const tdLogin = document.createElement("td");
+        tdLogin.className = "tableWidth10vw";
+        tdLogin.textContent = user.login;
 
         const tdName = document.createElement("td");
         tdName.className = "tableWidth12vw";
-        tdName.textContent = category.subcategory;
+        tdName.textContent = user.username;
 
-        const tdType = document.createElement("td");
-        tdType.className = "tableWidth12vw";
-        tdType.textContent = parentCategories[category.idProduct_subcategories];
+        const tdEmail = document.createElement("td");
+        tdEmail.className = "tableWidth12vw";
+        tdEmail.textContent = user.email;
 
         const tdActions = document.createElement("td");
-        tdActions.className = "tableWidth7vw";
+        tdActions.className = "tableWidth5vw";
 
         const actionsDiv = document.createElement("div");
         actionsDiv.className = "tableAkcjeDiv";
-
-        const editLink = document.createElement("a");
-        editLink.className = "adminEdithref";
-        editLink.href = "adminCategoryEdit.html";
-        editLink.textContent = "Edytuj";
 
         const removeLink = document.createElement("a");
         removeLink.className = "adminRemovehref";
         removeLink.textContent = "Usuń";
 
-        actionsDiv.append(editLink, removeLink);
+        actionsDiv.appendChild(removeLink);
         tdActions.appendChild(actionsDiv);
 
-        dataRow.append(tdId, tdName, tdType, tdActions);
+        dataRow.append(tdId, tdLogin, tdName, tdEmail, tdActions);
         table.appendChild(dataRow);
 
         panelDiv.appendChild(table);
         container.appendChild(panelDiv);
     }
-
 })
