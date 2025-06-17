@@ -810,6 +810,10 @@ menu a:hover {
 
 /* Paragrafy Spacing */
 
+.pHeight28vh {
+  height: 28vh;
+}
+
 .pHeight20vh {
   height: 20vh;
 }
@@ -1138,8 +1142,14 @@ menu a:hover {
 
 .pDesc2 {
   overflow-wrap: break-word;
-  font-size: 120%;
+  font-size: 115%;
+  margin-right: 0.7vw;
   margin-left: 1vw;
+}
+
+.h2OpisProduktu {
+  margin-left: 0.5vw;
+  margin-bottom: 1vh;
 }
 
 .DetailsQuickDescDiv {
