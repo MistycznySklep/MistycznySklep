@@ -1,1 +1,1 @@
-ALTER TABLE `orders` ADD `date` DATE NOT NULL AFTER `status`; 
+ALTER TABLE `orders` ADD `date` DATETIME NOT NULL AFTER `status`; 
