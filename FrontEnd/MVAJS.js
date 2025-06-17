@@ -23,7 +23,20 @@ document.querySelectorAll("input").forEach((input, index, inputs) => {
             inputs.forEach(element => {
                 code += element.value;
             });
-            console.log(code);
+            fetch("/api/verifyMFA.php", {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: sessionStorage.getItem("mfa")
+                },
+                method: "POST",
+                body: JSON.stringify({ code })
+            }).then(async response => {
+                if (response.ok) {
+                    const json = await response.json();
+                    localStorage.setItem("token", json.token);
+                    location.href = "index.html";
+                } else location.href = "login.html";
+            });
         }
     });
 
