@@ -9,7 +9,7 @@ Lumoflor to jedyna w swoim rodzaju strona, gdzie kupisz magiczne rośliny! Produ
 
 
 ## Są dwa sposoby, przez które można przeglądać stronę:
-1. Klikając [tu](https://misklep.tymi.org/login.html)
+1. Wchodząc na oficjalną stronę [Lumoflor](https://misklep.tymi.org/login.html)
 2. Odpalając projekt lokalnie
 
 ## Odpalenie Lumofloru lokalnie:
