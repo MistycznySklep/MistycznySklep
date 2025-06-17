@@ -1,6 +1,6 @@
 <?php
 require_once "misc.php";
-require_once "Accounts.php";
+require_once "Models/Accounts.php";
 require_once "Models/Products.php";
 
 class Carts extends Model
@@ -16,7 +16,7 @@ class Carts extends Model
     }
     public function product(): Products
     {
-        return new Products($this->idAccounts);
+        return new Products($this->idProducts);
     }
 
     public function asJson(): mixed
@@ -27,7 +27,10 @@ class Carts extends Model
             "quantity" => $this->quantity
         ];
     }
-
+  
+    /**
+     * @return Carts[]
+     */
     public static function all(int $userId): array
     {
         $db = Database::getInstance();

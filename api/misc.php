@@ -1,5 +1,10 @@
 <?php
 
+const LogNewAccount = 1;
+const LogFailedLogin = 2;
+const LogSuccessfulLogin = 3;
+
+
 if (isset(getallheaders()["Content-Type"]) && getallheaders()["Content-Type"] === "application/json") {
     $_POST = json_decode(file_get_contents("php://input"), true);
 }
@@ -237,7 +242,17 @@ abstract class Model
 
         $this->$idColumn = $db->insert_id;
     }
-}
+
+    public function Delete(): void {
+        $db = Database::getInstance();
+        $idColumn = $this->idColumn;
+        $idValue = $this->$idColumn;
+        $sql = "delete from $this->tableName where $idColumn = $idValue;";
+        $result = $db->query($sql);
+        print_r($sql);
+        HttpUtils::Assert($result !== false, "SQL Error: $sql");
+    }
+ }
 
 #[Attribute]
 class PostParam

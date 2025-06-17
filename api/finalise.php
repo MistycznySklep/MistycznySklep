@@ -2,6 +2,7 @@
 require_once "misc.php";
 require_once "Models/Accounts.php";
 require_once "Models/LoginToken.php";
+require_once "Models/Carts.php";
 
 header("Content-Type: application/json");
 
@@ -18,8 +19,18 @@ $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
 
-echo json_encode([
-    "username" => $account->username,
-    "balance" => $account->balance,
-    "type" => $account->type
-]);
+$totalCost = 0;
+$items = Carts::all($account->idAccounts);
+
+foreach ($items as $item) {
+    $totalCost += $item->product()->price * $item->quantity;
+}
+
+if ($account->balance < $totalCost) {
+    HttpUtils::Status(401, "Insufficient balance");
+}
+$account->balance -= $totalCost;
+$account->Save();
+
+foreach ($items as $item)
+    $item->Delete();

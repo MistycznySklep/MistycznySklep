@@ -1,10 +1,13 @@
 const cart = document.getElementById("cartElements");
+const summaryCount = document.getElementById("summary-price");
 
-API.GetCartProducts().then(async carts => {
+const RefreshCarts = async () => {
+    const carts = await API.GetCartProducts();
     const categories = await API.GetSubCategoryList();
-
+    cart.innerHTML = "";
+    let sumPrice = 0;
+  
     for (const item of carts) {
-        console.log(item);
         const container = document.createElement("div");
         container.className = "cartProductElements";
 
@@ -32,12 +35,20 @@ API.GetCartProducts().then(async carts => {
 
         const minusBtn = document.createElement("button");
         minusBtn.textContent = "-";
+        minusBtn.onclick = async () => {
+            await API.DecrementCartItem(item.id);
+            await RefreshCarts();
+        };
 
         const quantityP = document.createElement("p");
         quantityP.textContent = item.quantity;
 
         const plusBtn = document.createElement("button");
         plusBtn.textContent = "+";
+        plusBtn.onclick = async () => {
+            await API.IncrementCartItem(item.id);
+            await RefreshCarts();
+        };
 
         quantityDiv.append(minusBtn, quantityP, plusBtn);
 
@@ -46,13 +57,28 @@ API.GetCartProducts().then(async carts => {
 
         const totalPriceP = document.createElement("p");
         totalPriceP.textContent = `Łączna cena: ${Math.round(item.product.price * item.quantity * 100) / 100}zl`;
+        sumPrice += item.product.price * item.quantity
 
         const removeBtn = document.createElement("button");
         removeBtn.className = "UsunFromCart";
         removeBtn.textContent = "Usuń z koszyka";
+        removeBtn.onclick = async () => {
+            await API.DeleteFromCart(item.id);
+            await RefreshCarts();
+        };
 
         summaryDiv.append(nameP, categoryP, quantityDiv, pricePerUnitP, totalPriceP, removeBtn);
         container.append(photoDiv, summaryDiv);
         cart.appendChild(container);
     }
-});
+
+    summaryCount.textContent = `${Math.round(sumPrice * 100) / 100} zł`;
+}
+
+document.getElementById("placeOrderButton").onclick = async () => {
+    await API.FinaliseOrder();
+    await RefreshCarts();
+    await ReloadVariables();
+};
+
+RefreshCarts();

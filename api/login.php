@@ -32,6 +32,14 @@ if ($result->num_rows === 0) {
 $row = $result->fetch_assoc();
 
 if (!password_verify($password, $row["password"])) {
+    $idAccounts = $row["idAccounts"];
+    $sql = "insert into admin_log_details (idAccount) values ($idAccounts);";
+    Database::getInstance()->query($sql);
+    $detailsId = Database::getInstance()->insert_id;
+    $type = LogFailedLogin;
+    $sql = "insert into admin_logs (type, idDetails) values ($type, $detailsId);";
+    Database::getInstance()->query($sql);
+
     HttpUtils::Status(401, "Invalid login or password");
 }
 
@@ -43,6 +51,15 @@ $expirationDate = (new DateTime())->add(DateInterval::createFromDateString("7 da
 $ip = Database::getInstance()->real_escape_string($_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER["REMOTE_ADDR"] ?? "");
 
 $token = LoginToken::create($tokenValue, getallheaders()["User-Agent"] ?? "", $id, $expirationDate, $ip);
+
+$tokenId = $token->idLogin_token;
+$sql = "insert into admin_log_details (idAccount, idToken) values ($id, $tokenId);";
+Database::getInstance()->query($sql);
+$detailsId = Database::getInstance()->insert_id;
+$type = LogSuccessfulLogin;
+$sql = "insert into admin_logs (type, idDetails) values ($type, $detailsId);";
+Database::getInstance()->query($sql);
+
 echo json_encode([
     "username" => $account->username,
     "token" => $token->value

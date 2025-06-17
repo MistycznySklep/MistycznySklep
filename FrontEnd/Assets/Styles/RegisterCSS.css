@@ -1,3 +1,15 @@
+:root {
+    --InputBgColor: #81604a;
+
+    --brazowyCiemniejszy: #503623;
+    --brazowyDark: #4b3322;
+    --ciemnyBrazowyBorder: #462f1f;
+
+    --textBrazowy: #2c1f16;
+    --textSzary: #e0e0e0;
+    --InputRozowy: #b169a7;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -26,17 +38,19 @@ a {
 }
 
 a:hover {
-    color: var(--textSzary);
-    text-shadow: 0 0 5px var(--textSzary);
+    color: var(--InputRozowy);
+    text-shadow: 0 0 5px var(--InputRozowy);
 
 }
+
 .formRejestracja {
-    width: 500px;
-    height: 620px;
-    left: 50%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    width: 400px;
+    height: auto;
     top: 53.5%;
-    transform: translate(-50%, -50%);
-    position: absolute;
+
+    justify-self: center;
     color: var(--textBrazowy);
     background-color: var(--brazowyBasic);
     border: 0.32vw solid var(--ciemnyBrazowyBorder);
@@ -63,15 +77,16 @@ p.logowanie {
 }
 
 a {
-    color: rgb(227, 56, 56);
+    color: var(--InputRozowy);
 }
+
 form input {
     position: relative;
-    width: 96.5%;
+    width: 95.5%;
+    padding: 10px;
     height: 2vh;
     margin-block: 10px;
     margin-bottom: 30px;
-    padding: 7px;
     font-size: 15px;
     border-radius: 5px;
     background-color: var(--brazowyDark);
@@ -126,11 +141,11 @@ hr span {
 .error{
     position: relative;
     margin-top: 10px;
+    color: rgb(227, 56, 56);
+    justify-self: center;
     
 }
-.error p{
-    color: #f04444;
-}
+
 @media screen and (max-height: 900px) {
     .formRejestracja {
         height: 375px;

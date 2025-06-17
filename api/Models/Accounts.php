@@ -41,6 +41,37 @@ class Accounts extends Model
         return $instance;
     }
 
+   public static function all(): array
+    {
+        $db = Database::getInstance();
+
+        $stmt = mysqli_prepare($db, "SELECT idAccounts, login, username, email, type, balance FROM accounts");
+        if (!$stmt) return [];
+
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $id, $login, $username, $email, $type, $balance);
+
+        $accounts = [];
+
+        while (mysqli_stmt_fetch($stmt)) {
+            $reflect = new \ReflectionClass(static::class);
+            $instance = $reflect->newInstanceWithoutConstructor();
+
+            $instance->idAccounts = $id;
+            $instance->login = $login;
+            $instance->username = $username;
+            $instance->email = $email;
+            $instance->type = $type;
+            $instance->balance = $balance;
+
+            $accounts[] = $instance;
+        }
+
+        mysqli_stmt_close($stmt);
+
+        return $accounts;
+    }
+
     public int $idAccounts;
     public string $login;
     public string $username;
