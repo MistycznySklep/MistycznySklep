@@ -349,7 +349,7 @@ form button:hover {
     width: 84.5% !important;
 }
 
-#addProduct {
+#addProduct, #addnewcategorypls {
     text-align: center;
     font-size: 0.78vw;
     height: 4vh;
@@ -368,7 +368,7 @@ form button:hover {
     transition-duration: 400ms;
 }
 
-#addProduct:hover {
+#addProduct:hover, #addnewcategorypls:hover {
     scale: 1.05;
     text-shadow: 0 0 5px var(--textSzary) !important;
     box-shadow: 0 0 3px 3px #cccccc !important;
