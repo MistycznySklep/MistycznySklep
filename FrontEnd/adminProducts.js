@@ -11,8 +11,9 @@ window.onload = async () => {
 
         const img = document.createElement("img");
         img.className = "TableIMG";
-        img.src = product.image;
-        img.alt = "";
+        img.src = `/api/image.php?id=${product.idImgs}`;
+        img.alt = "Image";
+        img.loading = "lazy";
         panelDiv.appendChild(img);
 
         const table = document.createElement("table");
