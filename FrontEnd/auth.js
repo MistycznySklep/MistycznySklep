@@ -279,7 +279,7 @@ const ReloadVariables = async () => {
             }
         }
     } catch (e) {
-        if (!location.href.includes("login.html") && !location.href.includes("MVA.html") && !location.href.includes("register.html")) location.href = "login.html";
+        if (!location.href.includes("login.html") && !location.href.includes("MFA.html") && !location.href.includes("register.html")) location.href = "login.html";
     }
 };
 

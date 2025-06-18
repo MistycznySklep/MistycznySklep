@@ -10,7 +10,7 @@
   --akcentRozowy: #b169a7;
 }
 
-.MVAMain {
+.MFAMain {
     position: absolute;
     padding-top: 20px;
     width: 500px;
@@ -73,7 +73,7 @@ input[type="number"]:disabled {
 }
 
 @media (max-width: 600px) {
-    .MVAMain {
+    .MFAMain {
         gap: 5px;
         padding: 10px;
         overflow-x: auto; 
