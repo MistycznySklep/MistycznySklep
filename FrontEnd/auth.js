@@ -205,6 +205,16 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
+    },
+    Add subcategory: async (name, cat) => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/subCategories.php`, { name, category: cat });
+        if (response.status === 200) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
     }
 };
 
@@ -212,7 +222,7 @@ const ReloadVariables = async () => {
     if (API.accessToken === null) return;
     try {
         const user = await API.LocalUser();
-        console.log(user);
+        console.log(useAdd subcategory: async (name, cat) => {r);
         if (location.href.includes("admin") && user.type !== "admin")
             location.href = "index.html";
 
