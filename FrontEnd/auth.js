@@ -95,7 +95,7 @@ const API = {
     GetSubCategoryList: async () => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
-        const response = await API.AuthGet("/api/subcategories.php");
+        const response = await API.AuthGet("/api/subCategories.php");
         const json = await response.json();
         if (!response.ok) throw new Error(json);
 
