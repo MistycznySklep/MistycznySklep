@@ -23,7 +23,8 @@ $idAcocunts = $account->idAccounts;
 $sql = "select idOrdersHistory, final_cost, ordered_at from orders_history where idAccounts = $idAcocunts order by ordered_at desc";
 $result = $db->query($sql);
 while ($row = $result->fetch_assoc()) {
-     $sql = "select products.name as Name from orders_history_products join products on orders_history_products.idProducts = products.idProducts;";
+     $rId = $row["idOrdersHistory"];
+     $sql = "select products.name as Name from orders_history_products join products on orders_history_products.idProducts = products.idProducts where orders_history_products.idOrdersHistory = $rId;";
      $nestedResult = $db->query($sql);
      $object = [
           "price" => $row["final_cost"],
