@@ -7,6 +7,7 @@ const API = {
     },
     AuthGet: async (url) => {
         if (API.accessToken === null) throw new Error("Access token was null");
+        if (location.href.includes("experiment")) url = `/experiment${url}`;
 
         return await fetch(url, {
             headers: {
@@ -17,6 +18,7 @@ const API = {
     },
     AuthDelete: async (url) => {
         if (API.accessToken === null) throw new Error("Access token was null");
+        if (location.href.includes("experiment")) url = `/experiment${url}`;
 
         return await fetch(url, {
             headers: {
@@ -28,6 +30,7 @@ const API = {
     },
     AuthPatch: async (url) => {
         if (API.accessToken === null) throw new Error("Access token was null");
+        if (location.href.includes("experiment")) url = `/experiment${url}`;
 
         return await fetch(url, {
             headers: {
@@ -39,6 +42,7 @@ const API = {
     },
     AuthPost: async (url, body) => {
         if (API.accessToken === null) throw new Error("Access token was null");
+        if (location.href.includes("experiment")) url = `/experiment${url}`;
 
         return await fetch(url, {
             headers: {
@@ -91,7 +95,7 @@ const API = {
     GetSubCategoryList: async () => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
-        const response = await API.AuthGet("/api/subcategories.php");
+        const response = await API.AuthGet("/api/subCategories.php");
         const json = await response.json();
         if (!response.ok) throw new Error(json);
 
@@ -160,7 +164,7 @@ const API = {
     IncrementCartItem: async cartId => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
-        const response = await API.AuthPatch(`/api/incrementCartitem.php?id=${cartId}`);
+        const response = await API.AuthPatch(`/api/incrementCartItem.php?id=${cartId}`);
         if (response.status === 204) return null;
         const json = await response.json();
         if (!response.ok) throw new Error(json);
@@ -170,7 +174,7 @@ const API = {
     DecrementCartItem: async cartId => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
-        const response = await API.AuthPatch(`/api/decrementCartitem.php?id=${cartId}`);
+        const response = await API.AuthPatch(`/api/decrementCartItem.php?id=${cartId}`);
         if (response.status === 204) return null;
         const json = await response.json();
         if (!response.ok) throw new Error(json);
@@ -205,6 +209,65 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
+    },
+    AddSubcategory: async (name, cat) => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/subCategories.php`, { name, category: cat });
+        if (response.status === 200) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    DeleteSubCategory: async id => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthDelete(`/api/deleteSubCategory.php?id=${id}`);
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    RenameSubCategory: async (id, name) => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/renameSubCategory.php?id=${id}`, { name });
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    OrdersHistory: async () => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthGet("/api/ordersHistory.php");
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    EditProduct: async (id, name, price, quantity) => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/editProduct.php?id=${id}`, { name, cena: price, quantity });
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
+    },
+    DeleteProduct: async id => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthDelete(`/api/products.php?id=${id}`);
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
     }
 };
 
@@ -212,7 +275,7 @@ const ReloadVariables = async () => {
     if (API.accessToken === null) return;
     try {
         const user = await API.LocalUser();
-        console.log(user);
+        
         if (location.href.includes("admin") && user.type !== "admin")
             location.href = "index.html";
 
@@ -226,7 +289,7 @@ const ReloadVariables = async () => {
             }
         }
     } catch (e) {
-        if (!location.href.includes("login.html") && !location.href.includes("MVA.html") && !location.href.includes("register.html")) location.href = "login.html";
+        if (!location.href.includes("login.html") && !location.href.includes("MFA.html") && !location.href.includes("register.html")) location.href = "login.html";
     }
 };
 

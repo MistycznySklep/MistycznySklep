@@ -23,12 +23,13 @@ class Products extends Model
             $stmt = $db->prepare("
                 SELECT idProducts 
                 FROM products 
-                WHERE MATCH(name, description) 
+                WHERE MATCH(name, description, description2) 
                     AGAINST (? IN NATURAL LANGUAGE MODE)
                 OR name LIKE ?
                 OR description LIKE ?
+                OR description2 LIKE ?
             ");
-            $stmt->bind_param("sss", $query, $like, $like);
+            $stmt->bind_param("ssss", $query, $like, $like, $like);
             $stmt->execute();
             $result = $stmt->get_result();
         } else {

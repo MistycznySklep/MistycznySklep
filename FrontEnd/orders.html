@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="Assets/Images/LumoflorFav.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="auth.js"></script> <!-- Musi byc zaladowane jako pierwsze -->
-    <script defer src="products_displaying.js"></script>
+    <script defer src="orders.js"></script>
     <title>Mistyczny Sklep</title>
 </head>
 
@@ -27,17 +27,27 @@
 
                 <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona
                             Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel Admina</b><img src="Assets/Images/AdminIcon.png" alt="Admin"></button></li> <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel
+                            Admina</b><img src="Assets/Images/AdminIcon.png" alt="Admin"></button></li>
+                <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
                 <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
                 <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
 
-                    <li><div class="HeaderSeperator"></div></li>
-                <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
-                <li><button class="HeaderIconButton" onclick="window.location.href='inventory.html'"><img onclick="" src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
-                <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload" data-autoload="localUser.balance"></span> zł</button></li>
-                    <li><div class="HeaderSeperator"></div></li>
-                <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li> <!--Dodać img jako LogOut-->
-                
+                <li>
+                    <div class="HeaderSeperator"></div>
+                </li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick=""
+                            src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='inventory.html'"><img onclick=""
+                            src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
+                <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload"
+                            data-autoload="localUser.balance"></span> zł</button></li>
+                <li>
+                    <div class="HeaderSeperator"></div>
+                </li>
+                <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li>
+                <!--Dodać img jako LogOut-->
+
             </ul>
         </nav>
     </header>
@@ -51,47 +61,17 @@
 
         </div>
 
-        
-            <p class="pHeight3vh"></p>
-<!-- 
+
+        <p class="pHeight3vh"></p>
+        <!-- 
             <div class="cartOrderSummary">
                 <button>Oczekujące</button>
                 <button>Zatwierdzone</button>
                 <button>Odrzucone</button>
             </div> -->
 
-
-
-            <div class="DivElement DivInfo DivHistoria DivInfo44 DivOrders">
-
-                <table class="fundsTable">
-                        <tr>
-                            <th>Data</th>
-                            <th>Produkty</th>
-                            <th>Cena</th>
-
-                        </tr>
-                        <tr>
-                            <td class="tableWidth7vw">12-16-2025</td>
-                            <td class="tableWidth30vw passtd">wwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwww</td>
-                            <td class="tableWidth5vw">155 zł</td>
-                        </tr>
-                        <tr>
-                            <td class="tableWidth7vw">12-16-2025</td>
-                            <td class="tableWidth30vw passtd">wwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwww</td>
-                            <td class="tableWidth5vw">155 zł</td>
-                        </tr>
-                        <tr>
-                            <td class="tableWidth7vw">12-16-2025</td>
-                            <td class="tableWidth30vw passtd">wwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwww</td>
-                            <td class="tableWidth5vw">155 zł</td>
-                        </tr>
-                        
-                    </table>
-            </div>
-
-
-
+        <div id="productTableContainer">
+        </div>
 
         <p class="pHeight5vh"></p>
 

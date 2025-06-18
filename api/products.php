@@ -18,6 +18,23 @@ $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
 
+$httpMethod = $_SERVER["REQUEST_METHOD"];
+
+if ($httpMethod === "DELETE" && isset($_GET["id"]) && $account->type == "admin") {
+    $id = $_GET["id"] ?? null;
+
+    if (!$id || !is_numeric($id))
+        HttpUtils::Status(400, "Missing or invalid id");
+
+    $deleteSql = "delete from products where idProducts = ?;";
+    $stmt = Database::getInstance()->prepare($deleteSql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->close();
+    http_response_code(204);
+    die();
+}
+
 if (
     isset($_POST["name"]) &&
     isset($_POST["johncena"]) &&
@@ -45,9 +62,9 @@ if (
         $filePath = __DIR__ . "/../userImages/$fileName";
 
         file_put_contents($filePath, $data);
-        $sql = "insert into products values (NULL, ?, ?, ?, ?, null, ?, ?, $id);";
+        $sql = "insert into products values (NULL, ?, 'Sprzęt', ?, ?, null, ?, ?, $id, ?);";
         $stmt = Database::getInstance()->prepare($sql);
-        $stmt->bind_param("siiss", $_POST["name"], $_POST["cat"], $_POST["johncena"], $_POST["description"], $_POST["quantity"], $_POST["kolor"]);
+        $stmt->bind_param("sisisi", $_POST["name"], $_POST["johncena"], $_POST["description"], $_POST["quantity"], $_POST["kolor"], $_POST["cat"]);
         $stmt->execute();
         $stmt->close();
     } else {

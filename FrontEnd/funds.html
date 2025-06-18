@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="Assets/Styles/GlobalCSS.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="auth.js"></script> <!-- Musi byc zaladowane jako pierwsze -->
-    <script src="loginJS.js"></script>
+
+    <script defer src="fundsJS.js"></script>
     <link rel="icon" type="image/x-icon" href="Assets/Images/LumoflorFav.png">
     <title>Mistyczny Sklep</title>
 </head>
@@ -60,30 +61,10 @@
                 <div><h1>Historia Zakupów</h1></div>
                 <div class="DivElement DivInfo DivHistoria DivInfo44">
                     
-                    <table class="fundsTable">
-                        <tr>
-                            <th>Data</th>
-                            <th>Produkty</th>
-                            <th>Cena</th>
-
-                        </tr>
-                        <tr>
-                            <td class="tableWidth7vw">12-16-2025</td>
-                            <td class="tableWidth30vw passtd">wwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwww</td>
-                            <td class="tableWidth5vw">155 zł</td>
-                        </tr>
-                        <tr>
-                            <td class="tableWidth7vw">12-16-2025</td>
-                            <td class="tableWidth30vw passtd">wwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwww</td>
-                            <td class="tableWidth5vw">155 zł</td>
-                        </tr>
-                        <tr>
-                            <td class="tableWidth7vw">12-16-2025</td>
-                            <td class="tableWidth30vw passtd">wwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwww</td>
-                            <td class="tableWidth5vw">155 zł</td>
-                        </tr>
-                        
-                    </table>
+                    <div id="productTableContainer">
+                        <table>
+                            <div id="productTableContainer"></div>
+                        </table>
 
                     <button onclick="window.location.href='orders.html'">Zobacz Więcej</button>
                     

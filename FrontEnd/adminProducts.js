@@ -1,9 +1,10 @@
 const container = document.getElementById("productTableContainer");
 
-window.onload = async () => {
+const Reload = async () => {
     const products = await API.GetProductList();
     const subcategories = await API.GetSubCategoryList();
 
+    container.innerHTML = "";
     for (const product of products) {
         console.log(product);
         const panelDiv = document.createElement("div");
@@ -11,8 +12,9 @@ window.onload = async () => {
 
         const img = document.createElement("img");
         img.className = "TableIMG";
-        img.src = product.image;
-        img.alt = "";
+        img.src = `/api/image.php?id=${product.idImgs}`;
+        img.alt = "Image";
+        img.loading = "lazy";
         panelDiv.appendChild(img);
 
         const table = document.createElement("table");
@@ -34,15 +36,40 @@ window.onload = async () => {
 
         const tdName = document.createElement("td");
         tdName.className = "tableWidth12vw";
-        tdName.textContent = product.name;
+        const nameInput = document.createElement("input");
+        nameInput.value = product.name;
+        nameInput.style.width = "100%";
+        nameInput.style.border = "none";
+        nameInput.style.padding = "0";
+        nameInput.style.outline = "0";
+        nameInput.style.margin = "0";
+        nameInput.style.height = "auto";
+        tdName.appendChild(nameInput);
 
         const tdPrice = document.createElement("td");
+        const priceInput = document.createElement("input");
+        priceInput.style.border = "none";
+        priceInput.style.padding = "0";
+        priceInput.style.outline = "0";
+        priceInput.style.margin = "0";
+        priceInput.style.height = "auto";
+        priceInput.value = product.price;
+
         tdPrice.className = "tableWidth5vw";
-        tdPrice.textContent = `${product.price} zł`;
+        tdPrice.appendChild(priceInput);
 
         const tdStock = document.createElement("td");
         tdStock.className = "tableWidth5vw";
-        tdStock.textContent = product.quantity ?? "Brak";
+        const stockInput = document.createElement("input");
+        stockInput.type = "number";
+        stockInput.value = product.quantity ?? 0;
+        stockInput.style.width = "100%";
+        stockInput.style.border = "none";
+        stockInput.style.padding = "0";
+        stockInput.style.outline = "0";
+        stockInput.style.margin = "0";
+        stockInput.style.height = "auto";
+        tdStock.appendChild(stockInput);
 
         const tdCategory = document.createElement("td");
         tdCategory.className = "tableWidth10vw";
@@ -56,8 +83,11 @@ window.onload = async () => {
 
         const editLink = document.createElement("a");
         editLink.className = "adminEdithref";
-        editLink.href = "adminProductEdit.html";
         editLink.textContent = "Edytuj";
+        editLink.onclick = async () => {
+            await API.EditProduct(product.idProducts, nameInput.value, priceInput.value, stockInput.value);
+            await Reload();
+        }
 
         const shopLink = document.createElement("a");
         shopLink.className = "adminStorehref";
@@ -66,8 +96,11 @@ window.onload = async () => {
 
         const removeLink = document.createElement("a");
         removeLink.className = "adminRemovehref";
-        removeLink.href = "";
         removeLink.textContent = "Usuń";
+        removeLink.onclick = async () => {
+            await API.DeleteProduct(product.idProducts);
+            await Reload();
+        }
 
         actionsDiv.append(editLink, shopLink, removeLink);
         tdActions.appendChild(actionsDiv);
@@ -79,3 +112,5 @@ window.onload = async () => {
         container.appendChild(panelDiv);
     }
 }
+
+window.onload = Reload;
