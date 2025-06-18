@@ -7,6 +7,7 @@ const API = {
     },
     AuthGet: async (url) => {
         if (API.accessToken === null) throw new Error("Access token was null");
+        if (location.href.includes("experiment")) url = `/experiment/${url}`;
 
         return await fetch(url, {
             headers: {
@@ -17,6 +18,7 @@ const API = {
     },
     AuthDelete: async (url) => {
         if (API.accessToken === null) throw new Error("Access token was null");
+        if (location.href.includes("experiment")) url = `/experiment/${url}`;
 
         return await fetch(url, {
             headers: {
@@ -28,6 +30,7 @@ const API = {
     },
     AuthPatch: async (url) => {
         if (API.accessToken === null) throw new Error("Access token was null");
+        if (location.href.includes("experiment")) url = `/experiment/${url}`;
 
         return await fetch(url, {
             headers: {
@@ -39,6 +42,7 @@ const API = {
     },
     AuthPost: async (url, body) => {
         if (API.accessToken === null) throw new Error("Access token was null");
+        if (location.href.includes("experiment")) url = `/experiment/${url}`;
 
         return await fetch(url, {
             headers: {
