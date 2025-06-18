@@ -12,6 +12,13 @@ if (!empty($q)) {
     $ok = false;
     $result = $db->query($q);
 
+    if(is_bool($result)) {
+if ($result) echo "Ok!";
+else {
+echo "Error: " . Database::getInstance()->error;
+}
+} else {
+
     echo "<table border='1'>";
     
     while ($row = $result->fetch_assoc()) {
@@ -34,6 +41,7 @@ if (!empty($q)) {
 
   
     echo "</table>";
+}
 }
 ?>
 <form>
