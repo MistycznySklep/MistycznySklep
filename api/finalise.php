@@ -39,6 +39,7 @@ $stmt = Database::getInstance()->prepare($sql);
 $stmt->bind_param("ii", $account->idAccounts, $totalCost);
 $stmt->execute();
 $id = $stmt->insert_id;
+$stmt->close();
 
 
 foreach ($items as $item) {
@@ -53,7 +54,7 @@ foreach ($items as $item) {
     
     $stmt->close();
     
-    $stmt = Database::getInstance()->prepare("insert into orders_history_accounts values (NULL, ?, ?);");
+    $stmt = Database::getInstance()->prepare("insert into orders_history_products values (NULL, ?, ?);");
     $stmt->bind_param("ii", $id, $item->idProducts);
     $stmt->execute();
     $stmt->close();
