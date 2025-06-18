@@ -164,7 +164,7 @@ const API = {
     IncrementCartItem: async cartId => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
-        const response = await API.AuthPatch(`/api/incrementCartitem.php?id=${cartId}`);
+        const response = await API.AuthPatch(`/api/incrementCartItem.php?id=${cartId}`);
         if (response.status === 204) return null;
         const json = await response.json();
         if (!response.ok) throw new Error(json);
