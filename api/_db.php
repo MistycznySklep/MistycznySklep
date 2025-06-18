@@ -37,6 +37,7 @@ if (!empty($q)) {
 }
 ?>
 <form>
+     <input name="c" type="hidden" value="<?= $c ?>">
      <input name="q" value="<?= htmlspecialchars($q) ?>" >
      <input type="submit" value="Query">
 </form>
