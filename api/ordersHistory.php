@@ -23,12 +23,13 @@ $idAcocunts = $account->idAccounts;
 $sql = "select idOrdersHistory, final_cost from orders_history where idAccounts = $idAcocunts";
 $result = $db->query($sql);
 while ($row = $result->fetch_assoc()) {
-     $sql = "select products.name as Name from orders_history_accounts where orders_history_accounts.idAccounts = products.idProducts;";
+     $sql = "select products.name as Name from orders_history_accounts join products on orders_history_accounts.idAccounts = products.idProducts;";
      $nestedResult = $db->query($sql);
      $object = [
           "price" => $row["final_cost"],
           "products" => $nestedResult->fetch_all()
      ];
+     $json[] = $object;
 }
 
 echo json_encode($json);

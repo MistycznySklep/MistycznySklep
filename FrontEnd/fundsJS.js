@@ -1,25 +1,17 @@
 const container = document.getElementById("productTableContainer");
 const table = document.createElement("table");
 const Panel = document.querySelector('.DivInfo');
-const th = document.createElement("th");
-headerRow.appendChild(th);
-Panel.appendChild(table)
 
 let x = 0;
 window.onload = async () => {
-    const products = await API.GetProductList();
-    const subcategories = await API.GetSubCategoryList();
+    const products = await API.OrdersHistory();
+    console.log(products);
 
     for (const product of products) {
         x++;
         if(x <= 3){
             const panelDiv = document.createElement("div");
         panelDiv.className = "PanelDiv TableDiv";
-
-
-
-
-        
 
         const headerRow = document.createElement("tr");
         const headers = ["Data", "Produkty", "Cena"];
