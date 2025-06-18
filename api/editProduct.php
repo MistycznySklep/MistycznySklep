@@ -3,12 +3,6 @@ require_once "misc.php";
 require_once "Models/Accounts.php";
 require_once "Models/LoginToken.php";
 
-$newUsername = trim($_POST["newUsername"] ?? "");
-
-if (empty($newUsername)) {
-    HttpUtils::Status(400, "Missing username");
-}
-
 $token = trim(getallheaders()["Authorization"] ?? "");
 
 if (empty($token)) {
@@ -22,10 +16,22 @@ $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
 
-$id = $_POST["id"] ?? "";
+$id = $_GET["id"] ?? "";
 $name = $_POST["name"] ?? "";
 $cena = $_POST["cena"] ?? "";
+$quantity = $_POST["quantity"] ?? "";
 
 if (empty($id) || !is_numeric($id)) {
-     HttpUtils::Status(400, "missing id");
+    HttpUtils::Status(400, "missing id");
 }
+if ($account->type !== "admin") {
+    HttpUtils::Status(401, "Unauthorised");
+}
+
+$sql = "update products set name = coalesce(?, name), price = coalesce(?, price), quantity = coalesce(?, quantity) where idProducts = ?;";
+$stmt = Database::getInstance()->prepare($sql);
+$stmt->bind_param("siii", $name, $cena, $quantity, $id);
+$stmt->execute();
+$stmt->close();
+
+http_response_code(204);

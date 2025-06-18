@@ -244,6 +244,16 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
+    },
+    EditProduct: async (id, name, price, quantity) => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/editProduct.php?id=${id}`, { name, cena: price, quantity });
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
     }
 };
 
