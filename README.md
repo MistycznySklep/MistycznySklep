@@ -75,6 +75,13 @@ Poniżej znajduje się instrukcja jak uruchomić projekt lokalnie w 5 prostych k
 2.	Uruchom XAMPP lub inny edytor
 3.	W phpMyAdmin utwórz bazę danych o nazwie lumoflor i zaimportuj plik SQL z folderu db/
 4.	Skopiuj plik .env.example do .env i wstaw odpowiednie dane
+```
+```env
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+```
 5.	Otwórz FrontEnd/index.html w przeglądarce i przetestuj działanie
 ```
 
