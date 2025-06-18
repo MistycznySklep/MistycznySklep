@@ -82,9 +82,10 @@ DB_USER=
 DB_PASSWORD=
 DB_NAME=
 ```
-5.	Otwórz FrontEnd/index.html w przeglądarce i przetestuj działanie
 ```
+5.	Otwórz FrontEnd/index.html w przeglądarce i przetestuj działanie
 
+```
 ## Baza danych, przykładowe rekordy i jej relacje
 ![image](https://github.com/user-attachments/assets/fe342cb7-570c-447b-b46d-5ef96823b3aa)
 ![image](https://github.com/user-attachments/assets/a7e84dbe-b5bb-4105-a4a7-ec5b5135783f)
