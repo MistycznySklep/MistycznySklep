@@ -1,0 +1,1 @@
+ALTER TABLE `orders_history` ADD `ordered_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `final_cost`;
