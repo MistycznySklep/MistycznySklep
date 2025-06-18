@@ -1537,6 +1537,7 @@ td {
 .tableWidth30vw {
     width: 30vw !important;
     max-width: 30vw !important;
+    text-align: left;
 }
 
 .DivOrders {

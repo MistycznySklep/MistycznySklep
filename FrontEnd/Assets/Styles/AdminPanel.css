@@ -348,3 +348,28 @@ form button:hover {
 .input100 {
     width: 84.5% !important;
 }
+
+#addProduct {
+    text-align: center;
+    font-size: 0.78vw;
+    height: 4vh;
+    margin-top: 1vh;
+    padding: 0 1.5vw;
+
+    display: flex;   
+    justify-self: center;
+    align-items: center;
+    color: var(--textSzary);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+    background-color: var(--brazowyCiemniejszy);
+
+    border: 0;
+    border-radius: 6px;
+    transition-duration: 400ms;
+}
+
+#addProduct:hover {
+    scale: 1.05;
+    text-shadow: 0 0 5px var(--textSzary) !important;
+    box-shadow: 0 0 3px 3px #cccccc !important;
+  }
