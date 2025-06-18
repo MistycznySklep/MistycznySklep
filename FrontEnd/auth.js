@@ -225,6 +225,16 @@ const API = {
         if (!response.ok) throw new Error(json);
 
         return json;
+    },
+    RenameSubCategory: async (id, name) => {
+        if (API.accessToken === null) throw new Error("Access token was null");
+
+        const response = await API.AuthPost(`/api/renameSubCategory.php?id=${id}`, { name });
+        if (response.status === 204) return null;
+        const json = await response.json();
+        if (!response.ok) throw new Error(json);
+
+        return json;
     }
 };
 

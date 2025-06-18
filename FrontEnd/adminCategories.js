@@ -28,8 +28,15 @@ const ReloadCategories = async () => {
         tdId.textContent = category.idProduct_subcategories;
 
         const tdName = document.createElement("td");
+        const inputName = document.createElement("input");
         tdName.className = "tableWidth12vw";
-        tdName.textContent = category.subcategory;
+        inputName.value = category.subcategory;
+        tdName.appendChild(inputName);
+        inputName.style.border = "none";
+        inputName.style.padding = "0";
+        inputName.style.outline = "0";
+        inputName.style.margin = "0";
+        inputName.style.height = "auto";
 
         const tdType = document.createElement("td");
         tdType.className = "tableWidth12vw";
@@ -43,8 +50,11 @@ const ReloadCategories = async () => {
 
         const editLink = document.createElement("a");
         editLink.className = "adminEdithref";
-        editLink.href = "adminCategoryEdit.html";
         editLink.textContent = "Edytuj";
+        editLink.onclick = async () => {
+            await API.RenameSubCategory(category.idProduct_subcategories, inputName.value);
+            await ReloadCategories();
+        };
 
         const removeLink = document.createElement("a");
         removeLink.className = "adminRemovehref";
