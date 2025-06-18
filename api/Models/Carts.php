@@ -47,7 +47,7 @@ class Carts extends Model
         $result = $db->query("select idCarts from carts where idAccounts = $userId");
         $carts = [];
         while ($row = $result->fetch_assoc()) {
-            $carts[] = new Carts($row["idCarts"])->asJson();
+            $carts[] = (new Carts($row["idCarts"]))->asJson();
         }
         return $carts;
     }
