@@ -37,7 +37,7 @@ class Inventory extends Model
         $result = $db->query("select idInventory from inventory where idAccounts = $accountId;");
         $carts = [];
         while ($row = $result->fetch_assoc()) {
-            $carts[] = new Inventory($row["idInventory"])->asJson();
+            $carts[] = (new Inventory($row["idInventory"]))->asJson();
         }
         return $carts;
     }
