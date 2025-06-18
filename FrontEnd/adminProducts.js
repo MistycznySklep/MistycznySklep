@@ -96,8 +96,11 @@ const Reload = async () => {
 
         const removeLink = document.createElement("a");
         removeLink.className = "adminRemovehref";
-        removeLink.href = "";
         removeLink.textContent = "Usuń";
+        removeLink.onclick = async () => {
+            await API.DeleteProduct(product.idProducts);
+            await Reload();
+        }
 
         actionsDiv.append(editLink, shopLink, removeLink);
         tdActions.appendChild(actionsDiv);

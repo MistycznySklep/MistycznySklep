@@ -18,6 +18,23 @@ $token = Database::getInstance()->real_escape_string($token);
 
 $account = GetAccountOrDie($token);
 
+$httpMethod = $_SERVER["REQUEST_METHOD"];
+
+if ($httpMethod === "DELETE" && isset($_GET["id"]) && $account->type == "admin") {
+    $id = $_GET["id"] ?? null;
+
+    if (!$id || !is_numeric($id))
+        HttpUtils::Status(400, "Missing or invalid id");
+
+    $deleteSql = "delete from products where idProducts = ?;";
+    $stmt = Database::getInstance()->prepare($deleteSql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->close();
+    http_response_code(204);
+    die();
+}
+
 if (
     isset($_POST["name"]) &&
     isset($_POST["johncena"]) &&
