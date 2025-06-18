@@ -165,7 +165,7 @@ async function Checker(e) {
         if (!loginResponse.ok) {
             if (loginResponse.status === 401 && json.mfa) {
                 sessionStorage.setItem("mfa", json.mfa);
-                location.href = "MVA.html";
+                location.href = "MFA.html";
                 return;
             }
             errorText.textContent = "Zły login lub haslo";
