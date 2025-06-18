@@ -1,8 +1,10 @@
 const container = document.getElementById("categoryTableContainer");
 
-API.GetSubCategoryList().then(async categories => {
+const ReloadCategories = async () => {
+    const categories = await API.GetSubCategoryList();
     const parentCategories = await API.GetCategoryList();
 
+    container.innerHTML = "";
     for (const categoryId in categories) {
         const category = categories[categoryId];
         const panelDiv = document.createElement("div");
@@ -47,6 +49,10 @@ API.GetSubCategoryList().then(async categories => {
         const removeLink = document.createElement("a");
         removeLink.className = "adminRemovehref";
         removeLink.textContent = "Usuń";
+        removeLink.onclick = async () => {
+            await API.DeleteSubCategory(category.idProduct_subcategories);
+            await ReloadCategories();
+        };
 
         actionsDiv.append(editLink, removeLink);
         tdActions.appendChild(actionsDiv);
@@ -57,5 +63,6 @@ API.GetSubCategoryList().then(async categories => {
         panelDiv.appendChild(table);
         container.appendChild(panelDiv);
     }
+}
 
-})
+ReloadCategories();
