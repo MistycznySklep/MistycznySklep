@@ -34,7 +34,7 @@ $account->Save();
 
 
 
-$sql = "insert into orders_history values (NULL, ?, ?, current_timestamp())";
+$sql = "insert into orders_history values (NULL, ?, ?, current_timestamp());";
 $stmt = Database::getInstance()->prepare($sql);
 $stmt->bind_param("ii", $account->idAccounts, $totalCost);
 $stmt->execute();
