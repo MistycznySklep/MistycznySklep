@@ -36,3 +36,7 @@ if (!empty($q)) {
     echo "</table>";
 }
 ?>
+<form>
+     <input name="q" value="<?= htmlspecialchars($q) ?>" >
+     <input type="submit" value="Query">
+</form>
