@@ -20,7 +20,7 @@ $account = GetAccountOrDie($token);
 
 $json = [];
 $idAcocunts = $account->idAccounts;
-$sql = "select idOrdersHistory, final_cost, ordered_at from orders_history where idAccounts = $idAcocunts";
+$sql = "select idOrdersHistory, final_cost, ordered_at from orders_history where idAccounts = $idAcocunts order by ordered_at desc";
 $result = $db->query($sql);
 while ($row = $result->fetch_assoc()) {
      $sql = "select products.name as Name from orders_history_accounts join products on orders_history_accounts.idAccounts = products.idProducts;";
