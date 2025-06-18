@@ -32,6 +32,15 @@ if ($account->balance < $totalCost) {
 $account->balance -= $totalCost;
 $account->Save();
 
+
+
+$sql = "insert into orders_history values (NULL, ?, ?)";
+$stmt = Database::getInstance()->prepare($sql);
+$stmt->bind_param("ii", $account->idAccounts, $totalCost);
+$stmt->execute();
+$id = $stmt->insert_id;
+
+
 foreach ($items as $item) {
     $sql = "INSERT INTO inventory (idProducts, idAccounts, quantity)
             VALUES (?, ?, ?)
@@ -40,6 +49,14 @@ foreach ($items as $item) {
     $stmt = Database::getInstance()->prepare($sql);
     $stmt->bind_param("iii", $item->idProducts, $account->idAccounts, $item->quantity);
     $stmt->execute();
+
+    
+    $stmt->close();
+    
+    $stmt = Database::getInstance()->prepare("insert into orders_history_accounts values (NULL, ?, ?);");
+    $stmt->bind_param("ii", $id, $item->idProducts);
+    $stmt->execute();
+    $stmt->close();
 
     $item->Delete();
 }
