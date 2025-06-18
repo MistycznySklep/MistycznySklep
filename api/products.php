@@ -47,7 +47,7 @@ if (
         file_put_contents($filePath, $data);
         $sql = "insert into products values (NULL, ?, 'Sprzęt', ?, ?, null, ?, ?, $id, ?);";
         $stmt = Database::getInstance()->prepare($sql);
-        $stmt->bind_param("sissi", $_POST["name"], $_POST["johncena"], $_POST["description"], $_POST["quantity"], $_POST["kolor"], $_POST["cat"]);
+        $stmt->bind_param("sisisi", $_POST["name"], $_POST["johncena"], $_POST["description"], $_POST["quantity"], $_POST["kolor"], $_POST["cat"]);
         $stmt->execute();
         $stmt->close();
     } else {
