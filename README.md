@@ -86,8 +86,8 @@ DB_NAME=
 5.	Otwórz FrontEnd/index.html w przeglądarce i przetestuj działanie
 
 ```
-## Baza danych, przykładowe rekordy i jej relacje
-![image](https://github.com/user-attachments/assets/fe342cb7-570c-447b-b46d-5ef96823b3aa)
+## Baza danych, przykładowe rekordy i diagram encji
+![image](https://github.com/user-attachments/assets/0d10d4cc-e92d-41a9-b470-75a1529cae37)
 ![image](https://github.com/user-attachments/assets/a7e84dbe-b5bb-4105-a4a7-ec5b5135783f)
 w folderze db znajduje się plik `lumoflor_database.sql`, który zawiera całą bazę danych
 
