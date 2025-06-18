@@ -31,7 +31,7 @@ API.GetSubCategoryList().then(async categories => {
 
         const tdType = document.createElement("td");
         tdType.className = "tableWidth12vw";
-        tdType.textContent = parentCategories[category.idProduct_subcategories];
+        tdType.textContent = parentCategories[category.idCategories];
 
         const tdActions = document.createElement("td");
         tdActions.className = "tableWidth7vw";

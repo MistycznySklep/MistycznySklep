@@ -24,7 +24,7 @@ if (
     $account->type == "admin"
 ) {
      $stmt = Database::getInstance()->prepare("insert into product_subcategories values (NULL, ?, ?)");
-     $stmt->bind_params("is", $_POST["category"], $_POST["name"]);
+     $stmt->bind_param("is", $_POST["category"], $_POST["name"]);
      $stmt->execute();
      $stmt->close();
 }

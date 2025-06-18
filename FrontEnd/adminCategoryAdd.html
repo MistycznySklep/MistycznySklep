@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Assets/Styles/AdminPanel.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="auth.js"></script> <!-- Musi byc zaladowane jako pierwsze -->
-    <script defer src="products_displaying.js"></script>
+    <script defer src="adminCategoryAdd.js"></script>
     <link rel="icon" type="image/x-icon" href="Assets/Images/LumoflorFav.png">
     <title>Mistyczny Sklep</title>
 </head>
@@ -27,16 +27,26 @@
 
                 <li><button class="PasekZastepczeIMG" onclick="window.location.href='index.html'"><b>Strona
                             Główna</b><img src="Assets/Images/MainPageIconFar.png"></button></li>
-                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel Admina</b><img src="Assets/Images/AdminIcon.png" alt="Admin"></button></li> <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
+                <li><button class="PasekZastepczeIMG" onclick="window.location.href='adminPanel.html'"><b>Panel
+                            Admina</b><img src="Assets/Images/AdminIcon.png" alt="Admin"></button></li>
+                <!-- WIDAĆ TYLKO NA KONCIE ADMINA !!!-->
                 <!-- <li><button class="PasekZastepczeIMG" onclick="window.location.href=''"><b>Zakładka 2</b><img src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li> -->
 
-                    <li><div class="HeaderSeperator"></div></li>
-                <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick="" src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
-                <li><button class="HeaderIconButton" onclick="window.location.href='inventory.html'"><img onclick="" src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
-                <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload" data-autoload="localUser.balance"></span> zł</button></li>
-                    <li><div class="HeaderSeperator"></div></li>
-                <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li> <!--Dodać img jako LogOut-->
-                
+                <li>
+                    <div class="HeaderSeperator"></div>
+                </li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='cart.html'"><img onclick=""
+                            src="Assets/Images/StoreIconFar.png" alt="Koszyk"></button></li>
+                <li><button class="HeaderIconButton" onclick="window.location.href='inventory.html'"><img onclick=""
+                            src="Assets/Images/InventoryIconFar.png" alt="Magazyn"></button></li>
+                <li><button class="HeaderMoneyCount" onclick="window.location.href='funds.html'"><span class="autoload"
+                            data-autoload="localUser.balance"></span> zł</button></li>
+                <li>
+                    <div class="HeaderSeperator"></div>
+                </li>
+                <li><button id="LogoutButton" onclick="window.location.href='login.html'"><b>Wyloguj</b></button></li>
+                <!--Dodać img jako LogOut-->
+
             </ul>
         </nav>
     </header>
@@ -55,28 +65,39 @@
 
         <div class="PanelDiv">
 
-            <form id="formularzProduktu" action="" method="POST" enctype="multipart/form-data">
+            <div>
 
-                    <input class="input100" type="text" name="_name" placeholder="Nazwa Kategorii"><br>
+                <input class="input100" type="text" id="name" placeholder="Nazwa Kategorii"><br>
 
-                    <label>Typ Kategorii: <!--Typ Kategorii - Kategoria (na stronie kategorie to podkategorie)-->
-                            <select type="text" name="_typ">
-                                <option value="">Rośliny</option>
-                                <option value="">Eliksiry</option>
-                                <option value="">Wyposażenie</option>
-                    </label>
-                                
-                            </select>
+                <label>Typ Kategorii:
+                    <select type="text" id="in-category">
+                    </select>
+                </label>
 
-                <button type="submit">Dodaj Kategorię</button>
 
-            </form>  
+                <button type="submit" id="addnewcategorypls">Dodaj Kategorię</button>
+
+            </div>
         </div>
 
         <p class="pHeight5vh"></p>
 
     </main>
-
+    <script>
+        const categoriesElement = document.getElementById("in-category");
+        API.GetCategoryList().then(categories => {
+            for (const category in categories) {
+                const element = document.createElement("option");
+                element.value = category;
+                element.textContent = categories[category];
+                categoriesElement.appendChild(element);
+            }
+        });
+        document.getElementById("addnewcategorypls").onclick = async () => {
+            await API.AddSubcategory(document.getElementById("name").value, document.getElementById("in-category").value);
+            history.back();
+        }
+    </script>
 </body>
 
 </html>
