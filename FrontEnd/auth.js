@@ -206,7 +206,7 @@ const API = {
 
         return json;
     },
-    Add subcategory: async (name, cat) => {
+    AddSubcategory: async (name, cat) => {
         if (API.accessToken === null) throw new Error("Access token was null");
 
         const response = await API.AuthPost(`/api/subCategories.php`, { name, category: cat });
