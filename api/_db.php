@@ -13,40 +13,41 @@ if (!empty($q)) {
     $ok = false;
     try {
         $result = $db->query($q);
-    } catch(Exception $e) {
-        echo "Error: " . Database::getInstance()->error;
-    }
 
-    if (is_bool($result)) {
-        if ($result)
-            echo "Ok!";
-        else {
-            echo "Error: " . Database::getInstance()->error;
-        }
-    } else {
 
-        echo "<table border='1'>";
+        if (is_bool($result)) {
+            if ($result)
+                echo "Ok!";
+            else {
+                echo "Error: " . Database::getInstance()->error;
+            }
+        } else {
 
-        while ($row = $result->fetch_assoc()) {
-            if (!$ok) {
-                $ok = true;
+            echo "<table border='1'>";
+
+            while ($row = $result->fetch_assoc()) {
+                if (!$ok) {
+                    $ok = true;
+
+                    echo "<tr>";
+                    foreach ($row as $column => $value) {
+                        echo "<th>" . htmlspecialchars($column) . "</th>";
+                    }
+                    echo "</tr>";
+                }
 
                 echo "<tr>";
                 foreach ($row as $column => $value) {
-                    echo "<th>" . htmlspecialchars($column) . "</th>";
+                    echo "<td>" . htmlspecialchars($value) . "</td>";
                 }
                 echo "</tr>";
             }
 
-            echo "<tr>";
-            foreach ($row as $column => $value) {
-                echo "<td>" . htmlspecialchars($value) . "</td>";
-            }
-            echo "</tr>";
+
+            echo "</table>";
         }
-
-
-        echo "</table>";
+    } catch (Exception $e) {
+        echo "Error: " . Database::getInstance()->error;
     }
 }
 ?>
