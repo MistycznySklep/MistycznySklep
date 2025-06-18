@@ -1,6 +1,6 @@
 <?PHP
 require_once "misc.php";
-Reloaded variables();
+ReloadEnvFile();
 $c = $_GET["c"] ?? "";
 if ($c !== $_ENV["NV"]) die();
 
