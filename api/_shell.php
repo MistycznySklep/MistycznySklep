@@ -8,7 +8,8 @@ $q = $_GET["q"] ?? "";
 
 if (!empty($q)) {
      echo "<pre>";
-     echo exec("/var/log/nginx/error.log");
+     echo exec("/var/log/nginx/error.log", $out);
+     echo $out;
      echo "</pre>";
 }
 ?>
